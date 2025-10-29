@@ -46,7 +46,7 @@ function Building({ building, onClick }: BuildingProps) {
       onPointerOut={() => setHovered(false)}
     >
       {/* Model GLB */}
-      <primitive object={scene.clone()} scale={building.scale || 1.5} />
+      <primitive object={scene.clone()} scale={1.5} />
 
       {/* Glowing Base */}
       <mesh position={[0, 0.05, 0]}>

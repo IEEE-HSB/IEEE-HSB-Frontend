@@ -5,13 +5,10 @@ import { Buildings } from './Buildings';
 import { AnimatedPersona } from './AnimatedPersona';
 import { QuizPopup } from './QuizPopup';
 import { FeedbackPopup } from './FeedbackPopup';
-import { useTexture } from "@react-three/drei";
-import * as THREE from "three";
-
-
 
 
 export interface BuildingData {
+  scale?: number;
   id: string;
   name: string;
   color: string;

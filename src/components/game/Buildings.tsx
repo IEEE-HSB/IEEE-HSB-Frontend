@@ -14,10 +14,10 @@ interface BuildingProps {
 function Building({ building, onClick }: BuildingProps) {
   const meshRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
+  const model = useGLTF('/assets/models/building5.glb');
+  const models = [model];
 
-  const models = useMemo(() => [
-    useGLTF('/assets/models/building5.glb'),
-  ], []);
+ 
 
   const modelIndex = building.id.length % models.length;
   const { scene } = models[modelIndex];

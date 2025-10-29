@@ -49,7 +49,7 @@ export default function Login() {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
-              <IeeeLogo size={50} fillColor={isDark ? 'white' : '#207DA9'} strokeColor='' className="" />
+              <IeeeLogo size={50} fillColor={isDark ? "white" : "#207DA9"} strokeColor="" className="" />
 
             </div>
             <h1 className="mb-2 text-xl font-semibold">Welcome Back!</h1>
@@ -119,7 +119,7 @@ export default function Login() {
           {/* Login Link */}
           <p className="text-center mt-6 text-muted-foreground text-sm
           ">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <button
               onClick={() => router.push("/register")}
               className="text-ieee-blue-100 text-lg font-bold hover:underline

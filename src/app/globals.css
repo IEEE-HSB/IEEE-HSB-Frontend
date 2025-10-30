@@ -143,12 +143,7 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-
-  --night: #FFFFFF;
-  --deep: #F5F5F5;
-  --flame: #FF6A00;
-  --light: #15171C;
-
+  
 
   /* IEEE Blue PMS 3015 C */
   --ieee-blue-100: #00629B;
@@ -248,12 +243,6 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
-
-
-  --night: #15171C;
-  --deep: #101114;
-  --flame: #F97535;
-  --light: #FFFFFF;
 
 
   --ieee-blue-100: #002855;

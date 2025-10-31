@@ -68,12 +68,12 @@ export default function Navbar() {
 
                         {/* logo 207DA9*/}
                         <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#004d7a] to-[white] rounded-xl blur-lg opacity-35 transition-opacity" />
-                            <IeeeLogo size={55} fillColor={isDark?'white':'#207DA9'}></IeeeLogo>
+                            <div className=" absolute inset-0 bg-gradient-to-br from-[#004d7a] to-[white] rounded-xl blur-lg opacity-35 transition-opacity" />
+                            <IeeeLogo size={50} fillColor={isDark?'white':'#207DA9'}></IeeeLogo>
                         </div>
 
                         <div className="flex flex-col items-start">
-                        <IeeeHelwan width={170} className="h-40" fillColor={isDark?'white': '#207DA9'}/>
+                        <IeeeHelwan width={170} height={50}  fillColor={isDark?'white': '#207DA9'}/>
                            </div>
                     </motion.button>
 

@@ -1,0 +1,188 @@
+{
+  "chairpersons": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 2,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 3,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 4,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 5,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 6,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 7,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 8,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 9,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    },
+    {
+      "id": 10,
+      "name": "John Doe",
+      "image":"assets/images/chairperson.png",
+      "title": "Web Master",
+      "story": "Short story about yourself"
+    }
+  ],
+  "events": {
+    "2019": [
+      {
+        "id": 1,
+        "name": "Event Name",
+        "date": "2019-03-15",
+        "location": "Helwan Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Event Name",
+        "date": "2019-07-20",
+        "location": "Helwan Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Event Name",
+        "date": "2019-11-22",
+        "location": "Helwan Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      }
+    ],
+    "2020": [
+      {
+        "id": 4,
+        "name": "Event Name",
+        "date": "2020-02-10",
+        "location": "Giza Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Event Name",
+        "date": "2020-08-25",
+        "location": "Giza Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      }
+    ],
+    "2021": [
+      {
+        "id": 6,
+        "name": "Event Name",
+        "date": "2021-03-12",
+        "location": "Helwan Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      }
+    ],
+    "2022": [
+      {
+        "id": 7,
+        "name": "Event Name",
+        "date": "2022-07-10",
+        "location": "Giza Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      }
+    ],
+    "2023": [
+      {
+        "id": 8,
+        "name": "Event Name",
+        "date": "2023-05-22",
+        "location": "Helwan Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      }
+    ],
+    "2024": [
+      {
+        "id": 9,
+        "name": "Event Name",
+        "date": "2024-01-15",
+        "location": "Helwan Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      }
+    ],
+    "2025": [
+      {
+        "id": 10,
+        "name": "Event Name",
+        "date": "2025-06-30",
+        "location": "Giza Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+      }
+    ],
+    "2026": [
+      {
+      "id": 11,
+        "name": "Event Name",
+        "date": "2026-06-3",
+        "location": "Giza Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+    }],
+    "2027": [
+      {
+      "id": 12,
+        "name": "Event Name",
+        "date": "2027-06-15",
+        "location": "Giza Cairo",
+        "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "image": "assets/images/event1.jpg"
+    }]
+  }
+}

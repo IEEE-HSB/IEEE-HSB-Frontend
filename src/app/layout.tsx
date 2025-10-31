@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import LayoutContent from "./LayoutContent";
+import QueryProvider from "@/providers/QueryProvider";
 
 
 
@@ -37,15 +38,18 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <LayoutContent>
-            {children}
-            {/* Floating Game Button */}
-           
-        </LayoutContent>
+          <QueryProvider>
+            <LayoutContent>
+              {children}
 
-      </ThemeProvider>
 
-    </body>
+            </LayoutContent>
+
+          </QueryProvider>
+
+        </ThemeProvider>
+
+      </body>
     </html >
   );
 }

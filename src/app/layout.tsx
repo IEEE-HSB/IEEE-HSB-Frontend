@@ -40,7 +40,7 @@ export default function RootLayout({
           <LayoutContent>
             {children}
             {/* Floating Game Button */}
-           
+    
         </LayoutContent>
 
       </ThemeProvider>

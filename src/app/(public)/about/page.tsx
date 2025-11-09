@@ -105,7 +105,7 @@ export default function About() {
           </h2>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
             IEEE stands for “Institute of Electrical and Electronics Engineers”,
-            the world's largest professional association for advancing
+            the world&apos;s largest professional association for advancing
             technology. IEEE Helwan SB is the 3rd created branch in Egypt and
             the first student organization at Helwan University. It proudly
             includes four chapters (RAS, PES, ComSoc, CS) and one affinity group

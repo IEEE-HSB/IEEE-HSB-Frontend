@@ -40,14 +40,14 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen overflow-hidden bg-white dark:bg-[#101114] transition-colors duration-500">
+    <div className="min-h-screen overflow-hidden bg-white dark:bg-ieee-blue-100 transition-colors duration-500">
       <div className="px-6 md:px-20 lg:px-40 py-25">
         {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-center text-4xl md:text-5xl font-extrabold text-[#00629B] dark:text-[#58A6FF]"
+          className="text-center text-4xl md:text-5xl font-extrabold text-ieee-blue-100 dark:text-ieee-blue-20"
         >
           About IEEE Helwan SB
         </motion.h1>
@@ -66,7 +66,7 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="p-8 bg-white/70 dark:bg-[#2082B0]/20 backdrop-blur-sm shadow-lg rounded-2xl border-l-4 border-[#00629B] dark:border-[#58A6FF]"
+            className="p-8 bg-white/70 dark:bg-[#2082B0]/20 backdrop-blur-sm shadow-lg rounded-2xl border-l-4 border-ieee-blue-100 dark:border-[#58A6FF]"
           >
             <h2 className="text-2xl font-bold text-[#00629B] dark:text-[#58A6FF] mb-4">
               VISION

@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Slider from "react-slick";
 import axios from "axios";
-import Image from "next/image";
 import Calendar from "@/assets/icons/calendar";
 import { useThemeContext } from "@/context/ThemeContext";
 import Location from "@/assets/icons/location";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-// ✅ تعريف شكل البيانات الراجعة من الـ API
+
 interface EventItem {
     id: number;
     name: string;
@@ -30,8 +31,8 @@ export default function EventsTimeline() {
     const { data, isLoading, error } = useQuery<EventsData>({
         queryKey: ["events"],
         queryFn: async () => {
-            const response = await axios.get("http://localhost:4000/events");
-            return response.data;
+            const response = await axios.get("https://raw.githubusercontent.com/cheetah-10/db.json/main/db.json");
+            return response.data.events;
         },
     });
 
@@ -57,27 +58,53 @@ export default function EventsTimeline() {
 
     const settings = {
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 8,
         slidesToScroll: 1,
         responsive: [
-            { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3, infinite: true, dots: true } },
-            { breakpoint: 600, settings: { slidesToShow: 2, slidesToScroll: 2, initialSlide: 2 } },
-            { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            }
         ],
     };
+
 
     return (
         <div className="overflow-x-hidden">
             {/* ======= SLIDER YEARS ======= */}
-            <div className="slider-container w-full text-xl text-ieee-blue-40 text-center bg-ieee-blue-100">
+            <div className=" slider-container w-full text-xl text-ieee-blue-40 text-center bg-ieee-blue-100">
                 <Slider {...settings}>
                     {years.map((year) => (
                         <div
                             key={year}
                             onClick={() => setSelectedYear(year)}
-                            className={selectedYear === year ? "text-[#fff] cursor-pointer" : "cursor-pointer"}
+                            className={`cursor-pointer ${selectedYear === year ? "text-[#fff]" : ""} inline-block`}
                         >
                             <h3 className="font-sans font-black my-1">{year}</h3>
                         </div>
@@ -89,9 +116,9 @@ export default function EventsTimeline() {
             <div
                 className="relative overflow-auto text-ieee-blue-100 bg-opacity-75"
                 style={isDark ? {} : {
-                     backgroundImage:
+                    backgroundImage:
                         'linear-gradient(rgba(233, 242, 264, 0.9) , rgba(233, 242, 264, 0.9)), url("/assets/images/elecBg.png")',
-            
+
                 }}
             >
                 <div className="h-cards overflow-y-auto w-3/4 my-20 m-auto">

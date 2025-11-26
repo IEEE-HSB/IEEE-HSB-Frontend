@@ -184,5 +184,77 @@
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
         "image": "assets/images/event1.jpg"
     }]
-  }
+  },
+  "announcements":[
+    {
+      "id": 1,
+      "title": "Recruitment is Now Open!",
+      "description": "Apply now to join IEEE Helwan SB and become part of our innovative community.",
+      "link": "https://apply.ieeehelwan.org",
+      "createdAt": "2025-11-08T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Workshop Registration Open",
+      "description": "Join our new workshop on AI Fundamentals.",
+      "link": "https://ieeehelwan.org/workshops",
+      "createdAt": "2025-11-09T12:00:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Recruitment is Now Open!",
+      "description": "Apply now to join IEEE Helwan SB and become part of our innovative community.",
+      "link": "https://apply.ieeehelwan.org",
+      "createdAt": "2025-11-08T10:00:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Workshop Registration Open",
+      "description": "Join our new workshop on AI Fundamentals.",
+      "link": "https://ieeehelwan.org/workshops",
+      "createdAt": "2025-11-09T12:00:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Recruitment is Now Open!",
+      "description": "Apply now to join IEEE Helwan SB and become part of our innovative community.",
+      "link": "https://apply.ieeehelwan.org",
+      "createdAt": "2025-11-08T10:00:00Z"
+    },
+    {
+      "id": 6,
+      "title": "Workshop Registration Open",
+      "description": "Join our new workshop on AI Fundamentals.",
+      "link": "https://ieeehelwan.org/workshops",
+      "createdAt": "2025-11-09T12:00:00Z"
+    },
+    {
+      "id": 7,
+      "title": "Workshop Registration Open",
+      "description": "Join our new workshop on AI Fundamentals.",
+      "link": "https://ieeehelwan.org/workshops",
+      "createdAt": "2025-11-09T12:00:00Z"
+    },
+    {
+      "id": 8,
+      "title": "Workshop Registration Open",
+      "description": "Join our new workshop on AI Fundamentals.",
+      "link": "https://ieeehelwan.org/workshops",
+      "createdAt": "2025-11-09T12:00:00Z"
+    },
+    {
+      "id": 9,
+      "title": "Workshop Registration Open",
+      "description": "Join our new workshop on AI Fundamentals.",
+      "link": "https://ieeehelwan.org/workshops",
+      "createdAt": "2025-11-09T12:00:00Z"
+    },
+    {
+      "id": 10,
+      "title": "Workshop Registration Open",
+      "description": "Join our new workshop on AI Fundamentals.",
+      "link": "https://ieeehelwan.org/workshops",
+      "createdAt": "2025-11-09T12:00:00Z"
+    }
+  ]
 }

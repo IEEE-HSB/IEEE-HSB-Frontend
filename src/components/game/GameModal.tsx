@@ -1,4 +1,4 @@
-import { Dialog, DialogContent } from '../ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '../ui/dialog';
 import { Game3DScene } from './Game3DScene';
 import { X } from 'lucide-react';
 
@@ -11,6 +11,9 @@ export function GameModal({ isOpen, onClose }: GameModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-6xl w-full h-[90vh] p-0 bg-gradient-to-br from-ieee-blue-100 via-ieee-blue-80 to-ieee-blue-100 border-2 border-ieee-aqua-100/50 overflow-hidden">
+        {/* Visually Hidden Title for Accessibility */}
+        <DialogTitle className="sr-only">IEEE Communities Explorer Game</DialogTitle>
+
         {/* Header */}
         <div className=" absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/50 to-transparent p-6 flex items-center justify-between">
           <div>

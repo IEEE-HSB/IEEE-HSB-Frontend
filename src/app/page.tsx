@@ -39,7 +39,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="mb-6 text-[#717171] font-bold text-[20px] leading-[150%] tracking-[-0.011em] text-center align-middle"
             >
-              IEEE Student Community Helwan University
+             IEEE Helwan Student Branch
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 30 }}

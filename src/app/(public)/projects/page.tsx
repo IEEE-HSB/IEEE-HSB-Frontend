@@ -7,36 +7,37 @@ import FilterBar from '@/components/common/FilterBar';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import { Project, ProjectChapterFilter } from '@/types/project';
 import { projectsData } from '@/utils/projectsData';
+import { useThemeContext } from '@/context/ThemeContext';
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [activeFilter, setActiveFilter] = useState<ProjectChapterFilter>('All');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const {isDark} = useThemeContext()
   // Fetch projects on mount
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
         setError(null);
-        
+
         // TODO: Replace with actual API call when backend is ready
         // const response = await fetch('/api/projects');
         // if (!response.ok) throw new Error('Failed to fetch projects');
         // const data = await response.json();
-        
+
         // Simulate API delay
         await new Promise((resolve) => setTimeout(resolve, 500));
-        
+
         // Use static data for now
         const data = projectsData;
-        
+
         // Sort by createdAt descending (latest first)
         const sortedData = [...data].sort(
           (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
-        
+
         setProjects(sortedData);
       } catch (err) {
         setError('Failed to load projects. Please try again later.');
@@ -60,7 +61,7 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-ieee-aqua-100 to-ieee-cyan-100 text-white py-20">
+      <section className="relative  bg-gradient-to-br from-ieee-aqua-100 to-ieee-cyan-100 text-white pt-20 pb-28 overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -84,10 +85,13 @@ export default function ProjectsPage() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="w-full h-auto"
+            stroke='none'
           >
             <path
               d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V120Z"
               className="fill-background"
+              stroke= {isDark?'#020618':'#ffffff'}
+
             />
           </svg>
         </div>
@@ -166,6 +170,6 @@ export default function ProjectsPage() {
           </>
         )}
       </section>
-    </div>
+    </div >
   );
 }

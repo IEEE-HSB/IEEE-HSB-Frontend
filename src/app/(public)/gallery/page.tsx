@@ -6,9 +6,11 @@ import GalleryCard from '@/components/common/GalleryCard';
 import FilterBar from '@/components/common/FilterBar';
 import { galleryData } from '@/utils/galleryData';
 import { ChapterFilter } from '@/types/gallery';
+import { useThemeContext } from '@/context/ThemeContext';
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState<ChapterFilter>('All');
+  const {isDark} = useThemeContext()
 
   // Filter gallery items based on selected chapter
   const filteredGallery = useMemo(() => {
@@ -21,7 +23,7 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-ieee-aqua-100 to-ieee-cyan-100 text-white py-20">
+      <section className="relative bg-gradient-to-br from-ieee-aqua-100 to-ieee-cyan-100 text-white pt-20 pb-28">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -49,6 +51,7 @@ export default function GalleryPage() {
             <path
               d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V120Z"
               className="fill-background"
+              stroke={isDark? '#020618' : '#ffffff'}
             />
           </svg>
         </div>

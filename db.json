@@ -3,70 +3,70 @@
     {
       "id": 1,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 2,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 3,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 4,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 5,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 6,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 7,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 8,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 9,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
       "id": 10,
       "name": "John Doe",
-      "image":"assets/images/chairperson.png",
+      "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     }
@@ -79,7 +79,8 @@
         "date": "2019-03-15",
         "location": "Helwan Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "ras"
       },
       {
         "id": 2,
@@ -87,7 +88,8 @@
         "date": "2019-07-20",
         "location": "Helwan Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "pes"
       },
       {
         "id": 3,
@@ -95,7 +97,8 @@
         "date": "2019-11-22",
         "location": "Helwan Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "pes"
       }
     ],
     "2020": [
@@ -105,7 +108,8 @@
         "date": "2020-02-10",
         "location": "Giza Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "wie"
       },
       {
         "id": 5,
@@ -113,7 +117,8 @@
         "date": "2020-08-25",
         "location": "Giza Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "ras"
       }
     ],
     "2021": [
@@ -123,7 +128,8 @@
         "date": "2021-03-12",
         "location": "Helwan Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "wie"
       }
     ],
     "2022": [
@@ -133,7 +139,8 @@
         "date": "2022-07-10",
         "location": "Giza Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "comsoc"
       }
     ],
     "2023": [
@@ -143,7 +150,8 @@
         "date": "2023-05-22",
         "location": "Helwan Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "cs"
       }
     ],
     "2024": [
@@ -163,29 +171,32 @@
         "date": "2025-06-30",
         "location": "Giza Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        "image": "assets/images/event1.jpg"
+        "image": "assets/images/event1.jpg",
+        "chapterId": "ras"
       }
     ],
     "2026": [
       {
-      "id": 11,
+        "id": 11,
         "name": "Event Name",
         "date": "2026-06-3",
         "location": "Giza Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
         "image": "assets/images/event1.jpg"
-    }],
+      }
+    ],
     "2027": [
       {
-      "id": 12,
+        "id": 12,
         "name": "Event Name",
         "date": "2027-06-15",
         "location": "Giza Cairo",
         "details": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.Lorem ipsum dolor sit amet consectetur adipiscing elit",
         "image": "assets/images/event1.jpg"
-    }]
+      }
+    ]
   },
-  "announcements":[
+  "announcements": [
     {
       "id": 1,
       "title": "Recruitment is Now Open!",

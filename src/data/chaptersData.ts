@@ -70,7 +70,7 @@ export const chaptersData = [
         mission:'To connect, support, and inspire women and girls worldwide, and facilitate their recruitment and retention in STEM fields and non technical fields.Also to inspire women in engineering at Helwan University through mentorship, skill development, and professional opportunities.',
         vission: 'To empower and support women in the field of engineering in Egypt through enhancing and uplifting the IEEE Helwan WIE Chapter.Create an inclusive community that fosters professional growth,networking, and innovation.',
         foundedIn: '2010-01-01',
-        about: 'WIE seeks to empower girls by preparing them comprehensively for the labor market, as we provide specialized training programs to develop both technical and soft skills we work to provide participants with the necessary knowledge to face professional challenges and enhance their abilities to innovate and think critically through interactive workshops and various activities, we aim to enhance girls&apos self-confidence and achieve excellence in their career paths.',
+        about: 'WIE seeks to empower girls by preparing them comprehensively for the labor market, as we provide specialized training programs to develop both technical and soft skills we work to provide participants with the necessary knowledge to face professional challenges and enhance their abilities to innovate and think critically through interactive workshops and various activities, we aim to enhance girls self-confidence and achieve excellence in their career paths.',
 
 
     },
@@ -78,14 +78,14 @@ export const chaptersData = [
         chapterName: "RAS",
         chapterId: "ras",
         brief: "Merging creativity with engineering.",
-        description: "Merging creativity with engineering, RAS develops students&apos technical and design skills through robotics challenges and automation projects.\nIt includes 1 integrated track combining both mechanical and control aspects of robotics.",
+        description: "Merging creativity with engineering, RAS develops students' technical and design skills through robotics challenges and automation projects.\nIt includes 1 integrated track combining both mechanical and control aspects of robotics.",
         title: "Robotics & Automation Society",
         logo: "/assets/logos/rasLogo.png",
         color: 'ieee-red-100',
         whyJoinUs: [
-            'Build Real Robots With Your Own Hands Not just lectures — you design, assemble, and control real robots from A to Z. You’ll gain practical skills that most students only dream of.',
+            'Build Real Robots With Your Own Hands Not just lectures — you design, assemble, and control real robots from A to Z. Youll gain practical skills that most students only dream of.',
             'Step Into the Real World of Robotics Explore mechanical design, electronics, and control systems through exciting workshops where you actually learn by building.',
-            'Compete, Innovate, and Prove Your Skills Work in teams to solve real engineering challenges and showcase your robot in our end-of-season competition. It’s your chance to stand out.',
+            'Compete, Innovate, and Prove Your Skills Work in teams to solve real engineering challenges and showcase your robot in our end-of-season competition. It\'s your chance to stand out.',
             ],
         mission: 'To empower students and enthusiasts with the essential skills in robotics, automation, and technology by providing hands-on learning experiences in mechanics, electronics, and programming. We aim to cultivate problem-solving abilities, teamwork, and innovation, preparing individuals for competitive opportunities and future careers in engineering and technology.',
         vission: 'To be a leading student platform that inspires and nurtures future innovators in robotics and automation, equipping them with the knowledge, skills, and confidence to excel in global competitions, higher education, and the ever-evolving job market.',

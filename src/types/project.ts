@@ -7,6 +7,7 @@ export interface Project {
   author: string;
   link?: string;
   createdAt: string;
+  subImages?: string[];
 }
 
-export type ProjectChapterFilter = 'All' | 'WIE' | 'CS' | 'PES' | 'RAS' | 'IAS' | 'EMBS' | 'MTT-S';
+export type ProjectChapterFilter = 'All' | 'WIE' | 'CS' | 'PES' | 'RAS' | 'COMSOC';

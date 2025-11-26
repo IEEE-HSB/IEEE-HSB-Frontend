@@ -5,4 +5,4 @@ export interface GalleryItem {
   image: string;
 }
 
-export type ChapterFilter = 'All' | 'WIE' | 'CS' | 'PES' | 'RAS' | 'IAS' | 'EMBS' | 'MTT-S';
+export type ChapterFilter = 'All' | 'WIE' | 'CS' | 'PES' | 'RAS' | 'COMSOC';

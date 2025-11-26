@@ -1,4 +1,4 @@
-import EventsTimeline from '@/components/EventsTimeLine'
+import EventsTimeline from '@/components/sections/EventsTimeLine'
 import React from 'react'
 
 export default function events() {

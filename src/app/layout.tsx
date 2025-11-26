@@ -20,9 +20,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "IEEE HSB",
   description: "lorem",
-  icons: {
-    icon: "../assets/icons/ieeeLogo.tsx",
-  },
+  // icons: {
+  //   icon: "../assets/icons/ieeeLogo.tsx",
+  // },
 };
 
 

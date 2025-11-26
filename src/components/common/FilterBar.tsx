@@ -8,7 +8,7 @@ interface FilterBarProps {
   onFilterChange: (filter: ChapterFilter) => void;
 }
 
-const chapters: ChapterFilter[] = ['All', 'WIE', 'CS', 'PES', 'RAS', 'IAS', 'EMBS', 'MTT-S'];
+const chapters: ChapterFilter[] = ['All', 'WIE', 'CS', 'PES', 'RAS', 'COMSOC'];
 
 const chapterNames: Record<ChapterFilter, string> = {
   All: 'All Events',
@@ -16,9 +16,7 @@ const chapterNames: Record<ChapterFilter, string> = {
   CS: 'Computer Society',
   PES: 'Power & Energy',
   RAS: 'Robotics & Automation',
-  IAS: 'Industry Applications',
-  EMBS: 'Engineering in Medicine',
-  'MTT-S': 'Microwave Theory',
+  COMSOC: 'Communications Society',
 };
 
 export default function FilterBar({ activeFilter, onFilterChange }: FilterBarProps) {

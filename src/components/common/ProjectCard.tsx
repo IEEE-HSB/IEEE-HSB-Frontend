@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { Project } from '@/types/project';
 import { motion } from 'framer-motion';
 import { ExternalLink, Calendar, User } from 'lucide-react';
+import { useState } from 'react';
+import ProjectsModal from '../ProjectsModal';
 
 interface ProjectCardProps {
   project: Project;
@@ -15,9 +17,7 @@ const chapterColors: Record<string, { bg: string; text: string }> = {
   CS: { bg: 'bg-ieee-blue-100', text: 'text-white' },
   PES: { bg: 'bg-ieee-green-100', text: 'text-white' },
   RAS: { bg: 'bg-ieee-red-100', text: 'text-white' },
-  IAS: { bg: 'bg-ieee-teal-100', text: 'text-white' },
-  EMBS: { bg: 'bg-ieee-aqua-100', text: 'text-white' },
-  'MTT-S': { bg: 'bg-ieee-cyan-100', text: 'text-white' },
+  COMSOC: { bg: 'bg-ieee-orange-100', text: 'text-white' },
 };
 
 const formatDate = (dateString: string) => {
@@ -31,7 +31,18 @@ const formatDate = (dateString: string) => {
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
   const colors = chapterColors[project.chapterId] || { bg: 'bg-ieee-blue-100', text: 'text-white' };
+  const [isOpen, setIsOpen] = useState(false);
+  const [images, setImages] = useState<string[]>([]);
 
+  function viewModal(subImages: string[]) {
+    setImages(subImages);
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setImages([]);
+  }
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -50,7 +61,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          
+
           {/* Chapter Badge on Image */}
           <div className="absolute top-3 right-3">
             <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${colors.bg} ${colors.text} shadow-lg`}>
@@ -61,7 +72,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       )}
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 bg-white dark:bg-gray-900">
         {/* Title */}
         <h3 className="text-xl font-bold text-foreground mb-2 line-clamp-2 group-hover:text-ieee-aqua-100 transition-colors">
           {project.title}
@@ -83,19 +94,35 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             <span>{formatDate(project.createdAt)}</span>
           </div>
         </div>
+        <div className="flex gap-4">
+          {/* Link */}
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-ieee-aqua-100 hover:text-ieee-aqua-80 font-medium transition-colors group/link"
+            >
+              View Project
+              <ExternalLink className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+            </a>
+          )}
 
-        {/* Link */}
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-ieee-aqua-100 hover:text-ieee-aqua-80 font-medium transition-colors group/link"
-          >
-            View Project
-            <ExternalLink className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-          </a>
-        )}
+          {project.subImages && project.subImages.length > 0 && (
+            <button
+              onClick={() => viewModal(project.subImages!)}
+              className={`${colors.bg} rounded-2 text-white cursor-pointer focus:ring-4 focus:ring-brand-medium shadow-2xl rounded-md font-medium text-sm px-4 py-2.5`}
+              type="button"
+            >
+              See More Pictures
+            </button>
+          )}
+
+        </div>
+          {isOpen && (
+            <ProjectsModal bgColor={colors.bg} images={images} onClose={closeModal} projectName={project.title} />
+          )}
+
 
         {/* No Image - Show Chapter Badge */}
         {!project.image && (

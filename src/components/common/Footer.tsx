@@ -6,6 +6,7 @@ import IeeeLogo from "@/assets/logos/ieeeLogo";
 import IeeeHelwan from "@/assets/logos/ieeeHelwan";
 import { useThemeContext } from "@/context/ThemeContext";
 import Image from "next/image";
+import Link from "next/link";
 export function Footer() {
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -14,7 +15,7 @@ export function Footer() {
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Github, href: "#", label: "Github" },
   ];
-  const {isDark} = useThemeContext()
+  const { isDark } = useThemeContext()
 
   const quickLinks = [
     { name: "About Us", href: "#" },
@@ -35,9 +36,9 @@ export function Footer() {
         >
           <defs>
             <linearGradient id="footerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor={isDark?'#022A57': '#00639C'} />
-              <stop offset="50%" stopColor={isDark?'#193C67': '#0070AD'} />
-              <stop offset="100%" stopColor={isDark?'#2E4D76': '#007CBD'} />
+              <stop offset="0%" stopColor={isDark ? '#022A57' : '#00639C'} />
+              <stop offset="50%" stopColor={isDark ? '#193C67' : '#0070AD'} />
+              <stop offset="100%" stopColor={isDark ? '#2E4D76' : '#007CBD'} />
             </linearGradient>
           </defs>
           <path
@@ -65,24 +66,24 @@ export function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="lg:col-span-2"
+              className="lg:col-span-3"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative">
                   <div className="absolute inset-0 bg-white/20 rounded-2xl blur-xl" />
-                    <IeeeLogo size={50} fillColor="white"/>
-                 
+                  <IeeeLogo size={50} fillColor="white" />
+
                 </div>
                 <div>
-                    <IeeeHelwan fillColor="white"/>
+                  <IeeeHelwan fillColor="white" />
                   <p className="text-sm text-white/70">Helwan Student Branch</p>
                 </div>
               </div>
               <p className="text-white/80 mb-6 leading-relaxed max-w-md">
-                Empowering innovation and fostering technological excellence for the benefit of humanity. 
+                Empowering innovation and fostering technological excellence for the benefit of humanity.
                 3rd IEEE Student Branch created in Egypt.
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-3 max-w-fit lg:ml-[0] mx-auto">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.label}
@@ -102,35 +103,6 @@ export function Footer() {
               </div>
             </motion.div>
 
-            {/* Quick Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="mb-6 text-lg">Quick Links</h3>
-              <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
-                  <motion.li
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + index * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    <a
-                      href={link.href}
-                      className="text-white/70 hover:text-white transition-colors flex items-center gap-2 group"
-                    >
-                      <span className="w-0 h-0.5 bg-[#FFD100] group-hover:w-4 transition-all duration-300" />
-                      {link.name}
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -146,10 +118,10 @@ export function Footer() {
                   </div>
                   <div className="pt-2">
                     <p className="text-xs text-white/50 mb-1">Email</p>
-                    <p className="text-sm">ieee@helwan.edu.eg</p>
+                    <p className="text-sm">ieee.hsb.2026@gmail.com</p>
                   </div>
                 </li>
-               
+
               </ul>
             </motion.div>
           </div>
@@ -163,10 +135,10 @@ export function Footer() {
             className="flex flex-wrap items-center justify-center gap-2 mb-8"
           >
             {[
-              
+
               { name: "RAS", src: "/assets/logos/rasLogo.png" },
               { name: "PES", src: "/assets/logos/pesLogo.png" },
-               { name: "ComSoc", src: "/assets/logos/comsocLogo.png" },
+              { name: "ComSoc", src: "/assets/logos/comsocLogo.png" },
               { name: "CS", src: "/assets/logos/csLogo.png" },
               { name: "WIE", src: "/assets/logos/wieLogo.png" },
             ].map((chapter, index) => (
@@ -178,9 +150,12 @@ export function Footer() {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.1, y: -2 }}
                 className="text-sm backdrop-blur-sm flex items-center justify-center w-[60px] h-[60px]"
-                // style={{ backgroundColor: `${chapter.color}20` }}
+              // style={{ backgroundColor: `${chapter.color}20` }}
               >
-                <Image className={`object-contain  ${chapter.name==='RAS'||chapter.name === 'CS' ?'p-2':'p-0'}`} src={chapter.src} alt={chapter.name} width={80} height={80} />
+                <Link href={`/${chapter.name.toLowerCase()}`}>
+                  <Image className={`object-contain  ${chapter.name === 'RAS' || chapter.name === 'CS' ? 'p-2' : 'p-0'}`} src={chapter.src} alt={chapter.name} width={80} height={80} />
+
+                </Link>
 
               </motion.div>
             ))}

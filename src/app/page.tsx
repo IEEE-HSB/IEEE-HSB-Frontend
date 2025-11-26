@@ -1,11 +1,21 @@
-'use client'
+'use client';
 import React from 'react'
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Button } from '@/components/ui/button';
+import Chapters from '@/components/sections/Chapters';
 
 
 export default function Home() {
+
+  function scrollToChapters() {
+    const chaptersSection = document.getElementById('chapters-section');
+    if (chaptersSection) {
+      chaptersSection.scrollIntoView({ behavior: 'smooth'});
+    }
+  }
+
+
   return (
     <div>
       <div className="min-h-screen">
@@ -29,7 +39,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="mb-6 text-[#717171] font-bold text-[20px] leading-[150%] tracking-[-0.011em] text-center align-middle"
             >
-              IEEE Student Community Helwan University
+             IEEE Helwan Student Branch
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -56,18 +66,37 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <Button
-                //   onClick={scrollToChapters}
+                onClick={scrollToChapters}
                 size="lg"
-                className="bg-ieee-yellow-100 text-ieee-blue-100 hover:bg-ieee-yellow-100/90 text-lg px-8 py-6"
+                className="bg-ieee-yellow-100 text-ieee-blue-100 hover:bg-ieee-yellow-100/90 text-lg px-8 py-6 cursor-pointer"
               >
                 Explore More
               </Button>
             </motion.div>
+            {/* <Link href="/cs">
+              <button>Go to CS Chapter</button>
+            </Link> */}
+           
+
           </div>
         </section>
-        
-        </div>
-       
+
+        {/*Chapters Section */}
+        <section id="chapters-section" className="pb-10 bg-gradient-to-b from-background to-ieee-blue-100/10">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4">Our Chapters</h2>
+            <p className="text-lg text-[#706d6d]  mx-auto max-w-2xl pb-5 pt-2">
+              Explore the diverse chapters of IEEE Helwan Student Branch, each dedicated to advancing knowledge and innovation in their respective fields.
+            </p>
+           
+            <Chapters/>
+
+          </div>
+         
+        </section>
+
+      </div>
+
 
     </div>
   )

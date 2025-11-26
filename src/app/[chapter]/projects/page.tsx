@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '@/components/common/ProjectCard';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
@@ -10,17 +10,17 @@ import { chaptersData } from '@/data/chaptersData';
 import { useThemeContext } from '@/context/ThemeContext';
 
 interface ChapterProjectsPageProps {
-  params: {
-    chapter: string;
-  };
+  params: Promise<{ chapter: string }>;
+
 }
 
 export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps) {
-  const { chapter } = params;
-  const chapterInfo = chaptersData.find(ch => ch.chapterId === chapter);
-  const { isDark } = useThemeContext();
-  const mainColor = chapterInfo!.color.split('-').slice(0, 2).join('-'); //ieee-blue-100 -> ieee-blue
+  const resolvedParams = use(params); 
+  const chapter = resolvedParams.chapter;
 
+  const chapterInfo = chaptersData.find(ch => ch.chapterId === chapter);
+  const mainColor = chapterInfo!.color.split('-').slice(0, 2).join('-');
+  const { isDark } = useThemeContext();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,7 +71,7 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
       {/* Hero Section */}
       <section
         className={`relative overflow-hidden`}
-          style={{ color:`var(--${mainColor}-100)`}}
+        style={{ color: `var(--${mainColor}-100)` }}
       >
         <div className="container mx-auto px-4">
           <motion.div
@@ -84,8 +84,8 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
               {chapterInfo?.title || 'Projects'}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto"
-                      style={{ color:`var(--${mainColor}-80)`}}
->
+              style={{ color: `var(--${mainColor}-80)` }}
+            >
               {chapterInfo?.brief || 'Explore projects from IEEE Helwan Student Branch'}
             </p>
           </motion.div>

@@ -1,15 +1,13 @@
+'use client';
 import { chaptersData } from "@/data/chaptersData";
-import React from 'react';
+import React, { use } from 'react';
 import { Calendar, CheckCircle, Eye, Target } from 'lucide-react';
-
-
-
-export default function About({ params }: { params: { chapter: string } }) {
-    const chapterData = chaptersData.find(ch => ch.chapterId === params.chapter);
+export default function About({ params }: { params: Promise<{ chapter: string }> }) {
+    const resolvedParams = use(params); 
+    const chapterData = chaptersData.find(ch => ch.chapterId === resolvedParams.chapter);
 
     if (!chapterData) return <div>Chapter not found</div>;
-    const mainColor = chapterData.color.split('-').slice(0, 2).join('-'); //ieee-blue-100 -> ieee-blue
-
+    const mainColor = chapterData.color.split('-').slice(0, 2).join('-'); // ieee-blue-100 -> ieee-blue
 
     return (
         <main className="flex flex-col w-full relative dark:bg-ieee-blue-100 ">

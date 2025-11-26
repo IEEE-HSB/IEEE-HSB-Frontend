@@ -1,34 +1,23 @@
-import Sidebar from "@/components/common/Sidebar";
-import { chaptersData } from "@/data/chaptersData";
-import { ReactNode } from "react";
-// import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-// import { AppSidebar } from "@/components/app-sidebar"
+'use client';
 
-export default function ChapterLayout({
-  children,
-  params,
-}: {
-  children: ReactNode;
-  params: { chapter: string };
-}) {
+import { ReactNode, use } from 'react';
+import Sidebar from '@/components/common/Sidebar';
+import { chaptersData } from '@/data/chaptersData';
 
-  const { color } = chaptersData.find((ch) => ch.chapterId === params.chapter) || { color: 'ieee-blue-100' };
-  const chapterData = chaptersData.find((ch) => ch.chapterId === params.chapter);
-    if (!chapterData) return <div>Chapter not found</div>;
+export default function ChapterLayout({ children, params }: { children: ReactNode; params: Promise<{ chapter: string }> }) {
+  const resolvedParams = use(params); 
+  const chapterData = chaptersData.find(ch => ch.chapterId === resolvedParams.chapter);
+
+  if (!chapterData) return <div>Chapter not found</div>;
+
+  const { color } = chapterData;
 
   return (
-
-    
-
     <main className="flex mt-5">
-
-      <Sidebar color={color} /> 
-        <div className="ml-[70px] w-full mx-auto">
-
-      {children}
+      <Sidebar color={color} />
+      <div className="ml-[70px] w-full mx-auto">
+        {children}
       </div>
     </main>
-
-
   );
 }

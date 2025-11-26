@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Slider from "react-slick";
 import axios from "axios";
@@ -23,11 +22,13 @@ interface EventItem {
 type EventsData = Record<string, EventItem[]>;
 
 interface ChapterEventsProps {
-    params: { chapter: string };
+    params: Promise<{ chapter: string }>;
+
 }
 
 export default function ChapterEvents({ params }: ChapterEventsProps) {
-    const { chapter: chapterId } = params;
+    const resolvedParams = use(params);
+    const chapterId = resolvedParams.chapter;
 
     const chapterInfo = chaptersData.find((ch) => ch.chapterId === chapterId);
     const mainColor = chapterInfo?.color.split("-").slice(0, 2).join("-") || "ieee-blue";
@@ -113,7 +114,7 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
             {/* Events Cards */}
             <div
                 className="relative overflow-auto bg-opacity-75"
-               
+
             >
                 <div className="h-cards overflow-y-auto w-3/4 my-20 m-auto">
                     <div className="space-y-6">

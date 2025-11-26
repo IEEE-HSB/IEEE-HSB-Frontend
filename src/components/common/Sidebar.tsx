@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
@@ -9,7 +8,6 @@ import { cn } from '@/lib/utils';
 const Sidebar = ({ color }: { color: string }) => {
     const pathname = usePathname();
     const chapter = pathname.split('/')[1] || 'cs';
-
     const [collapsed, setCollapsed] = useState(false);
 
     const sidebarLinks = [
@@ -57,7 +55,6 @@ const Sidebar = ({ color }: { color: string }) => {
                 <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m10.051 8.102-3.778.322-1.994 1.994a.94.94 0 0 0 .533 1.6l2.698.316m8.39 1.617-.322 3.78-1.994 1.994a.94.94 0 0 1-1.595-.533l-.4-2.652m8.166-11.174a1.366 1.366 0 0 0-1.12-1.12c-1.616-.279-4.906-.623-6.38.853-1.671 1.672-5.211 8.015-6.31 10.023a.932.932 0 0 0 .162 1.111l.828.835.833.832a.932.932 0 0 0 1.111.163c2.008-1.102 8.35-4.642 10.021-6.312 1.475-1.478 1.133-4.77.855-6.385Zm-2.961 3.722a1.88 1.88 0 1 1-3.76 0 1.88 1.88 0 0 1 3.76 0Z" />
                 </svg>
-
             )
         },
         {
@@ -134,7 +131,6 @@ const Sidebar = ({ color }: { color: string }) => {
 
     return (
         <div className='flex gap-1'>
-
             <aside
                 className={cn(
                     "h-screen border-r fixed top-20 left-0 bottom-0 transition-all duration-300 flex flex-col z-40",
@@ -142,19 +138,14 @@ const Sidebar = ({ color }: { color: string }) => {
                 )}
                 style={{ backgroundColor: `var(--${color})` }}
             >
-
-                {/* Toggle Button */}
                 <nav className="flex flex-col gap-2 px-2 mt-3">
                     <button
                         onClick={() => setCollapsed(!collapsed)}
-                        className={cn(
-                            'z-50 cursor-pointer text-white p-4 rounded-lg transition',
-                        )}
+                        className={cn('z-50 cursor-pointer text-white p-4 rounded-lg transition')}
                     >
                         {collapsed ? <OpenIcon /> : <CloseIcon />}
                     </button>
 
-                    {/* Links */}
                     {sidebarLinks.map(({ route, label, icon }) => {
                         const isActive = pathname === route;
 
@@ -164,25 +155,21 @@ const Sidebar = ({ color }: { color: string }) => {
                                 href={route}
                                 className={cn(
                                     'flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/20',
-                                    {
-                                        'justify-center': collapsed
-                                    }
+                                    { 'justify-center': collapsed }
                                 )}
                                 style={{
                                     color: isActive ? `var(--${color})` : 'white',
                                     backgroundColor: isActive ? 'white' : 'transparent',
                                 }}
                             >
-                                {React.cloneElement(icon as React.ReactElement<any, any>, {
+                                {React.cloneElement(icon as React.ReactElement<{ stroke?: string }>, {
                                     stroke: isActive ? `var(--${color})` : 'currentColor'
                                 })}
-
                                 {!collapsed && <span className="text-lg font-medium">{label}</span>}
                             </Link>
                         );
                     })}
                 </nav>
-
             </aside>
         </div>
     );

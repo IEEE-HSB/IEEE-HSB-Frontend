@@ -93,7 +93,6 @@
   --color-ieee-purple-40: var(--ieee-purple-40);
   --color-ieee-purple-20: var(--ieee-purple-20);
 
-
   --color-ieee-aqua-100: var(--ieee-aqua-100);
   --color-ieee-aqua-80: var(--ieee-aqua-80);
   --color-ieee-aqua-60: var(--ieee-aqua-60);
@@ -107,8 +106,6 @@
   --color-ieee-cyan-20: var(--ieee-cyan-20);
 
   --color-ieee-black-80: var(--ieee-black-80);
-
-
 
 }
 
@@ -145,8 +142,6 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
-
-  
 
   /* IEEE Blue PMS 3015 C */
   --ieee-blue-100: #00629B;
@@ -247,7 +242,6 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 
-
   --ieee-blue-100: #002855;
   --ieee-blue-80: #2E4D76;
   --ieee-blue-60: #627696;
@@ -300,7 +294,6 @@
 
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -310,3 +303,4 @@
     @apply bg-background text-foreground;
   }
 }
+

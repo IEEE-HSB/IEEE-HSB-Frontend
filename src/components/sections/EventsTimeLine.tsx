@@ -4,12 +4,10 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Slider from "react-slick";
 import axios from "axios";
-import Image from "next/image";
 import Calendar from "@/assets/icons/calendar";
 import { useThemeContext } from "@/context/ThemeContext";
 import Location from "@/assets/icons/location";
 
-// ✅ تعريف شكل البيانات الراجعة من الـ API
 interface EventItem {
     id: number;
     name: string;
@@ -72,7 +70,7 @@ export default function EventsTimeline() {
     return (
         <div className="overflow-x-hidden">
             {/* ======= SLIDER YEARS ======= */}
-            <div className="slider-container w-full text-xl text-ieee-blue-40 text-center bg-ieee-blue-100">
+            <div className=" slider-container w-full text-xl text-ieee-blue-40 text-center bg-ieee-blue-100">
                 <Slider {...settings}>
                     {years.map((year) => (
                         <div

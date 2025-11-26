@@ -5,16 +5,16 @@ import { chaptersData } from '@/data/chaptersData';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
-
 export default function Home({ params }: { params: { chapter: string } }) {
   const chapterData = chaptersData.find(ch => ch.chapterId === params.chapter);
   const { isDark } = useThemeContext();
+  const router = useRouter()
+
   if (!chapterData) return <div>Chapter not found</div>;
   const mainColor = chapterData.color.split('-').slice(0, 2).join('-'); //ieee-blue-100 -> ieee-blue
-  
-  const router = useRouter()
+
   const navigateToContactUsPage = () => {
-    router.push(`/contactus`);
+    router.push(`/contact`);
   }
   const navigateToAboutPage = () => {
     router.push(`/${chapterData.chapterId}/about`);
@@ -64,21 +64,21 @@ export default function Home({ params }: { params: { chapter: string } }) {
           </div>
           <div className="flex gap-2">
             <Button
-          onClick={navigateToContactUsPage}
-          size="lg"
-          className=" text-white text-lg px-8 py-6 cursor-pointer"
-          style={{ backgroundColor: `var(--${mainColor}-80)` }}>
-          Contact Us
-        </Button>
-        <Button
-          onClick={navigateToAboutPage}
-          size="lg"
-          className=" text-white text-lg px-8 py-6 cursor-pointer"
-          style={{ backgroundColor: `var(--${mainColor}-80)` }}>
-          Explore more
-        </Button>
+              onClick={navigateToContactUsPage}
+              size="lg"
+              className=" text-white text-lg px-8 py-6 cursor-pointer"
+              style={{ backgroundColor: `var(--${mainColor}-80)` }}>
+              Contact Us
+            </Button>
+            <Button
+              onClick={navigateToAboutPage}
+              size="lg"
+              className=" text-white text-lg px-8 py-6 cursor-pointer"
+              style={{ backgroundColor: `var(--${mainColor}-80)` }}>
+              Explore more
+            </Button>
           </div>
-    </div>
+        </div>
 
       </section >
     </div >

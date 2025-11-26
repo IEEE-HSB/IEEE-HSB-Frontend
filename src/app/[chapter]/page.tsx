@@ -75,19 +75,6 @@ export default function Home({ params }: { params: Promise<{ chapter: string }> 
               style={{ backgroundColor: `var(--${mainColor}-80)` }}>
               Explore more
             </Button>
-              onClick={navigateToContactUsPage}
-              size="lg"
-              className=" text-white text-lg px-8 py-6 cursor-pointer"
-              style={{ backgroundColor: `var(--${mainColor}-80)` }}>
-              Contact Us
-            </Button>
-            <Button
-              onClick={navigateToAboutPage}
-              size="lg"
-              className=" text-white text-lg px-8 py-6 cursor-pointer"
-              style={{ backgroundColor: `var(--${mainColor}-80)` }}>
-              Explore more
-            </Button>
           </div>
         </div>
       </section>

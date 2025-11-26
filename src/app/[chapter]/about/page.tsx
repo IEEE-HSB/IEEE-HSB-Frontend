@@ -3,7 +3,7 @@ import { chaptersData } from "@/data/chaptersData";
 import React, { use } from 'react';
 import { Calendar, CheckCircle, Eye, Target } from 'lucide-react';
 export default function About({ params }: { params: Promise<{ chapter: string }> }) {
-    const resolvedParams = use(params); 
+    const resolvedParams = use(params);
     const chapterData = chaptersData.find(ch => ch.chapterId === resolvedParams.chapter);
 
     if (!chapterData) return <div>Chapter not found</div>;
@@ -78,22 +78,22 @@ export default function About({ params }: { params: Promise<{ chapter: string }>
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-12">
                         <h2 className=" font-bold text-2xl mb-4 inline-block"
-                          style={{
-                                    color: `var(--${mainColor}-100)`,
-                                }}>
+                            style={{
+                                color: `var(--${mainColor}-100)`,
+                            }}>
                             Why Join Us
                         </h2>
                         <div className="w-32 h-1 mx-auto rounded-full"
-                        style={{
-                                    backgroundColor: `var(--${mainColor}-100)`,
-                                }}>
+                            style={{
+                                backgroundColor: `var(--${mainColor}-100)`,
+                            }}>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {chapterData.whyJoinUs.map((item, index) => (
                             <div
-                                key={chapterData.chapterId}
+                                key={`${chapterData.chapterId}-${index}`}
                                 className="group relative"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >

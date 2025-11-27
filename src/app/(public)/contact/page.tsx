@@ -6,6 +6,8 @@ import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
+import type { Contact } from "@/types/contact";
+
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Full Name is required"),
@@ -18,18 +20,25 @@ const validationSchema = Yup.object({
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
 
+
+  const initialValues: Contact = {
+    name: "",
+    email: "",
+    message: "",
+  };
+
+
   const handleSubmit = async (
-    values: { name: string; email: string; message: string },
+    values: Contact,
     { resetForm }: { resetForm: () => void }
   ) => {
     setLoading(true);
-
     const currentTime = new Date().toLocaleString();
 
     try {
       await emailjs.send(
-        "service_p4aw6in",
-        "template_l5jxpk8",
+        "service_p4aw6in", 
+        "template_l5jxpk8", 
         {
           from_name: values.name,
           from_email: values.email,
@@ -51,33 +60,34 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen py-12 px-5">
-      {/* Header Section */}
+      {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold text-ieee-blue-100 dark:text-ieee-blue-20">
           Contact IEEE Helwan SB
         </h1>
-        <p className="mt-4 text-center text-gray-700 dark:text-gray-300 text-md max-w-5xl mx-auto">
+        <p className="mt-4 text-gray-700 dark:text-gray-300 text-md max-w-5xl mx-auto">
           Whether you’re an IEEE member or just interested in learning more,
           here’s how to reach us.
         </p>
       </div>
 
-      {/* main Section */}
+      {/* Main Section */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-        {/* image Section */}
-        <div className="w-3xl  ">
+        {/* Image */}
+        <div className="w-3xl">
           <Image
             src="/assets/images/124558-01.png"
-            alt="Image Description"
+            alt="Contact Image"
             width={400}
             height={400}
             className="object-cover w-full h-full rounded-md"
           />
         </div>
-        {/* form Section */}
-        <div className="w-full  p-6 rounded-lg shadow-lg backdrop-blur-sm mt-6 md:mt-0">
+
+        {/* Form */}
+        <div className="w-full p-6 rounded-lg shadow-lg backdrop-blur-sm mt-6 md:mt-0">
           <Formik
-            initialValues={{ name: "", email: "", message: "" }}
+            initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
@@ -90,11 +100,11 @@ export default function ContactPage() {
                   Full Name
                 </label>
                 <Field
-                  type="text"
                   id="name"
                   name="name"
+                  type="text"
                   placeholder="Enter your full name"
-                  className="w-full p-4 mt-2 border border-gray-300 rounded-md bg-gray-50 dark:bg-[#202125] dark:text-gray-200 text-gray-800 focus:outline-none focus:ring-2 focus:ring-ieee-blue-80"
+                  className="w-full p-4 mt-2 border border-gray-300 rounded-md bg-gray-50 dark:bg-[#202125] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-ieee-blue-80"
                 />
                 <ErrorMessage
                   name="name"
@@ -111,11 +121,11 @@ export default function ContactPage() {
                   Email Address
                 </label>
                 <Field
-                  type="email"
                   id="email"
                   name="email"
+                  type="email"
                   placeholder="Enter your email"
-                  className="w-full p-4 mt-2 border border-gray-300 rounded-md bg-gray-50 dark:bg-[#202125] dark:text-gray-200 text-gray-800 focus:outline-none focus:ring-2 focus:ring-ieee-blue-80"
+                  className="w-full p-4 mt-2 border border-gray-300 rounded-md bg-gray-50 dark:bg-[#202125] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-ieee-blue-80"
                 />
                 <ErrorMessage
                   name="email"
@@ -136,7 +146,7 @@ export default function ContactPage() {
                   id="message"
                   name="message"
                   placeholder="Enter your message"
-                  className="w-full p-4 mt-2 border border-gray-300 rounded-md bg-gray-50 dark:bg-[#202125] dark:text-gray-200 text-gray-800 focus:outline-none focus:ring-2 focus:ring-ieee-blue-80"
+                  className="w-full p-4 mt-2 border border-gray-300 rounded-md bg-gray-50 dark:bg-[#202125] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-ieee-blue-80"
                 />
                 <ErrorMessage
                   name="message"
@@ -148,7 +158,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 mt-4 bg-ieee-blue-80 text-white rounded-md hover:bg-ieee-blue-100 disabled:bg-gray-400 transition-all duration-300 cursor-pointer"
+                className="w-full py-3 mt-4 bg-ieee-blue-80 text-white rounded-md hover:bg-ieee-blue-100 disabled:bg-ieee-blue-100 transition-all duration-300 cursor-pointer"
               >
                 {loading ? "Sending..." : "Submit"}
               </button>

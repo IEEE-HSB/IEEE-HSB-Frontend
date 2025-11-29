@@ -114,21 +114,6 @@ timers.`,
     createdAt: '2025-11-13T15:45:00Z',
   },
   {
-    id: 9,
-    title: 'Autonomous Drone Delivery System',
-    description: 'Drone-based delivery system with autonomous navigation, obstacle avoidance, and efficient route planning algorithms.',
-    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80',
-    subImages: [
-      '/assets/projects/fireFighting.jpg',
-      'https://ieeehelwan.org/projects/ai-robotics',
-      'https://ieeehelwan.org/projects/ai-robotics',
-    ],
-    chapterId: 'RAS',
-    author: 'Youssef Ali',
-    link: 'https://ieeehelwan.org/projects/drone-delivery',
-    createdAt: '2025-11-12T09:30:00Z',
-  },
-  {
     id: 10,
     title: 'Chat App',
     description: `the Chat App is a simplified WhatsApp clone

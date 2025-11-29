@@ -44,7 +44,7 @@ export default function Navbar() {
         { name: "Contact", page: "contact" },
     ];
 
-   
+
     return (
         <motion.nav
             initial={{ y: -100 }}
@@ -68,13 +68,13 @@ export default function Navbar() {
 
                         {/* logo 207DA9*/}
                         <div className="relative">
-                            <div className=" absolute inset-0 bg-gradient-to-br from-[#004d7a] to-[white] rounded-xl blur-lg opacity-35 transition-opacity" />
-                            <IeeeLogo size={50} fillColor={isDark?'white':'#207DA9'}></IeeeLogo>
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#004d7a] to-[white] rounded-xl blur-lg opacity-35 transition-opacity" />
+                            <IeeeLogo className="w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14" fillColor={isDark ? 'white' : '#207DA9'}></IeeeLogo>
                         </div>
 
                         <div className="flex flex-col items-start">
-                        <IeeeHelwan width={170} height={50}  fillColor={isDark?'white': '#207DA9'}/>
-                           </div>
+                            <IeeeHelwan className="w-[120px] h-[35px] sm:w-[150px] sm:h-[45px] md:w-[170px] md:h-[50px]" fillColor={isDark ? 'white' : '#207DA9'} />
+                        </div>
                     </motion.button>
 
                     {/* Desktop Navigation */}
@@ -199,63 +199,62 @@ export default function Navbar() {
                     </div>
                 </div>
 
-              {/* Mobile Menu */}
-<AnimatePresence>
-  {isMobileMenuOpen && (
-    <motion.div
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      exit={{ opacity: 0, height: 0 }}
-      transition={{ duration: 0.3 }}
-      className="lg:hidden overflow-hidden"
-    >
-      <div className="py-4 space-y-1 bg-card/50 backdrop-blur-xl rounded-2xl my-2 border border-border shadow-lg">
-        {navLinks.map((link, index) => {
-          const href = `/${link.page === "home" ? "" : link.page}`;
-          const isActive = pathname === href;
+                {/* Mobile Menu */}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="lg:hidden overflow-hidden"
+                        >
+                            <div className="py-4 space-y-1 bg-card/50 backdrop-blur-xl rounded-2xl my-2 border border-border shadow-lg">
+                                {navLinks.map((link, index) => {
+                                    const href = `/${link.page === "home" ? "" : link.page}`;
+                                    const isActive = pathname === href;
 
-          return (
-            <motion.div
-              key={link.page}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.05 }}
-            >
-              <Link
-                href={href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block w-full text-left px-6 py-3 rounded-lg mx-2 transition-colors duration-200 ${
-                  isActive
-                    ? "bg-ieee-blue-100/20 text-ieee-blue-100 dark:text-ieee-yellow-100 border-l-4 border-ieee-blue-100 dark:border-ieee-yellow-100"
-                    : "hover:bg-ieee-blue-100/10 "
-                }`}
-              >
-                {link.name}
-              </Link>
-            </motion.div>
-          );
-        })}
+                                    return (
+                                        <motion.div
+                                            key={link.page}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: index * 0.05 }}
+                                        >
+                                            <Link
+                                                href={href}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className={`block w-full text-left px-6 py-3 rounded-lg mx-2 transition-colors duration-200 ${isActive
+                                                        ? "bg-ieee-blue-100/20 text-ieee-blue-100 dark:text-ieee-yellow-100 border-l-4 border-ieee-blue-100 dark:border-ieee-yellow-100"
+                                                        : "hover:bg-ieee-blue-100/10 "
+                                                    }`}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </motion.div>
+                                    );
+                                })}
 
-        {/* Login / Register Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: navLinks.length * 0.05 }}
-        >
-          <Link
-            href="/login"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block w-full text-left px-6 py-3 mx-2 bg-gradient-to-r from-ieee-blue-80 to-ieee-blue-100 text-white rounded-lg hover:shadow-lg transition-shadow"
-          >
-            Login / Register
-          </Link>
-        </motion.div>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                                {/* Login / Register Button */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: navLinks.length * 0.05 }}
+                                >
+                                    <Link
+                                        href="/login"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block w-full text-left px-6 py-3 mx-2 bg-gradient-to-r from-ieee-blue-80 to-ieee-blue-100 text-white rounded-lg hover:shadow-lg transition-shadow"
+                                    >
+                                        Login / Register
+                                    </Link>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
-        </div>
+            </div>
         </motion.nav >
     );
 }

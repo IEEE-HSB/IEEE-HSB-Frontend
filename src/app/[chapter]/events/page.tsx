@@ -97,7 +97,9 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
                 }}
             ></div>}
             {/* Slider Years */}
-            <div className={`slider-container fixed z-10 w-full text-xl text-${mainColor}-40 text-center bg-${mainColor}-100`}>
+            <div className={`slider-container fixed z-10 w-full text-xl text-center bg-${mainColor}-100`}
+            style={{color: `var(--${mainColor}-60)`}}
+            >
                 <Slider {...settings}>
                     {years.map((year) => (
                         <div
@@ -105,7 +107,7 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
                             onClick={() => setSelectedYear(year)}
                             className={`cursor-pointer ${selectedYear === year ? "text-[#fff]" : ""} inline-block`}
                         >
-                            <h3 className="font-sans font-black my-1">{year}</h3>
+                            <h3 className="font-sans font-bold md:font-black m-1">{year}</h3>
                         </div>
                     ))}
                 </Slider>

@@ -8,6 +8,7 @@ import { useThemeContext } from "@/context/ThemeContext";
 import Location from "@/assets/icons/location";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 
 interface EventItem {
@@ -50,9 +51,11 @@ export default function EventsTimeline() {
         }
     }, [data, selectedYear, currentYear]);
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <div className="flex justify-center items-center py-20">
+        <LoadingSpinner />
+    </div>;
     if (error instanceof Error)
-        return <div>Error fetching events: {error.message}</div>;
+        return <div className="flex justify-center items-center py-20">Error fetching events: {error.message}</div>;
 
     const filteredEvents = allEvents.filter(
         (event) => event.date.split("-")[0] === selectedYear
@@ -123,7 +126,7 @@ export default function EventsTimeline() {
 
                 }}
             >
-                <div className="h-cards overflow-y-auto w-3/4 my-20 m-auto">
+                <div className="h-cards overflow-y-auto w-100 md:w-3/4 my-20 m-auto">
                     <div className="space-y-6">
                         {filteredEvents.length > 0 ? (
                             filteredEvents.map((event) => (
@@ -177,7 +180,7 @@ export default function EventsTimeline() {
                                 </div>
                             ))
                         ) : (
-                            <div>No events found.</div>
+                            <div className="flex justify-center items-center py-20">No events found.</div>
                         )}
                     </div>
                 </div>

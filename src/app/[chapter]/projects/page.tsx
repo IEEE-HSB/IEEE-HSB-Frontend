@@ -71,7 +71,7 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
       {/* Hero Section */}
       <section
         className={`relative overflow-hidden`}
-        style={{ color: `var(--${mainColor}-100)` }}
+        style={{ color: `var(--${mainColor}-100)`}}
       >
         <div className="container mx-auto px-4">
           <motion.div

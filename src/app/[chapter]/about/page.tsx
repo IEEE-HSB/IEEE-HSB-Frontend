@@ -2,26 +2,29 @@
 import { chaptersData } from "@/data/chaptersData";
 import React, { use } from 'react';
 import { Calendar, CheckCircle, Eye, Target } from 'lucide-react';
+import { notFound } from "next/navigation";
 export default function About({ params }: { params: Promise<{ chapter: string }> }) {
     const resolvedParams = use(params);
     const chapterData = chaptersData.find(ch => ch.chapterId === resolvedParams.chapter);
 
-    if (!chapterData) return <div>Chapter not found</div>;
+    if (!chapterData)
+        notFound();
+
     const mainColor = chapterData.color.split('-').slice(0, 2).join('-'); // ieee-blue-100 -> ieee-blue
 
     return (
-        <main className="flex flex-col w-full relative dark:bg-ieee-blue-100 ">
+        <main className="flex flex-col w-full relative dark:bg-ieee-blue-100 max-w-full overflow-x-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#99a1af40_1px,transparent_1px),linear-gradient(to_bottom,#99a1af40_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]"></div>
 
             {/* about section */}
             <section
                 className="py-20 px-4 relative overflow-hidden">
-                <div className="max-w-6xl mx-auto relative z-10">
+                <div className="md:max-w-6xl mx-auto relative z-10">
 
 
                     <div className="relative group mb-16">
 
-                        <div className="relative backdrop-blur-2xl rounded-3xl p-10 md:p-16 shadow-2xl"
+                        <div className="relative backdrop-blur-2xl rounded-3xl py-10 px-2 md:p-16 shadow-2xl"
                             style={{
                                 backgroundImage: `linear-gradient(
                                                         to bottom right,
@@ -31,7 +34,7 @@ export default function About({ params }: { params: Promise<{ chapter: string }>
                                                         )`,
                             }}>
 
-                            <h2 className="text-transparent bg-clip-text mb-8 text-center text-3xl font-bold"
+                            <h2 className="text-transparent bg-clip-text md:mb-8 text-center text-2xl md:text-3xl font-bold"
                                 style={{
                                     backgroundImage: `linear-gradient(
                                                         to bottom right,
@@ -46,7 +49,7 @@ export default function About({ params }: { params: Promise<{ chapter: string }>
                                 About {chapterData.chapterName}
                             </h2>
 
-                            <p className="text-black text-lg leading-relaxed max-w-4xl mx-auto text-center">{chapterData.about}</p>
+                            <p className="text-black text-xs leading-relaxed md:text-lg text-center">{chapterData.about}</p>
 
                         </div>
 
@@ -128,7 +131,7 @@ export default function About({ params }: { params: Promise<{ chapter: string }>
                         {/* Mission Card */}
                         <div className="group relative">
 
-                            <div className="relative rounded-2xl p-8 shadow-2xl h-full hover:scale-[1.02] transition-transform duration-300"
+                            <div className="relative rounded-2xl md:px-8 px-4 py-8 shadow-2xl h-full hover:scale-[1.02] transition-transform duration-300"
                                 style={{
                                     background: `linear-gradient(to bottom right, var(--${mainColor}-80), var(--${mainColor}-100))`,
                                 }}>
@@ -152,7 +155,7 @@ export default function About({ params }: { params: Promise<{ chapter: string }>
                         {/* Vision Card */}
                         <div className="group relative">
 
-                            <div className="relative rounded-2xl p-8 shadow-2xl h-full hover:scale-[1.02] transition-transform duration-300"
+                            <div className="relative rounded-2xl md:px-8 px-4 py-8 shadow-2xl h-full hover:scale-[1.02] transition-transform duration-300"
                                 style={{
                                     background: `linear-gradient(to bottom right, var(--${mainColor}-60), var(--${mainColor}-80))`,
                                 }}>

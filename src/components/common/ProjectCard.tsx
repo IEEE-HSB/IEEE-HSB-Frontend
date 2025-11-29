@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Calendar, User } from 'lucide-react';
 import { useState } from 'react';
 import ProjectsModal from '../ProjectsModal';
+import ProjectDescriptionModal from './ProjectDescriptionModal';
 
 interface ProjectCardProps {
   project: Project;
@@ -14,7 +15,7 @@ interface ProjectCardProps {
 
 const chapterColors: Record<string, { bg: string; text: string }> = {
   WIE: { bg: 'bg-ieee-purple-100', text: 'text-white' },
-  CS: { bg: 'bg-ieee-blue-100', text: 'text-white' },
+  CS: { bg: 'bg-ieee-yellow-100', text: 'text-white' },
   PES: { bg: 'bg-ieee-green-100', text: 'text-white' },
   RAS: { bg: 'bg-ieee-red-100', text: 'text-white' },
   COMSOC: { bg: 'bg-ieee-orange-100', text: 'text-white' },
@@ -31,18 +32,28 @@ const formatDate = (dateString: string) => {
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
   const colors = chapterColors[project.chapterId] || { bg: 'bg-ieee-blue-100', text: 'text-white' };
-  const [isOpen, setIsOpen] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
   const [images, setImages] = useState<string[]>([]);
 
-  function viewModal(subImages: string[]) {
+  function openImageModal(subImages: string[]) {
     setImages(subImages);
-    setIsOpen(true);
+    setIsImageModalOpen(true);
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  function closeImageModal() {
     setImages([]);
+    setIsImageModalOpen(false);
   }
+
+  function openDescriptionModal() {
+    setIsDescriptionModalOpen(true);
+  }
+
+  function closeDescriptionModal() {
+    setIsDescriptionModalOpen(false);
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -51,10 +62,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       className="group bg-card border border-border rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
     >
       {/* Image */}
-      {project.image && (
-        <div className="relative w-full h-48 overflow-hidden bg-muted">
+      
+        <div className="relative w-full h-48 overflow-hidden bg-muted cursor-pointer"
+        onClick={() => project.subImages && openImageModal(project.subImages!)}>
+
           <Image
-            src={project.image}
+            src={project.image ? project.image : "/assets/logos/ieee.png"}
+
             alt={project.title}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -63,13 +77,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
           {/* Chapter Badge on Image */}
-          <div className="absolute top-3 right-3">
+          <div
+            className="absolute top-3 right-3">
             <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${colors.bg} ${colors.text} shadow-lg`}>
               {project.chapterId}
             </span>
           </div>
         </div>
-      )}
+      
 
       {/* Content */}
       <div className="p-6 bg-white dark:bg-gray-900">
@@ -79,9 +94,16 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </h3>
 
         {/* Description */}
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-          {project.description}
-        </p>
+        <div className="mb-4">
+          <p className="text-muted-foreground text-sm  line-clamp-3">
+            {project.description}
+          </p>
+          <p onClick={openDescriptionModal}
+            className="text-blue-600 cursor-pointer">Read More</p>
+          {isDescriptionModalOpen && (
+            <ProjectDescriptionModal description={project.description} onClose={closeDescriptionModal} />
+          )}
+        </div>
 
         {/* Meta Information */}
         <div className="flex flex-col gap-2 mb-4 text-sm text-muted-foreground">
@@ -89,10 +111,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             <User className="w-4 h-4" />
             <span>{project.author}</span>
           </div>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />
             <span>{formatDate(project.createdAt)}</span>
-          </div>
+          </div> */}
         </div>
         <div className="flex gap-4">
           {/* Link */}
@@ -110,7 +132,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
           {project.subImages && project.subImages.length > 0 && (
             <button
-              onClick={() => viewModal(project.subImages!)}
+              onClick={() => openImageModal(project.subImages!)}
               className={`${colors.bg} rounded-2 text-white cursor-pointer focus:ring-4 focus:ring-brand-medium shadow-2xl rounded-md font-medium text-sm px-4 py-2.5`}
               type="button"
             >
@@ -119,9 +141,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           )}
 
         </div>
-          {isOpen && (
-            <ProjectsModal bgColor={colors.bg} images={images} onClose={closeModal} projectName={project.title} />
-          )}
+        {isImageModalOpen && (
+          <ProjectsModal
+            bgColor={colors.bg}
+            images={images}
+            onClose={closeImageModal}
+            projectName={project.title}
+          />
+        )}
 
 
         {/* No Image - Show Chapter Badge */}

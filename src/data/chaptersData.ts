@@ -49,7 +49,7 @@ export const chaptersData = [
         mission:'To provide students with the knowledge and skills necessary to excel in the fields of communications, networking, and computer technologies. By fostering a collaborative learning environment, we aim to bridge the gap between academia and industry, enabling students to innovate, engage in research, and participate in global technological advancements.',
         vission: 'To be a hub for aspiring engineers and technology enthusiasts, driving innovation in communications and networking. We strive to empower students with hands-on experience, industry connections, and a strong professional network, preparing them to become future leaders in the ever-evolving world of technology.',
         foundedIn:'2010-01-01',
-        about:'',
+        about:`The IEEE Communications Society (ComSoc) is the leading global community for the communications technology industry. Dedicated to advancing the technology that connects the world, ComSoc promotes technological innovation and fosters the creation and sharing of information among the global technical community. From 5G and IoT to optical networks and satellite communications, we are at the forefront of the systems that define our modern world.`,
 
     },
     {

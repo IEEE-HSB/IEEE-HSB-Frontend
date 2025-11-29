@@ -3,16 +3,18 @@
 import { Button } from '@/components/ui/button';
 import { useThemeContext } from '@/context/ThemeContext';
 import { chaptersData } from '@/data/chaptersData';
-import { useRouter } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import React, { use } from 'react';
 
 export default function Home({ params }: { params: Promise<{ chapter: string }> }) {
-  const resolvedParams = use(params); 
+  const resolvedParams = use(params);
   const chapterData = chaptersData.find(ch => ch.chapterId === resolvedParams.chapter);
   const { isDark } = useThemeContext();
   const router = useRouter();
 
-  if (!chapterData) return <div>Chapter not found</div>;
+  if (!chapterData)
+    notFound();
+
 
   const mainColor = chapterData.color.split('-').slice(0, 2).join('-'); // ieee-blue-100 -> ieee-blue
 
@@ -25,7 +27,7 @@ export default function Home({ params }: { params: Promise<{ chapter: string }> 
   }
 
   return (
-    <div>
+    <div className=''>
       <section className=' min-h-screen relative sm:-top-20 flex items-center justify-center overflow-hidden'>
         {!isDark && <div className="absolute inset-0 bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]"
           style={{
@@ -46,7 +48,7 @@ export default function Home({ params }: { params: Promise<{ chapter: string }> 
             {chapterData.brief}
           </p>
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br rounded-2xl p-8 md:p-12"
+            <div className="bg-gradient-to-br rounded-2xl p-4 md:p-12"
               style={{
                 backgroundImage: `linear-gradient(
                                   to bottom right,
@@ -55,7 +57,7 @@ export default function Home({ params }: { params: Promise<{ chapter: string }> 
                                   var(--${mainColor}-60)
                                   )`,
               }}>
-              <p className="text-gray-700 text-xl leading-relaxed whitespace-pre-line"
+              <p className="text-gray-700 md:text-xl leading-relaxed whitespace-pre-line"
                 style={{ color: `var(--${mainColor}-100)` }}
               >{chapterData.description}</p>
             </div>
@@ -64,14 +66,14 @@ export default function Home({ params }: { params: Promise<{ chapter: string }> 
             <Button
               onClick={navigateToContactUsPage}
               size="lg"
-              className=" text-white text-lg px-8 py-6 cursor-pointer"
+              className=" text-white md:text-lg md:px-8 md:py-6 cursor-pointer"
               style={{ backgroundColor: `var(--${mainColor}-80)` }}>
               Contact Us
             </Button>
             <Button
               onClick={navigateToAboutPage}
               size="lg"
-              className=" text-white text-lg px-8 py-6 cursor-pointer"
+              className=" text-white md:text-lg md:px-8 md:py-6 cursor-pointer"
               style={{ backgroundColor: `var(--${mainColor}-80)` }}>
               Explore more
             </Button>

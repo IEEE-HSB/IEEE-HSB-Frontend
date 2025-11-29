@@ -4,7 +4,7 @@ export const projectsData: Project[] = [
   {
     id: 1,
     title: 'An Amazing Firefighting Robot',
-    description: 'The IEEE RAS chapter introduces amazing projects using Arduino. This robot utilizes three flame sensors to detect the presence of a fire, after that it goes to make fire down using a BLDC pump hooked to servo motor to squeeze water on fire at degrees from 30 to 150.',
+    description: 'The IEEE RAS chapter introduces amazing projects using Arduino. This robot utilizes three flame sensors to detect the presence of a fire, after that it goes to make fire down using a BLDC pump hooked to servo motor to squeeze water on fire at degrees from 30 to 150.',
     image: '/assets/projects/fireFighting.jpg',
     subImages: [
       '/assets/projects/fireFighting.jpg',
@@ -14,6 +14,27 @@ export const projectsData: Project[] = [
     author: 'RAS',
     // link: 'https://ieeehelwan.org/projects/ai-robotics',
     createdAt: '2025-11-20T14:30:00Z',
+  },
+  {
+    id: 13,
+    title: 'Quiz App',
+    description: `The Quiz App offers a fun and
+interactive way to test your
+knowledge. Users select their
+preferred difficulty level, and the
+timer starts as they answer
+questions. Correct answers award
+points, while incorrect ones deduct
+them. This project emphasizes state
+management, scoring systems, and
+timers.`,
+    image: '/assets/projects/quiz.png',
+    subImages: [
+      '/assets/projects/quiz.png',
+    ],
+    chapterId: 'CS',
+    author: 'CS',
+    createdAt: '2025-11-11T12:00:00Z',
   },
   {
     id: 2,
@@ -28,6 +49,18 @@ export const projectsData: Project[] = [
     author: 'RAS',
     // link: 'https://ieeehelwan.org/projects/power-grid',
     createdAt: '2025-11-19T09:15:00Z',
+  },
+  {
+    id: 11,
+    title: 'X-O Game',
+    description: `The X-O Game adds a modern twist to theclassic Tic-Tac-Toe by incorporating a timer forthe entire round, creating a sense of urgencyand excitement as players race to complete thegame within the time limit. This project isperfect for practicing round-based mechanics,implementing timers, and enhancing UIinteractivity to deliver a dynamic userexperience.`,
+    image: '/assets/projects/xo.png',
+    subImages: [
+      '/assets/projects/xo.png',
+    ],
+    chapterId: 'CS',
+    author: 'CS',
+    createdAt: '2025-11-11T12:00:00Z',
   },
   {
     id: 3,
@@ -97,16 +130,117 @@ export const projectsData: Project[] = [
   },
   {
     id: 10,
-    title: 'Renewable Energy Management System',
-    description: 'Smart system for managing renewable energy sources including solar panels and wind turbines with optimal energy distribution.',
-    image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80',
+    title: 'Chat App',
+    description: `the Chat App is a simplified WhatsApp clone
+featuring a single chat room where users
+can sign in and send messages in real time.
+Built with Supabase, it highlights backend
+integration, real time data handling, and
+authentication processes. The app is still
+under development.`,
+    image: '/assets/projects/chat.png',
     subImages: [
-      '/assets/projects/fireFighting.jpg',
-      'https://ieeehelwan.org/projects/ai-robotics',
-      'https://ieeehelwan.org/projects/ai-robotics',
+      '/assets/projects/chat.png',
     ],
-    chapterId: 'PES',
-    author: 'Mona Fathy',
+    chapterId: 'CS',
+    author: 'CS',
     createdAt: '2025-11-11T12:00:00Z',
   },
+  {
+    id: 12,
+    title: 'Guess App',
+    description: `The Guess App is inspired by word games like
+Wordle, where players have five trials to
+guess an English word. Feedback is provided
+with color-coded hints: green for correct
+letters in the right position, orange for correct
+letters in the wrong position, and gray for
+incorrect letters. Hints can be earned by
+answering correctly but deduct points when
+used, making it a great project for mastering
+logic and string manipulation.`,
+    image: '/assets/projects/guess.png',
+    subImages: [
+      '/assets/projects/guess.png',
+    ],
+    chapterId: 'CS',
+    author: 'CS',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  
+  {
+    id: 14,
+    title: '2024 Game',
+    description: `It is a sliding puzzle game where players combine tiles of the same
+number to reach the target number, 2048. Promotes logical thinking
+and strategic planning`,
+    image: '/assets/projects/2028.png',
+    subImages: [
+      '/assets/projects/2028.png',
+    ],
+    chapterId: 'CS',
+    author: 'CS',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  {
+    id: 15,
+    title: 'Quiz Game',
+    description: `Idea: An interactive quiz/trivia game.Goal: To test knowledge or entertain in an educational way — could cover topicslike science, history, culture, etc.Highlight: Simple yet engaging; great for learning or friendly competition.`,
+    // image: '/assets/projects/.jpg',
+    // subImages: [
+    //   '/assets/projects/.jpg',
+    // ],
+    chapterId: 'CS',
+    author: 'CS',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  {
+    id: 16,
+    title: 'Story Telling',
+    description: `Idea: A platform or project focused on storytelling — fictional, real-life, or
+educational stories.Goal: To develop narrative skills, spark imagination, or deliveremotional/educational messages.Highlight: Can be text-based, audio, or video — emphasizes emotionalconnection and user experience.`,
+    // image: '/assets/projects/.jpg',
+    // subImages: [
+    //   '/assets/projects/.jpg',
+    // ],
+    chapterId: 'CS',
+    author: 'CS',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  {
+    id: 17,
+    title: 'Portfolio',
+    description: `A personalized portfolio highlighting skills, projects, and accomplishments,with a clean and modern design.`,
+    // image: '/assets/projects/.jpg',
+    // subImages: [
+    //   '/assets/projects/.jpg',
+    // ],
+    chapterId: 'CS',
+    author: 'CS',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  // {
+  //   id: 14,
+  //   title: '',
+  //   description: ``,
+  //   image: '/assets/projects/.jpg',
+  //   subImages: [
+  //     '/assets/projects/.jpg',
+  //   ],
+  //   chapterId: 'CS',
+  //   author: 'CS',
+  //   createdAt: '2025-11-11T12:00:00Z',
+  // },
+  // {
+  //   id: 14,
+  //   title: '',
+  //   description: ``,
+  //   image: '/assets/projects/.jpg',
+  //   subImages: [
+  //     '/assets/projects/.jpg',
+  //   ],
+  //   chapterId: 'CS',
+  //   author: 'CS',
+  //   createdAt: '2025-11-11T12:00:00Z',
+  // },
 ];

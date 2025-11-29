@@ -25,7 +25,7 @@ export default function FilterBar({ activeFilter, onFilterChange }: FilterBarPro
       <h2 className="text-2xl font-bold mb-4 text-foreground">Filter by Chapter</h2>
       
       {/* Desktop Filter - Horizontal Scroll */}
-      <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-ieee-aqua-100 scrollbar-track-muted">
+      <div className="flex-wrap flex gap-3 pb-4">
         {chapters.map((chapter) => {
           const isActive = activeFilter === chapter;
           
@@ -36,7 +36,7 @@ export default function FilterBar({ activeFilter, onFilterChange }: FilterBarPro
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`
-                px-6 py-2.5 rounded-full font-medium whitespace-nowrap
+                px-6 py-2.5 rounded-full font-medium whitespace-nowra
                 transition-all duration-300 border-2
                 ${
                   isActive

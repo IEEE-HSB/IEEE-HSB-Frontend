@@ -10,7 +10,7 @@ type Props = {
     projectName?: string;
 };
 
-export default function ProjectsModal({ images, onClose, bgColor, projectName }: Props) {
+export default function ProjectsModal({ images, onClose, bgColor, projectName}: Props) {
     const settings = {
         dots: true,
         fade: true,
@@ -53,6 +53,7 @@ export default function ProjectsModal({ images, onClose, bgColor, projectName }:
                         ))}
                     </Slider>
                 </div>
+           
             </div>
         </div>
     );

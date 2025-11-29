@@ -62,7 +62,7 @@ export default function ContactPage() {
     <div className="min-h-screen md:py-12  px-5">
       {/* Header */}
       <div className="text-center md:mb-12 ">
-        <h1 className="text-3xl md:text-5xl md:font-extrabold font-bold dark:text-ieee-blue-20 text-ieee-blue-100 dark:text-ieee-blue-20">
+        <h1 className="text-3xl md:text-5xl md:font-extrabold font-bold dark:text-ieee-blue-20 text-ieee-blue-100">
           Contact IEEE Helwan SB
         </h1>
         <p className="md:mt-4 mt-2 text-gray-700 dark:text-ieee-blue-60 text-md max-w-5xl mx-auto">

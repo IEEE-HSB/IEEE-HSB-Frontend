@@ -66,8 +66,8 @@ export default function ContactPage() {
           Contact IEEE Helwan SB
         </h1>
         <p className="md:mt-4 mt-2 text-gray-700 dark:text-ieee-blue-60 text-md max-w-5xl mx-auto">
-          Whether you're an IEEE member or just interested in learning more,
-          here's how to reach us.
+          Whether you&apos;re an IEEE member or just interested in learning more,
+          here&apos;s how to reach us.
         </p>
       </div>
 

@@ -32,6 +32,8 @@ export default function EventsTimeline() {
         queryKey: ["events"],
         queryFn: async () => {
             const response = await axios.get("https://raw.githubusercontent.com/cheetah-10/db.json/main/db.json");
+            // const parsedData = JSON.parse(response.data);
+            // console.log(parsedData)
             return response.data.events;
         },
     });

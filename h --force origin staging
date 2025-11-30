@@ -1,0 +1,37 @@
+[33m84411ab[m[33m ([m[1;31morigin/staging[m[33m)[m some edits
+[33m8f55361[m fix: fixed apostrophe issue
+[33ma4ea084[m updated contact us desighb
+[33m5f4e86a[m updated contact page design
+[33me43a777[m chore: improve responsive styling across components
+[33m6649111[m Merge pull request #9 from IEEE-HSB/feature/contactPage
+[33m80b4846[m[33m ([m[1;31morigin/feature/contactPage[m[33m)[m contact us page
+[33ma76586e[m contact us page
+[33mc508877[m fix duplicate key issue
+[33m3cacda1[m Fix params usage with React.use() in chapter pages
+[33mc0d3805[m Fix hooks order in Home page (chapter) component
+[33m3cc9853[m Refactor Sidebar component for improved readability
+[33m3088a1e[m Merge pull request #7 from IEEE-HSB/chapters_layout
+[33m8f45e05[m[33m ([m[1;31morigin/chapters_layout[m[33m, [m[1;32mchapters_layout[m[33m)[m feat(chapters): add chapter layout with Home, About, Events, and Projects pages
+[33m0acc76b[m[33m ([m[1;31morigin/feature/events[m[33m, [m[1;32mfeature/events[m[33m)[m Merge remote-tracking branch 'origin/staging' into feature/events
+[33m3ea855f[m git commit -m "feat: add chapters section and implement dynamic navigation with sidebar layogit commit -m "feat: add chapters section and implement dynamic navigation with sidebar layout"
+[33mb79831a[m feat: add chapters section and implement dynamic navigation with sidebar layout
+[33m284afb9[m Merge pull request #6 from IEEE-HSB/feature/gallery-page
+[33m99f21a5[m[33m ([m[1;31morigin/feature/gallery-page[m[33m)[m Add: Gallery and Projects pages with filtering functionality
+[33mddc1d18[m Merge pull request #5 from IEEE-HSB/staging
+[33m3472be3[m Merge pull request #4 from IEEE-HSB/feature/announcements
+[33me864b69[m[33m ([m[1;31morigin/feature/announcements[m[33m)[m announcements page
+[33m526adbc[m Fix apostrophe HTML entity in about page
+[33mce14a0a[m Merge pull request #3 from IEEE-HSB/feature/about-page
+[33m20bf5ad[m Merge branch 'staging' into feature/about-page
+[33mf131206[m Added About Page
+[33me01252d[m Merge pull request #2 from IEEE-HSB/staging
+[33m05b9672[m Merge pull request #1 from IEEE-HSB/feature/events
+[33mda4c379[m Feat: add events feature
+[33m20eac99[m[33m ([m[1;32mmain[m[33m)[m Merge branch 'main' of https://github.com/IEEE-HSB/IEEE-HSB-Frontend
+[33m63cedce[m WIP: Save local work before pulling
+[33mcbcde05[m Fix building scale to a fixed value of 1.5
+[33mdf6fce4[m Add optional scale property to BuildingData interface
+[33m1cd1896[m Fix: Add optional scale to BuildingData and escape characters in login page
+[33m1510f7b[m Delete src/app/(public)/home directory
+[33mb0ba3a8[m fix: correct useGLTF hook in Buildings and escape apostrophes in login page
+[33m023b7eb[m chore: initial project setup including landing page, navbar, footer, login & register UI, core game mechanics, custom colors, dark mode, folder structure, and installed essential libraries

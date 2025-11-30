@@ -42,11 +42,13 @@ export default function PodcastCard({ podcast, index }: PodcastCardProps) {
             {/* podcast */}
             <div className="relative w-full h-48 overflow-hidden bg-muted cursor-pointer"
             >
-                <video
+                {/* <video
                     src={podcast.episode ? podcast.episode : "/assets/podcasts/stress.mp4"}
                     controls
                     className="object-cover"
-                />
+                /> */}
+                {podcast.episode}
+
                 {/* Chapter Badge on Image */}
                 <div
                     className="absolute top-3 right-3">

@@ -146,7 +146,7 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
                                                     GALLERY
                                                 </button>
                                                 <button
-                                                    className={`px-6 py-2 font-black leading-7 text-lg border-${mainColor}-100 border-2 bg-${mainColor}-100 dark:bg-gray-300 text-gray-300 dark:text-${mainColor}-100 rounded-md hover:bg-transparent hover:text-${mainColor}-100 flex-1 transition-colors`}
+                                                    className={`px-6 py-2 font-black leading-7 text-lg border-${mainColor}-100 border-2 bg-${mainColor}-100 text-gray-300 dark:text-${mainColor}-100 rounded-md hover:bg-transparent hover:text-${mainColor}-100 flex-1 transition-colors`}
                                                 >
                                                     MORE DETAILS
                                                 </button>

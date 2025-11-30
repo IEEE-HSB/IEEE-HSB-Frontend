@@ -204,28 +204,71 @@ educational stories.Goal: To develop narrative skills, spark imagination, or del
     author: 'CS',
     createdAt: '2025-11-11T12:00:00Z',
   },
-  // {
-  //   id: 14,
-  //   title: '',
-  //   description: ``,
-  //   image: '/assets/projects/.jpg',
-  //   subImages: [
-  //     '/assets/projects/.jpg',
-  //   ],
-  //   chapterId: 'CS',
-  //   author: 'CS',
-  //   createdAt: '2025-11-11T12:00:00Z',
-  // },
-  // {
-  //   id: 14,
-  //   title: '',
-  //   description: ``,
-  //   image: '/assets/projects/.jpg',
-  //   subImages: [
-  //     '/assets/projects/.jpg',
-  //   ],
-  //   chapterId: 'CS',
-  //   author: 'CS',
-  //   createdAt: '2025-11-11T12:00:00Z',
-  // },
+  {
+    id: 19,
+    title: 'Made By WIE Girls',
+    description: `🌙✨ Something magical is on the horizon… ✨🌙
+Under the glow of the moon and the charm of purple nights,
+a surprise is about to unfold. 💫
+Stay tuned..💜`,
+    image: '/assets/projects/horizon.png',
+    subImages: [
+      '/assets/projects/horizon.png',
+    ],
+    chapterId: 'WIE',
+    author: 'WIE',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  {
+    id: 20,
+    title: 'Made By WIE Girls',
+    description: `🌑We went to the moon to find out what's coming soon and we found a recording telling us this
+“A voice from the night. Stories that echo your thoughts. Moments that light up your mind “💫💜✨️`,
+    image: '/assets/projects/moon.jpg',
+    subImages: [
+      '/assets/projects/moon.jpg',
+    ],
+    chapterId: 'WIE',
+    author: 'WIE',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  {
+    id: 21,
+    title: 'Stress, Made By WIE Girls',
+    description: `Hit play. Let the stress melt a little.🙂‍↕🤍
+Stay tuned🤩 for the episode 2 "Stress less" 
+From your beloved WIE Podcast💜
+`,
+    image: '/assets/projects/stress.png',
+    subImages: [
+      '/assets/projects/stress.png',
+    ],
+    chapterId: 'WIE',
+    author: 'WIE',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  {
+    id: 22,
+    title: `WIE Banner`,
+    description: ``,
+    image: '/assets/projects/wiebanner.jpg',
+    subImages: [
+      '/assets/projects/wiebanner.jpg',
+    ],
+    chapterId: 'WIE',
+    author: 'WIE',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
+  {
+    id: 25,
+    title: `WIE T-Shirt`,
+    description: ``,
+    image: '/assets/projects/wieshirt.jpg',
+    subImages: [
+      '/assets/projects/wieshirt.jpg',
+    ],
+    chapterId: 'WIE',
+    author: 'WIE',
+    createdAt: '2025-11-11T12:00:00Z',
+  },
 ];

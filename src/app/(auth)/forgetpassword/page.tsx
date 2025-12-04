@@ -42,7 +42,7 @@ export default function ForgetPassword() {
         </h1>
 
         <p className="text-center text-ieee-blue-70 dark:text-ieee-blue-40 mb-8">
-          Enter your email and we'll send you a reset code
+          Enter your email and we&apos;ll send you a reset code
         </p>
 
         <div className="flex flex-col gap-6">

@@ -10,22 +10,25 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useRouter } from "next/navigation";
 import IeeeLogo from "@/assets/logos/ieeeLogo";
 import { useThemeContext } from "@/context/ThemeContext";
+import { useState } from "react";
 
 export default function Register() {
   const router = useRouter();
   const { isDark } = useThemeContext();
+  const [openModal, setOpenModal] = useState(false);
 
   // Chapters & Committees
   const chapters = {
-    cs: ["web", "cyber security", "mobile"],
-    ras: ["ai", "digital", "analog"],
-    pes: ["electronics", "mechanic"],
-    comsoc: ["pr", "fr", "hr"],
-    wie: ["softskills"],
+    cs: ["Web Development", "Cyber Security", "Mobile Application"],
+    ras: ["Robotics"],
+    pes: ["Distribution-CAD", "Distribution-REVIT", 'Basic Industrial Automation', 'Advanced Industrial Automation'],
+    comsoc: ["Embedded Systems", "Machine learning", "Analog IC Design", "Digital IC Design"],
+    wie: ["Graphics Design", "JavaScript"],
+    general: ["HR", "Marketing", "FR", "Multimedia", "L&D", "R&D", "PR"],
   };
 
   // Roles
-  const roles = ["Participant", "Volunteer", "Director", "Guest"];
+  const roles = ["Participant", "Volunteer", "Director"];
 
   const initialValues = {
     name: "",
@@ -70,10 +73,14 @@ export default function Register() {
   });
 
   const onSubmit = async (values: typeof initialValues) => {
-    toast.success("Account created successfully!");
     console.log("Form Data:", values);
-    router.push("/");
+
+    // API WILL BE HERE 🔗
+    // await registerUser(values)
+
+    setOpenModal(true);
   };
+
 
   return (
     <div className="flex dark:bg-ieee-blue-100 items-center justify-center px-4 translate-middle-y transform min-h-screen mt-5">
@@ -91,7 +98,7 @@ export default function Register() {
               <IeeeLogo size={50} fillColor={isDark ? 'white' : '#207DA9'} strokeColor='' className="" />
 
             </div>
-            <h1 className="mb-2 text-xl font-semibold">Join IEEE HSB</h1>
+            <h1 className="mb-2 text-xl font-semibold">Are You IEEE HSB Member?</h1>
             <p className="text-muted-foreground text-sm">
               Create your account and start your journey
             </p>
@@ -262,7 +269,7 @@ export default function Register() {
                   disabled={isSubmitting}
                 >
                   <span className="relative z-10 text-white">Create Account</span>
-                 
+
                 </Button>
               </Form>
             )}
@@ -276,12 +283,45 @@ export default function Register() {
               onClick={() => router.push("/login")}
               className="text-ieee-blue-100 text-lg font-bold hover:underline
               "
-              
+
             >
               Sign in
             </button>
           </p>
         </div>
+        {openModal && (
+          <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="bg-ieee-blue-80 text-white border border-ieee-blue-100 p-6 rounded-xl w-[90%] max-w-md text-center"
+            >
+              <h2 className="text-xl font-bold mb-3">
+                🎉 Account Created Successfully
+              </h2>
+
+              <p className="text-sm mb-4 leading-relaxed">
+                Your account is currently <span className="font-bold text-lg">pending approval</span>.
+                <br />
+                Once approved, you will unlock full access to all website features.
+                <br />
+                You will receive a notification via <span className="font-bold">email</span>.
+              </p>
+
+              <Button
+                onClick={() => {
+                  setOpenModal(false);
+                  router.push("/login");
+                }}
+                className="w-full bg-ieee-blue-100 hover:bg-ieee-blue-100/80 text-white"
+              >
+                Got it
+              </Button>
+            </motion.div>
+          </div>
+        )}
+
       </motion.div>
     </div>
   );

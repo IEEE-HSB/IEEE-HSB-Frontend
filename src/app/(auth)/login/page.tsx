@@ -129,6 +129,16 @@ export default function Login() {
               Register
             </button>
           </p>
+          <p className="text-center text-muted-foreground text-sm
+          ">
+            Forgot your password?{" "}
+            <button
+              onClick={() => router.push("/forgetpassword")}
+              className="text-ieee-blue-100 text-lg font-bold hover:underline"
+            >
+              Reset Password
+            </button>
+          </p>
         </div>
       </motion.div>
     </div>

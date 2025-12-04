@@ -96,7 +96,7 @@ const Sidebar = ({ color }: { color: string }) => {
             )
         },
         {
-            route: `/${chapter}/dashboard`,
+            route: `/dashboard`,
             label: 'Dashboard',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"

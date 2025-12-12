@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import LayoutContent from "./LayoutContent";
 import QueryProvider from "@/providers/QueryProvider";
+import AuthContextProvider from "@/context/AuthContext";
 
 
 
@@ -34,19 +35,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <meta name="google-site-verification" content="nbk-Ml1nq3z3cP6YcMdFucdSjCJlJ2arVuqz0c1DRW4" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-         <ThemeProvider>
-          <QueryProvider>
-            <LayoutContent>
-              {children}
+        <ThemeProvider>
+          <AuthContextProvider>
+            <QueryProvider>
+              <LayoutContent>
+                {children}
 
 
-            </LayoutContent>
+              </LayoutContent>
 
-          </QueryProvider>
-
+            </QueryProvider>
+          </AuthContextProvider>
         </ThemeProvider>
 
       </body>

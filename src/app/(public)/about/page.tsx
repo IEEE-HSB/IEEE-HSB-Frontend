@@ -122,16 +122,22 @@ export default function About() {
           <h2 className="text-2xl font-bold text-[#00629B] dark:text-[#58A6FF] mb-4">
             About IEEE Helwan SB
           </h2>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex flex-row gap-4 items-center mb-3">
-            <IeeeLogo size={20} fillColor="#00629B" /> IEEE Helwan SB is the 3rd
-            created branch in Egypt and was the very first student organization
-            founded at Helwan University.
-          </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex flex-row gap-4 items-center mb-3">
-            <IeeeLogo size={20} fillColor="#00629B" /> IEEE Helwan SB was
+          <div className="flex">
+            <IeeeLogo size={20} fillColor="#00629B" className="w-[50px] mr-2 ms-0"/>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex flex-row gap-4 items-center mb-3">
+              IEEE Helwan SB is the 3rd
+              created branch in Egypt and was the very first student organization
+              founded at Helwan University.
+            </p>
+          </div>
+          <div className="flex">
+            <IeeeLogo size={20} fillColor="#00629B" className="w-[50px] mr-2 ms-0"/>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex flex-row gap-4 items-center mb-3">
+             IEEE Helwan SB was
             awarded in many worldwide competitions; it has four chapters called
             RAS, PES, ComSoc, CS, and one affinity group known as WIE.
-          </p>
+            </p>
+          </div>
         </motion.div>
         {/* Chapters */}
         <motion.div

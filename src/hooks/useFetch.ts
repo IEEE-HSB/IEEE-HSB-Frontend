@@ -7,10 +7,10 @@ export function useAnnouncements(): UseQueryResult<AnnouncementsData, Error> {
     queryKey: ["announcements"],
     queryFn: async () => {
       const response = await axios.get(
-        "https://raw.githubusercontent.com/cheetah-10/db.json/main/db.json"
+        "https://ieee-hsb-backend.vercel.app/api/announcements"
       );
 
-      const announcements: AnnouncementsData = response.data.announcements;
+      const announcements: AnnouncementsData = response.data.data;
 
       return announcements.sort(
         (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()

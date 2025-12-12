@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Moon, Sun, Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,11 +9,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import IeeeLogo from "@/assets/logos/ieeeLogo";
 import IeeeHelwan from "@/assets/logos/ieeeHelwan";
+import { authContextObj } from "@/context/AuthContext";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
+
+    const { token, setToken } = useContext(authContextObj)
+
+    const logout = () => {
+        localStorage.removeItem('authToken');
+        setToken(null);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -39,10 +47,15 @@ export default function Navbar() {
         { name: "About", page: "about" },
         { name: "Events", page: "events" },
         { name: "Projects", page: "projects" },
-        { name: "Announcements", page: "announcements" },
         { name: "Gallery", page: "gallery" },
+        { name: "Announcements", page: "announcements" },
         { name: "Contact", page: "contact" },
-    ];
+    ]
+
+    if (token) {
+        navLinks.push({ name: "Dashboard", page: "dashboard" });
+    }
+
 
 
     return (
@@ -154,7 +167,7 @@ export default function Navbar() {
                         <motion.div
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="hidden md:block"
+                            className="hidden lg:block"
                         >
                             <Button
                                 className="relative overflow-hidden bg-gradient-to-r from-ieee-blue-80 to-ieee-blue-100 text-white border-0 px-6 h-11 rounded-full shadow-lg hover:shadow-xl transition-shadow"
@@ -163,7 +176,22 @@ export default function Navbar() {
                                     className="absolute inset-0 bg-gradient-to-r from-ieee-gold-60 to-ieee-gold-100 opacity-0 hover:opacity-100 transition-opacity"
                                     whileHover={{ opacity: 1 }}
                                 />
-                                <Link href='/login' className="relative z-10">Login</Link>
+
+                                {
+                                    token ? (<Link
+                                        href={"/login"}
+                                        onClick={logout}
+                                        className="relative z-10"
+                                    >
+                                        Log out
+                                    </Link>) : (<Link
+                                        href={"/login"}
+                                        className="relative z-10"
+                                    >
+                                        Login
+                                    </Link>)
+                                }
+
                             </Button>
                         </motion.div>
 
@@ -225,8 +253,8 @@ export default function Navbar() {
                                                 href={href}
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                                 className={`block w-full text-left px-6 py-3 rounded-lg mx-2 transition-colors duration-200 ${isActive
-                                                        ? "bg-ieee-blue-100/20 text-ieee-blue-100 dark:text-ieee-yellow-100 border-l-4 border-ieee-blue-100 dark:border-ieee-yellow-100"
-                                                        : "hover:bg-ieee-blue-100/10 "
+                                                    ? "bg-ieee-blue-100/20 text-ieee-blue-100 dark:text-ieee-yellow-100 border-l-4 border-ieee-blue-100 dark:border-ieee-yellow-100"
+                                                    : "hover:bg-ieee-blue-100/10 "
                                                     }`}
                                             >
                                                 {link.name}
@@ -241,13 +269,25 @@ export default function Navbar() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: navLinks.length * 0.05 }}
                                 >
-                                    <Link
-                                        href="/login"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="block w-full text-left px-6 py-3 mx-2 bg-gradient-to-r from-ieee-blue-80 to-ieee-blue-100 text-white rounded-lg hover:shadow-lg transition-shadow"
-                                    >
-                                        Login / Register
-                                    </Link>
+                                    {token ? (
+                                        <Link
+                                            href="/login"
+                                            onClick={logout}
+                                            className="block w-full text-left px-6 py-3 mx-2 text-white rounded-lg hover:shadow-lg transition-shadow"
+                                        >
+                                            Logout
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            href="/login"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="block w-full text-left px-6 py-3 mx-2 bg-gradient-to-r from-ieee-blue-80 to-ieee-blue-100 text-white rounded-lg hover:shadow-lg transition-shadow"
+                                        >
+                                            Login / Register
+                                        </Link>
+                                    )}
+
+
                                 </motion.div>
                             </div>
                         </motion.div>

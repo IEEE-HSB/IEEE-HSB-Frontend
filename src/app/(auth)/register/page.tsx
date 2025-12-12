@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import IeeeLogo from "@/assets/logos/ieeeLogo";
 import { useThemeContext } from "@/context/ThemeContext";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Register() {
   const router = useRouter();
@@ -34,7 +35,6 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
-    rePassword: "",
     role: "",
     chapterId: "",
     committeeId: "",
@@ -72,14 +72,27 @@ export default function Register() {
     committeeId: Yup.string().required("Please select your committee"),
   });
 
-  const onSubmit = async (values: typeof initialValues) => {
-    console.log("Form Data:", values);
 
-    // API WILL BE HERE 🔗
-    // await registerUser(values)
-
-    setOpenModal(true);
+  const handleRegister = async (values: typeof initialValues) => {
+    try {
+      await axios.post(
+        "https://ieee-hsb-backend.vercel.app/api/auth/register",
+        values
+      );
+      setOpenModal(true);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error?.response?.data?.message || "Registration failed. Please try again.");
+      } else {
+        toast.error("Registration failed. Please try again.");
+      }
+    }
   };
+
+  const onSubmit = async (values: typeof initialValues) => {
+    await handleRegister(values);
+  };
+
 
 
   return (
@@ -110,7 +123,7 @@ export default function Register() {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
           >
-            {({ values, setFieldValue, isSubmitting }) => (
+            {({ values, setFieldValue, isSubmitting, isValid, dirty }) => (
               <Form className="md:grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
                 <div className="relative">
@@ -193,7 +206,7 @@ export default function Register() {
                   >
                     <option value="">Select a role</option>
                     {roles.map((role) => (
-                      <option key={role} value={role}>
+                      <option key={role} value={role.toLowerCase()}>
                         {role}
                       </option>
                     ))}
@@ -266,7 +279,7 @@ export default function Register() {
                 <Button
                   type="submit"
                   className="w-full col-span-2 bg-ieee-blue-100 hover:bg-ieee-blue-100/80 relative overflow-hidden group"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || openModal || !isValid || !dirty}
                 >
                   <span className="relative z-10 text-white">Create Account</span>
 

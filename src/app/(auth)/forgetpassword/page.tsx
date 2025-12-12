@@ -5,33 +5,32 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
-import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 
 export default function ForgetPassword() {
+
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
+  const handleSendCode = async () => {
+    if (!email) return toast.error('Please enter your email')
 
-  // Function to send the reset code request
-  const sendCodeRequest = (email: string) => {
-    return axios.post('YOUR_API_HERE/forgot-password', {
-      email
-    })
-  }
-
-  const { mutate, isPending } = useMutation({
-    mutationFn: sendCodeRequest,
-
-    onSuccess: () => {
-      toast.success('Code sent successfully!')
+    setLoading(true)
+    try {
+      const res = await axios.post('https://ieee-hsb-backend.vercel.app/api/auth/forgot-password', { email })
+      toast.success(res.data.message || 'Reset code sent successfully')
       router.push('/resetcode')
-    },
-
-    onError: () => {
-      toast.error('Something went wrong')
-    },
-  })
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message ?? "Something went wrong");
+      } else {
+        toast.error("Login failed. Please try again.");
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-ieee-blue-5 dark:bg-[#0B1220] px-4">
@@ -55,11 +54,11 @@ export default function ForgetPassword() {
           />
 
           <Button
-            onClick={() => mutate(email)}
-            disabled={isPending || !email}
+            onClick={handleSendCode}
+            disabled={loading || !email}
             className="w-full py-6 rounded-xl bg-ieee-blue-100 hover:bg-ieee-blue-80 text-white font-semibold cursor-pointer"
           >
-            {isPending ? 'Sending...' : 'Send Code'}
+            {loading ? 'Sending...' : 'Send Code'}
           </Button>
         </div>
 

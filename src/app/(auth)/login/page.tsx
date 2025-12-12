@@ -10,30 +10,47 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useRouter } from "next/navigation";
 import IeeeLogo from "@/assets/logos/ieeeLogo";
 import { useThemeContext } from "@/context/ThemeContext";
+import axios from "axios";
 
 export default function Login() {
   const router = useRouter();
   const { isDark } = useThemeContext();
 
-  
+
   const initialValues = {
     email: "",
     password: "",
   };
 
   const validationSchema = Yup.object({
- 
+
     email: Yup.string()
       .email("Please use a valid email")
       .required("Email is required"),
     password: Yup.string()
       .required("Password is required")
-     });
+  });
 
   const onSubmit = async (values: typeof initialValues) => {
-    toast.success(`Welcome back!`);
-    console.log("Form Data:", values);
-    router.push("/");
+    await handleLogin(values);
+  };
+  const handleLogin = async (values: typeof initialValues) => {
+    try {
+      const res = await axios.post(
+        "https://ieee-hsb-backend.vercel.app/api/auth/login",
+        values
+      );
+      localStorage.setItem("authToken", res.data.data.accessToken);
+      toast.success(`Welcome back!`);
+      router.push("/");
+
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message ?? "Login failed. Please try again.");
+      } else {
+        toast.error("Login failed. Please try again.");
+      }
+    }
   };
 
   return (
@@ -66,7 +83,7 @@ export default function Login() {
           >
             {({ isSubmitting }) => (
               <Form className="md:grid grid-cols-1 md:grid-cols-2 gap-6">
-             
+
                 {/* Email */}
                 <div className="relative">
                   <Mail className="relative left-2 top-10 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -88,9 +105,9 @@ export default function Login() {
                 <div className="relative">
                   <Lock className="relative left-2 top-10 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Field
-                    type="password"
+                    type="text"
                     name="password"
-                    placeholder="••••••••"
+                    placeholder="Enter your password"
                     as={Input}
                     className="pl-10 bg-ieee-blue-100! text-white
                     placeholder-white!"
@@ -110,7 +127,7 @@ export default function Login() {
                   disabled={isSubmitting}
                 >
                   <span className="relative z-10 text-white">Sign In</span>
-                 
+
                 </Button>
               </Form>
             )}
@@ -124,7 +141,7 @@ export default function Login() {
               onClick={() => router.push("/register")}
               className="text-ieee-blue-100 text-lg font-bold hover:underline
               "
-              
+
             >
               Register
             </button>

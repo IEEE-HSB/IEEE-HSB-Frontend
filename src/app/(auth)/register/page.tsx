@@ -75,13 +75,17 @@ export default function Register() {
 
   const handleRegister = async (values: typeof initialValues) => {
     try {
-      const res = await axios.post(
+      await axios.post(
         "https://ieee-hsb-backend.vercel.app/api/auth/register",
         values
       );
       setOpenModal(true);
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message || "Registration failed. Please try again.");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error?.response?.data?.message || "Registration failed. Please try again.");
+      } else {
+        toast.error("Registration failed. Please try again.");
+      }
     }
   };
 
@@ -119,7 +123,7 @@ export default function Register() {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
           >
-            {({ values, setFieldValue, isSubmitting,  isValid, dirty }) => (
+            {({ values, setFieldValue, isSubmitting, isValid, dirty }) => (
               <Form className="md:grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
                 <div className="relative">

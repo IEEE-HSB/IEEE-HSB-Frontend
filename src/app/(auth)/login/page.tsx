@@ -44,8 +44,12 @@ export default function Login() {
       toast.success(`Welcome back!`);
       router.push("/");
 
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message || "Login failed. Please try again.");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message ?? "Login failed. Please try again.");
+      } else {
+        toast.error("Login failed. Please try again.");
+      }
     }
   };
 

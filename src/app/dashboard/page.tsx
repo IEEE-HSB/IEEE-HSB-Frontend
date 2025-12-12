@@ -1,11 +1,12 @@
 'use client';
+
 import { StatCard } from '@/components/dashboard/StatsCard'
 import React, { useState } from 'react'
 import { Calendar, Users, CheckCircle, Award, TrendingUp } from 'lucide-react';
 import { mockSubmissions } from '@/data/mockData';
 import { RegisterationTable } from '@/components/dashboard/RegisterationTable';
 
-export default function home() {
+export default function Home() {
   console.log('PAGE RENDERED');
   const [showMoreRows, setShowMoreRows] = useState(false);
   function toggleShowMore() {

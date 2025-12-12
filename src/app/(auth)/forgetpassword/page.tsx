@@ -15,14 +15,18 @@ export default function ForgetPassword() {
 
   const handleSendCode = async () => {
     if (!email) return toast.error('Please enter your email')
-    
-      setLoading(true)
+
+    setLoading(true)
     try {
       const res = await axios.post('https://ieee-hsb-backend.vercel.app/api/auth/forgot-password', { email })
       toast.success(res.data.message || 'Reset code sent successfully')
       router.push('/resetcode')
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message || 'Something went wrong')
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message ?? "Something went wrong");
+      } else {
+        toast.error("Login failed. Please try again.");
+      }
     } finally {
       setLoading(false)
     }

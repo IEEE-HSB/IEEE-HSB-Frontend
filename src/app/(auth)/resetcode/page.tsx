@@ -76,8 +76,11 @@ export default function ResetPassword() {
       })
       toast.success("Password reset successfully!")
       router.push("/login")
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message || "Something went wrong")
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error?.response?.data?.message || "Something went wrong") 
+      }
+      else toast.error("Something went wrong")
     } finally {
       setLoading(false)
     }
@@ -120,7 +123,7 @@ export default function ResetPassword() {
                       as={Input}
                       className="w-full bg-ieee-blue-100! text-white placeholder-white! py-4 px-3"
                     />
-                    <ErrorMessage name="email" component="div" className="p-2 text-red-600 bg-red-100 rounded-md text-sm mt-2"/>
+                    <ErrorMessage name="email" component="div" className="p-2 text-red-600 bg-red-100 rounded-md text-sm mt-2" />
                   </div>
 
                   {/* OTP */}

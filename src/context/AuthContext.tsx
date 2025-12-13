@@ -1,30 +1,33 @@
-'use client'
-import React, { createContext, ReactNode, useEffect, useState } from 'react'
-type AuthProviderProps = {
-  children: ReactNode;
+"use client";
+
+import { createContext, useEffect, useState, ReactNode } from "react";
+
+type AuthContextType = {
+  isAuthenticated: boolean;
+  logout: () => void;
 };
-export  type AuthContextType = {
-  token: string | null;
-  setToken: (value: string | null) => void;
-};
+
 export const authContextObj = createContext<AuthContextType>({
-  token: null,
-  setToken: () => { },
-})
+  isAuthenticated: false,
+  logout: () => {},
+});
 
-export default function AuthContextProvider({ children }: AuthProviderProps) {
+export default function AuthContextProvider({ children }: { children: ReactNode }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const [token, setToken] = useState<string | null>(null);
   useEffect(() => {
-    const userToken = localStorage.getItem('authToken');
-    if (userToken) {
-      setToken(userToken);
-    }
-  }, [])
+    const hasToken = document.cookie.includes("authToken=");
+    setIsAuthenticated(hasToken);
+  }, []);
+
+  const logout = () => {
+    document.cookie = "authToken=; path=/; max-age=0";
+    setIsAuthenticated(false);
+  };
 
   return (
-    <authContextObj.Provider value={{ token, setToken }}>
+    <authContextObj.Provider value={{ isAuthenticated, logout }}>
       {children}
-    </authContextObj.Provider >
-  )
+    </authContextObj.Provider>
+  );
 }

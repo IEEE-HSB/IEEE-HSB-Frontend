@@ -16,12 +16,8 @@ export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
-    const { token, setToken } = useContext(authContextObj)
+    const { isAuthenticated, logout } = useContext(authContextObj);
 
-    const logout = () => {
-        localStorage.removeItem('authToken');
-        setToken(null);
-    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -52,7 +48,7 @@ export default function Navbar() {
         { name: "Contact", page: "contact" },
     ]
 
-    if (token) {
+    if (isAuthenticated) {
         navLinks.push({ name: "Dashboard", page: "dashboard" });
     }
 
@@ -178,7 +174,7 @@ export default function Navbar() {
                                 />
 
                                 {
-                                    token ? (<Link
+                                    isAuthenticated ? (<Link
                                         href={"/login"}
                                         onClick={logout}
                                         className="relative z-10"
@@ -269,13 +265,13 @@ export default function Navbar() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: navLinks.length * 0.05 }}
                                 >
-                                    {token ? (
+                                    {isAuthenticated ? (
                                         <Link
                                             href="/login"
                                             onClick={logout}
                                             className="block w-full text-left px-6 py-3 mx-2 text-white rounded-lg hover:shadow-lg transition-shadow"
                                         >
-                                            Logout
+                                            Log out
                                         </Link>
                                     ) : (
                                         <Link

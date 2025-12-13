@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import IeeeLogo from "@/assets/logos/ieeeLogo";
 import { useThemeContext } from "@/context/ThemeContext";
 import axios from "axios";
+import { encrypt } from "@/lib/session";
 
 export default function Login() {
   const router = useRouter();
@@ -40,7 +41,11 @@ export default function Login() {
         "https://ieee-hsb-backend.vercel.app/api/auth/login",
         values
       );
-      localStorage.setItem("authToken", res.data.data.accessToken);
+
+      {/* encrypt token and add it in cookies */}
+      const encryptedToken = encrypt(res.data.data.accessToken);
+      document.cookie = `authToken=${encryptedToken}; path=/; max-age=${60 * 60 * 24}`; console.log(document.cookie);
+
       toast.success(`Welcome back!`);
       router.push("/");
 

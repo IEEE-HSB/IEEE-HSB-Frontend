@@ -4,7 +4,7 @@ import { useState, useEffect, use } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '@/components/common/ProjectCard';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
-import { Project } from '@/types/project';
+import { ProjectType } from '@/types/project';
 import { projectsData } from '@/utils/projectsData';
 import { chaptersData } from '@/data/chaptersData';
 import { useThemeContext } from '@/context/ThemeContext';
@@ -21,7 +21,7 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
   const chapterInfo = chaptersData.find(ch => ch.chapterId === chapter);
   const mainColor = chapterInfo!.color.split('-').slice(0, 2).join('-');
   const { isDark } = useThemeContext();
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

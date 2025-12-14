@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { ProjectType } from '@/types/project';
 import { motion } from 'framer-motion';
-import { ExternalLink, Calendar, User } from 'lucide-react';
+import { ExternalLink, User } from 'lucide-react';
 import { useState } from 'react';
 import ProjectsModal from '../ProjectsModal';
 import ProjectDescriptionModal from './ProjectDescriptionModal';

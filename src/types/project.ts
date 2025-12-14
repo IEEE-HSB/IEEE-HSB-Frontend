@@ -9,7 +9,8 @@ export type ProjectType = {
   link?: string;
   createdAt: string;
   updatedAt: string
-  subImages?: string[];}
+  subImages?: string[];
+}
 
 export type ProjectChapterFilter = 'All' | 'WIE' | 'CS' | 'PES' | 'RAS' | 'COMSOC';
 
@@ -21,7 +22,11 @@ export type Project = {
   image?: string;
   subImgages?: string[];
   chapterId: string;
-  author: string;
+  createdBy: string;
   link?: string;
   createdAt: string;
-  subImages?: string[];}
+  updatedAt?: string;
+
+
+  subImages?: string[];
+}

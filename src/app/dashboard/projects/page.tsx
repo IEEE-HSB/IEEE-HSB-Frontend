@@ -7,7 +7,6 @@ import { useApiQuery } from '@/hooks/useFetch'
 import { getAuthToken } from '@/lib/getAuthToken';
 import { ProjectType } from '@/types/project';
 import axios from 'axios';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
@@ -37,7 +36,7 @@ import toast from 'react-hot-toast';
 
 
     const { data: projects, isLoading, isError } = useApiQuery<ProjectType[]>({
-        queryKey: ["Projects"],
+        queryKey: ["projects"],
         url: "https://ieee-hsb-backend.vercel.app/api/projects",
         method: "GET",
     });
@@ -94,29 +93,25 @@ import toast from 'react-hot-toast';
             <table className="w-full text-sm text-left text-heading bg-white rounded-lg shadow-md overflow-hidden">
                 <thead className="bg-ieee-blue-100 text-white uppercase text-xs tracking-wide">
                     <tr>
-                        <th className="px-6 py-3 font-medium">Project Name</th>
-                        <th className="px-6 py-3 font-medium">Description</th>
-                        <th className="px-6 py-3 font-medium">Picture</th>
+                        <th className="px-6 py-3 font-medium">ID</th>
+                        <th className="px-6 py-3 font-medium">Title</th>
                         <th className="px-6 py-3 font-medium">Chapter Name</th>
                         <th className="px-6 py-3 font-medium">Action</th>
                     </tr>
                 </thead>
                 <tbody className="dark:text-black">
-                    {projectsList?.map(project => (
+                    {projectsList?.map((project, index) => (
                         <tr key={project.id} className="hover:bg-ieee-blue-20 transition-colors">
                             <th className="flex items-center px-6 py-4 font-medium whitespace-nowrap">
                                 <div className="ps-3">
-                                    <div className="text-base font-semibold">{project.title}</div>
+                                    <div className="text-base font-semibold">{index}</div>
                                 </div>
                             </th>
-                            <td className="px-6 py-4">{project.description}</td>
-                            <td className="px-6 py-4">
-                                <Image width={20} height={10} className="w-20 h-10 rounded object-cover" src={project.image|| '/assets/ieeeLogo.png'} alt={project.title} />
-
-                            </td>
+                            <td className="px-6 py-4">{project.title}</td>
+                           
                             <td className="px-6 py-4">{project.chapterId}</td>
                             <td className="px-6 py-4 flex items-center text-white gap-2">
-                                <button onClick={() => { openUpdateProjectModal(project.id) }} className=" text-sm bg-ieee-green-100 p-2 rounded cursor-pointer">Edit</button>
+                                {/* <button onClick={() => { openUpdateProjectModal(project.id) }} className=" text-sm bg-ieee-green-100 p-2 rounded cursor-pointer">Edit</button> */}
                                 <button onClick={() => { handleDeleteProject(project.id) }} className=" text-sm bg-ieee-red-100 p-2 rounded cursor-pointer">Delete</button>
                             </td>
 
@@ -126,10 +121,10 @@ import toast from 'react-hot-toast';
             </table>
         </div>
         {isCreateProjectModalOpen && <CreateProjectModal onClose={closeCreateProjectModal} setProjectList={setProjectsList} />}
-        {isUpdateProjectModalOpen && editingProjectId && (
+        {/* {isUpdateProjectModalOpen && editingProjectId && (
             <UpdateProjectModal onClose={closeUpdateProjectModal} id={editingProjectId} projectsList={projectsList} setProjectsList={setProjectsList} />
         
-        )}
+        )} */}
     </>
     )
 }

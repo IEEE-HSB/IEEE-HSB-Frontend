@@ -1,20 +1,46 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import axios from "axios";
-import type { AnnouncementsData } from "@/types/announcement";
+import axios, { AxiosRequestConfig, Method } from "axios";
 
-export function useAnnouncements(): UseQueryResult<AnnouncementsData, Error> {
-  return useQuery<AnnouncementsData>({
-    queryKey: ["announcements"],
+type ApiQueryOptions<T> = {
+  queryKey: readonly unknown[];
+  url: string; 
+  method?: Method;
+  params?: AxiosRequestConfig["params"];
+  data?: AxiosRequestConfig["data"];
+  headers?: AxiosRequestConfig["headers"];
+  enabled?: boolean;
+  select?: (data: T) => T;
+};
+
+export function useApiQuery<T>(
+  options: ApiQueryOptions<T>
+): UseQueryResult<T, Error> {
+  const {
+    queryKey,
+    url,
+    method = "GET",
+    params,
+    data,
+    headers,
+    enabled = true,
+    select,
+  } = options;
+
+  return useQuery<T>({
+    queryKey,
+    enabled,
     queryFn: async () => {
-      const response = await axios.get(
-        "https://ieee-hsb-backend.vercel.app/api/announcements"
-      );
+      const res = await axios({
+        url,
+        method,
+        params,
+        data,
+        headers,
+      });
 
-      const announcements: AnnouncementsData = response.data.data;
+      const result: T = res.data.data;
 
-      return announcements.sort(
-        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      );
+      return select ? select(result) : result;
     },
   });
 }

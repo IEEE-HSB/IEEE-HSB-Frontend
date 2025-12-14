@@ -13,6 +13,7 @@ import { useThemeContext } from "@/context/ThemeContext";
 import axios from "axios";
 import { encrypt } from "@/lib/session";
 
+
 export default function Login() {
   const router = useRouter();
   const { isDark } = useThemeContext();
@@ -42,10 +43,9 @@ export default function Login() {
         values
       );
 
-      {/* encrypt token and add it in cookies */}
+      {/* encrypt token and add it in cookies */ }
       const encryptedToken = encrypt(res.data.data.accessToken);
       document.cookie = `authToken=${encryptedToken}; path=/; max-age=${60 * 60 * 24}`; console.log(document.cookie);
-
       toast.success(`Welcome back!`);
       router.push("/");
 
@@ -57,6 +57,7 @@ export default function Login() {
       }
     }
   };
+
 
   return (
     <div className="flex dark:bg-ieee-blue-100 items-center justify-center px-4 translate-middle-y transform min-h-screen mt-5">

@@ -19,15 +19,17 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
     pathname.startsWith('/wie') ||
     pathname.startsWith('/ras') ||
     pathname.startsWith('/pes') ||
-    pathname.startsWith('/comsoc');
+    pathname.startsWith('/comsoc')||
+    pathname.startsWith('/dashboard');
+  
+  // const hideNavbar = pathname.startsWith('/dashboard');  
 
   return (
     <>
       {isDark && <StarryBackground />}
       <Toaster position="top-center" reverseOrder={false} />
       <div className="mb-20">
-        <Navbar />
-      </div>
+ <Navbar />    </div>
 
       {children}
       {!hideFooter && (

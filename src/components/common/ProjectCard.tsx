@@ -1,15 +1,15 @@
 "use client";
 
 import Image from 'next/image';
-import { Project } from '@/types/project';
+import { ProjectType } from '@/types/project';
 import { motion } from 'framer-motion';
-import { ExternalLink, Calendar, User } from 'lucide-react';
+import { ExternalLink, User } from 'lucide-react';
 import { useState } from 'react';
 import ProjectsModal from '../ProjectsModal';
 import ProjectDescriptionModal from './ProjectDescriptionModal';
 
 interface ProjectCardProps {
-  project: Project;
+  project: ProjectType;
   index: number;
 }
 
@@ -74,7 +74,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             className="object-cover transition-transform duration-300 group-hover:scale-110"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
 
           {/* Chapter Badge on Image */}
           <div
@@ -109,7 +109,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="flex flex-col gap-2 mb-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4" />
-            <span>{project.author}</span>
+            <span>{project.createdBy}</span>
           </div>
           {/* <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />

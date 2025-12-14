@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const protectedRoutes = ['/dashboard'];
-const publicRoutes = ['/login', '/register', '/'];
+const publicRoutes = ['/login', '/register', '/', '/resetcode', '/forgetpassword'];
 
 export default async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;

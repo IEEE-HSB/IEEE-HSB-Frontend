@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import LayoutContent from "./LayoutContent";
 import QueryProvider from "@/providers/QueryProvider";
 import AuthContextProvider from "@/context/AuthContext";
+import UserProvider from "@/context/UserContext";
 
 
 
@@ -41,18 +42,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <AuthContextProvider>
-            <QueryProvider>
-              <LayoutContent>
-                {children}
+        <QueryProvider>
+
+          <ThemeProvider>
+            <AuthContextProvider>
+
+              <UserProvider>
+
+                <LayoutContent>
+                  {children}
+                </LayoutContent>
+              </UserProvider>
 
 
-              </LayoutContent>
-
-            </QueryProvider>
-          </AuthContextProvider>
-        </ThemeProvider>
+            </AuthContextProvider>
+          </ThemeProvider>
+        </QueryProvider>
 
       </body>
     </html >

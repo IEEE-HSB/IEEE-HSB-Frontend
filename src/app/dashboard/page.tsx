@@ -1,13 +1,11 @@
 'use client';
-
+import { withRole } from '@/components/protected/withRole'
 import { StatCard } from '@/components/dashboard/StatsCard'
 import React, { useState } from 'react'
 import { Calendar, Users, CheckCircle, Award, TrendingUp } from 'lucide-react';
 import { mockSubmissions } from '@/data/mockData';
 import { RegisterationTable } from '@/components/dashboard/RegisterationTable';
-
-export default function Home() {
-  console.log('PAGE RENDERED');
+ export default function Dashboard() {
   const [showMoreRows, setShowMoreRows] = useState(false);
   function toggleShowMore() {
     setShowMoreRows(prev => !prev);

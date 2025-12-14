@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 import ProjectCard from '@/components/common/ProjectCard';
 import FilterBar from '@/components/common/FilterBar';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
-import { Project, ProjectChapterFilter } from '@/types/project';
+import { ProjectType, ProjectChapterFilter } from '@/types/project';
 import { projectsData } from '@/utils/projectsData';
 import { useThemeContext } from '@/context/ThemeContext';
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectType[]>([]);
   const [activeFilter, setActiveFilter] = useState<ProjectChapterFilter>('All');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -61,7 +61,7 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative  bg-gradient-to-br from-ieee-aqua-100 to-ieee-cyan-100 text-white pt-20 pb-28 overflow-hidden">
+      <section className="relative  bg-linear-to-br from-ieee-aqua-100 to-ieee-cyan-100 text-white pt-20 pb-28 overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

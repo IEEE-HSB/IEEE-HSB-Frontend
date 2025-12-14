@@ -84,7 +84,7 @@ export default function CreateProjectModal({
     } catch (err: unknown) {
       if (isAxiosError(err)) {
                 console.error(err.response?.data || err)
-                toast.error('Error creating project: ' + (err.response?.data?.message || err.message))
+                toast.error('Error creating projectr: ' + (err.response?.data?.message || err.message))
 
             }
             else{

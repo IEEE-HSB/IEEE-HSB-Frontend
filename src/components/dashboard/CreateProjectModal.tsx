@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios, { isAxiosError } from 'axios'
 import { getAuthToken } from '@/lib/getAuthToken'
 import toast from 'react-hot-toast'
 import { ProjectType } from '@/types/project'
@@ -81,12 +81,15 @@ export default function CreateProjectModal({
       setProjectList?.(prev => [...prev, res.data.data])
       toast.success('Project added successfully!')
       onClose()
-    } catch (err: any) {
-      console.error(err.response?.data || err)
-      toast.error(
-        'Error creating project: ' +
-          (err.response?.data?.message || err.message)
-      )
+    } catch (err: unknown) {
+      if (isAxiosError(err)) {
+                console.error(err.response?.data || err)
+                toast.error('Error creating project: ' + (err.response?.data?.message || err.message))
+
+            }
+            else{
+                toast.error('something went wrong!')
+            }
     } finally {
       setLoading(false)
     }

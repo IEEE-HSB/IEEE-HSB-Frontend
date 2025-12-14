@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { getAuthToken } from '@/lib/getAuthToken'
 import toast from 'react-hot-toast'
 import { EventType } from '@/types/event'
@@ -15,18 +15,20 @@ interface UpdateEventModalProps {
 
 export default function UpdateEventModal({ onClose, id, eventsList, setEventsList }: UpdateEventModalProps) {
   const event = eventsList?.find(ev => ev.id === id)
-  if (!event) return null
 
-  const [title, setTitle] = useState(event.name)
-  const [location, setLocation] = useState(event.location || '')
-  const [details, setDetails] = useState(event.details || '')
-  const [moreDetails, setMoreDetails] = useState(event.moreDetails || '')
-  const [link, setLink] = useState(event.link || '')
-  const [chapterId, setChapterId] = useState(event.chapterId || '')
-  const [date, setDate] = useState(event.date || '')
-  const [endTime, setEndTime] = useState(event.endTime || '')
+  const [title, setTitle] = useState(event?.name)
+  const [location, setLocation] = useState(event?.location || '')
+  const [details, setDetails] = useState(event?.details || '')
+  const [moreDetails, setMoreDetails] = useState(event?.moreDetails || '')
+  const [link, setLink] = useState(event?.link || '')
+  const [chapterId, setChapterId] = useState(event?.chapterId || '')
+  const [date, setDate] = useState(event?.date || '')
+  const [endTime, setEndTime] = useState(event?.endTime || '')
   const [file, setFile] = useState<File | null>(null)
   const [loading, setLoading] = useState(false)
+
+
+  if (!event) return null
 
   const customInputStyles = `w-full px-4 py-3 rounded-xl
     bg-white dark:bg-slate-900
@@ -52,7 +54,7 @@ export default function UpdateEventModal({ onClose, id, eventsList, setEventsLis
     const token = getAuthToken()
 
     const formData = new FormData()
-    formData.append('title', title)
+    // formData.append('title', title)
     formData.append('location', location)
     formData.append('details', details)
     if (moreDetails) formData.append('moreDetails', moreDetails)
@@ -80,9 +82,17 @@ export default function UpdateEventModal({ onClose, id, eventsList, setEventsLis
       )
       toast.success('Event updated successfully!')
       onClose()
-    } catch (err: any) {
-      console.error(err.response?.data || err)
-      toast.error('Error updating event: ' + (err.response?.data?.message || err.message))
+    } catch (err: unknown) {
+      console.error(err)
+
+      if (axios.isAxiosError(err)) {
+        toast.error(
+          'Error updating event: ' +
+          (err.response?.data?.message || err.message)
+        )
+      } else {
+        toast.error('Unexpected error occurred')
+      }
     } finally {
       setLoading(false)
     }
@@ -131,7 +141,7 @@ export default function UpdateEventModal({ onClose, id, eventsList, setEventsLis
 
           {/* Image */}
           <div className="sm:col-span-2">
-           
+
             <input
               id="file_input"
               type="file"

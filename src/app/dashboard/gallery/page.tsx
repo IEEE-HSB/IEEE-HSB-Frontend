@@ -1,7 +1,6 @@
 'use client'
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import CreateGalleryModal from '@/components/dashboard/CreateGalleryModal';
-import UpdateGalleryModal from '@/components/dashboard/UpdateGalleryModal';
 import { withRole } from '@/components/protected/withRole';
 import { useApiQuery } from '@/hooks/useFetch'
 import { getAuthToken } from '@/lib/getAuthToken';
@@ -121,9 +120,7 @@ function Page() {
             </table>
         </div>
         {isCreateGalleryModalOpen && <CreateGalleryModal onClose={closeCreateGalleryModal} setGalleryList={setGalleryList} />}
-        {isUpdateGalleryModalOpen && editingGalleryId && (
-            <UpdateGalleryModal onClose={closeUpdateGalleryModal} id={editingGalleryId} galleryList={galleryList} setGalleryList={setGalleryList} />
-        )}
+       
 
     </>
     )

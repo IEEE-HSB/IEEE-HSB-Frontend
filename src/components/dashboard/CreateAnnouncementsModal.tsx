@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios, { isAxiosError } from 'axios'
 import { getAuthToken } from '@/lib/getAuthToken'
 import toast from 'react-hot-toast'
 import { GalleryType } from '@/types/gallery'
@@ -9,8 +9,8 @@ import { AnnouncementType } from '@/types/announcement'
 
 
 interface CreateAnnouncementsModalProps {
-  onClose: () => void
-  setAnnouncementsList?: React.Dispatch<React.SetStateAction<AnnouncementType[]>>
+    onClose: () => void
+    setAnnouncementsList?: React.Dispatch<React.SetStateAction<AnnouncementType[]>>
 }
 export default function CreateAnnouncementsModal({ onClose, setAnnouncementsList }: CreateAnnouncementsModalProps) {
     const [title, setTitle] = useState('')
@@ -46,7 +46,7 @@ export default function CreateAnnouncementsModal({ onClose, setAnnouncementsList
             setLoading(true)
             const res = await axios.post(
                 'https://ieee-hsb-backend.vercel.app/api/announcements',
-                  { title, description, link },
+                { title, description, link },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -58,9 +58,15 @@ export default function CreateAnnouncementsModal({ onClose, setAnnouncementsList
             onClose()
 
             toast.success('Announcement added successfully!')
-        } catch (err: any) {
-            console.error(err.response?.data || err)
-            toast.error('Error creating announcement: ' + (err.response?.data?.message || err.message))
+        } catch (err: unknown) {
+            if (isAxiosError(err)) {
+                console.error(err.response?.data || err)
+                toast.error('Error creating announcement: ' + (err.response?.data?.message || err.message))
+
+            }
+            else {
+                toast.error('something went wrong!')
+            }
         } finally {
             setLoading(false)
         }
@@ -112,7 +118,7 @@ export default function CreateAnnouncementsModal({ onClose, setAnnouncementsList
 
 
                     {/* link */}
-                      <input
+                    <input
                         type="text"
                         placeholder="Announcement Link (optional)"
                         value={link}
@@ -120,7 +126,7 @@ export default function CreateAnnouncementsModal({ onClose, setAnnouncementsList
                         className={customInputStyles}
                     />
 
-             
+
                     {/* Actions */}
                     <div className="sm:col-span-2 flex justify-end gap-3 pt-4 border-t border-neutral-200 dark:border-neutral-700">
                         <button

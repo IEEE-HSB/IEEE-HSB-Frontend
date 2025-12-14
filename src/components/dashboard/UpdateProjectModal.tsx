@@ -15,15 +15,17 @@ interface UpdateProjectModalProps {
 
 export default function UpdateProjectModal({ onClose, id, projectsList, setProjectsList }: UpdateProjectModalProps) {
   const project = projectsList?.find(ev => ev.id === id)
-  if (!project) return null
 
-  const [title, setTitle] = useState(project.title)
-  const [description, setDescription] = useState(project.description || '')
-  const [link, setLink] = useState(project.link || '')
-  const [chapterId, setChapterId] = useState(project.chapterId || '')
+  const [title, setTitle] = useState(project?.title)
+  const [description, setDescription] = useState(project?.description || '')
+  const [link, setLink] = useState(project?.link || '')
+  const [chapterId, setChapterId] = useState(project?.chapterId || '')
   const [mainImage, setMainImage] = useState<File | null>(null)
   const [subImages, setSubImages] = useState<File[]>([])
   const [loading, setLoading] = useState(false)
+
+    if (!project) return null
+
 
   const customInputStyles = `w-full px-4 py-3 rounded-xl
     bg-white dark:bg-slate-900
@@ -49,7 +51,7 @@ export default function UpdateProjectModal({ onClose, id, projectsList, setProje
     const token = getAuthToken()
 
     const formData = new FormData()
-    formData.append('title', title)
+    formData.append('title', title!)
     formData.append('description', description)
     if (link) formData.append('link', link)
     formData.append('chapterId', chapterId)
@@ -80,10 +82,15 @@ export default function UpdateProjectModal({ onClose, id, projectsList, setProje
       )
       toast.success('Project updated successfully!')
       onClose()
-    } catch (err: any) {
-      console.error(err.response?.data || err)
-      toast.error('Error updating projrct: ' + (err.response?.data?.message || err.message))
-    } finally {
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        toast.error(
+          'Error updating project: ' +
+          (err.response?.data?.message || err.message)
+        )
+      } else {
+        toast.error('Unexpected error occurred')
+      }} finally {
       setLoading(false)
     }
   }

@@ -1,15 +1,15 @@
 'use client'
 
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios, { isAxiosError } from 'axios'
 import { getAuthToken } from '@/lib/getAuthToken'
 import toast from 'react-hot-toast'
 import { GalleryType } from '@/types/gallery'
 
 
 interface CreateGalleryModalProps {
-  onClose: () => void
-  setGalleryList?: React.Dispatch<React.SetStateAction<GalleryType[]>>
+    onClose: () => void
+    setGalleryList?: React.Dispatch<React.SetStateAction<GalleryType[]>>
 }
 export default function CreateGalleryModal({ onClose, setGalleryList }: CreateGalleryModalProps) {
     const [title, setTitle] = useState('')
@@ -62,13 +62,19 @@ export default function CreateGalleryModal({ onClose, setGalleryList }: CreateGa
                 }
             )
             console.log('Gallery created:', res.data)
-           setGalleryList?.(prev => [...prev, res.data.data])
+            setGalleryList?.(prev => [...prev, res.data.data])
             onClose()
 
             toast.success('Picture added successfully!')
-        } catch (err: any) {
-            console.error(err.response?.data || err)
-            toast.error('Error creating picture: ' + (err.response?.data?.message || err.message))
+        } catch (err: unknown) {
+            if (isAxiosError(err)) {
+                console.error(err.response?.data || err)
+                toast.error('Error creating Picture: ' + (err.response?.data?.message || err.message))
+
+            }
+            else {
+                toast.error('something went wrong!')
+            }
         } finally {
             setLoading(false)
         }
@@ -107,7 +113,7 @@ export default function CreateGalleryModal({ onClose, setGalleryList }: CreateGa
                         className={customInputStyles}
                     />
 
-                                    {/* Chapter */}
+                    {/* Chapter */}
                     <div>
                         <select
                             value={chapterId}
@@ -160,7 +166,7 @@ export default function CreateGalleryModal({ onClose, setGalleryList }: CreateGa
                         />
                     </div>
 
-                     
+
 
                     {/* Actions */}
                     <div className="sm:col-span-2 flex justify-end gap-3 pt-4 border-t border-neutral-200 dark:border-neutral-700">

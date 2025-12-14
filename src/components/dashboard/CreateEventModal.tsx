@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios, { isAxiosError } from 'axios'
 import { getAuthToken } from '@/lib/getAuthToken'
 import toast from 'react-hot-toast'
 import { EventType } from '@/types/event'
@@ -66,12 +66,18 @@ export default function CreateEventModal({ onClose, setEventList }: { onClose: (
                 }
             )
             console.log('Event created:', res.data)
-             setEventList?.(prev => [...prev, res.data.data])
+            setEventList?.(prev => [...prev, res.data.data])
             onClose()
             toast.success('Event created successfully!')
-        } catch (err: any) {
-            console.error(err.response?.data || err)
-            toast.error('Error creating event: ' + (err.response?.data?.message || err.message))
+        } catch (err: unknown) {
+            if (isAxiosError(err)) {
+                console.error(err.response?.data || err)
+                toast.error('Error creating event: ' + (err.response?.data?.message || err.message))
+
+            }
+            else{
+                toast.error('something went wrong!')
+            }
         } finally {
             setLoading(false)
         }

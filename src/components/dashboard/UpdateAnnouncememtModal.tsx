@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { getAuthToken } from '@/lib/getAuthToken'
 import toast from 'react-hot-toast'
 import { AnnouncementType } from '@/types/announcement'
@@ -16,12 +16,13 @@ interface UpdateAnnouncementsModalProps {
 
 export default function UpdateAnnouncementModal({ onClose, id, announcementsList, setAnnouncementsList }: UpdateAnnouncementsModalProps) {
   const announcement = announcementsList?.find(ev => ev.id === id)
-  if (!announcement) return null
 
-  const [title, setTitle] = useState(announcement.title)
-  const [description, setDescription] = useState(announcement.description || '')
-  const [link, setLink] = useState(announcement.link || '')
+  const [title, setTitle] = useState(announcement?.title)
+  const [description, setDescription] = useState(announcement?.description || '')
+  const [link, setLink] = useState(announcement?.link || '')
   const [loading, setLoading] = useState(false)
+
+  if (!announcement) return null
 
   const customInputStyles = `w-full px-4 py-3 rounded-xl
     bg-white dark:bg-slate-900
@@ -62,9 +63,15 @@ export default function UpdateAnnouncementModal({ onClose, id, announcementsList
       )
       toast.success('Announcement updated successfully!')
       onClose()
-    } catch (err: any) {
-      console.error(err.response?.data || err)
-      toast.error('Error updating announcement: ' + (err.response?.data?.message || err.message))
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        toast.error(
+          'Error updating announcement: ' +
+          (err.response?.data?.message || err.message)
+        )
+      } else {
+        toast.error('Unexpected error occurred')
+      }
     } finally {
       setLoading(false)
     }

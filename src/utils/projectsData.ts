@@ -207,9 +207,9 @@ and strategic planning`,
   },
   {
     id: '16',
-    title: 'Story Telling',
+    title: '',
     description: `Idea: A platform or project focused on storytelling — fictional, real-life, or
-educational stories.Goal: To develop narrative skills, spark imagination, or deliveremotional/educational messages.Highlight: Can be text-based, audio, or video — emphasizes emotionalconnection and user experience.`,
+educational stStory Tellingories.Goal: To develop narrative skills, spark imagination, or deliveremotional/educational messages.Highlight: Can be text-based, audio, or video — emphasizes emotionalconnection and user experience.`,
     // image: '/assets/projects/.jpg',
     // subImages: [
     //   '/assets/projects/.jpg',

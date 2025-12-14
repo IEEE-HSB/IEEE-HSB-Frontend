@@ -6,49 +6,23 @@ import ProjectCard from '@/components/common/ProjectCard';
 import FilterBar from '@/components/common/FilterBar';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import { ProjectType, ProjectChapterFilter } from '@/types/project';
-import { projectsData } from '@/utils/projectsData';
 import { useThemeContext } from '@/context/ThemeContext';
+import { useApiQuery } from '@/hooks/useFetch';
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<ProjectType[]>([]);
   const [activeFilter, setActiveFilter] = useState<ProjectChapterFilter>('All');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const {isDark} = useThemeContext()
+  const { isDark } = useThemeContext()
   // Fetch projects on mount
+  const { data, isLoading, isError } = useApiQuery<ProjectType[]>(
+    {
+      queryKey: ["projects"],
+      url: "https://ieee-hsb-backend.vercel.app/api/projects",
+    }
+  );
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        // TODO: Replace with actual API call when backend is ready
-        // const response = await fetch('/api/projects');
-        // if (!response.ok) throw new Error('Failed to fetch projects');
-        // const data = await response.json();
-
-        // Simulate API delay
-        await new Promise((resolve) => setTimeout(resolve, 500));
-
-        // Use static data for now
-        const data = projectsData;
-
-        // Sort by createdAt descending (latest first)
-        const sortedData = [...data].sort(
-          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
-
-        setProjects(sortedData);
-      } catch (err) {
-        setError('Failed to load projects. Please try again later.');
-        console.error('Error fetching projects:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+    if (data) setProjects(data);
+  }, [data]);
 
   // Filter projects based on selected chapter
   const filteredProjects = useMemo(() => {
@@ -90,7 +64,7 @@ export default function ProjectsPage() {
             <path
               d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V120Z"
               className="fill-background"
-              stroke= {isDark?'#020618':'#ffffff'}
+              stroke={isDark ? '#020618' : '#ffffff'}
 
             />
           </svg>
@@ -103,14 +77,14 @@ export default function ProjectsPage() {
         <FilterBar activeFilter={activeFilter} onFilterChange={setActiveFilter} />
 
         {/* Loading State */}
-        {loading && (
+        {isLoading && (
           <div className="flex justify-center items-center py-20">
             <LoadingSpinner />
           </div>
         )}
 
         {/* Error State */}
-        {error && !loading && (
+        {isError && !isLoading && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -120,12 +94,12 @@ export default function ProjectsPage() {
             <h3 className="text-2xl font-semibold text-foreground mb-2">
               Oops! Something went wrong
             </h3>
-            <p className="text-muted-foreground">{error}</p>
+            {/* <p className="text-muted-foreground">{isError}</p> */}
           </motion.div>
         )}
 
         {/* Empty State */}
-        {!loading && !error && filteredProjects.length === 0 && (
+        {!isLoading && !isError && filteredProjects.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -144,7 +118,7 @@ export default function ProjectsPage() {
         )}
 
         {/* Projects Grid */}
-        {!loading && !error && filteredProjects.length > 0 && (
+        {!isLoading && !isError && filteredProjects.length > 0 && (
           <>
             <motion.div
               layout

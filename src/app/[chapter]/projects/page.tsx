@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect, use, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '@/components/common/ProjectCard';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import { ProjectType } from '@/types/project';
-import { projectsData } from '@/utils/projectsData';
 import { chaptersData } from '@/data/chaptersData';
 import { useThemeContext } from '@/context/ThemeContext';
+import { useApiQuery } from '@/hooks/useFetch';
 
 interface ChapterProjectsPageProps {
   params: Promise<{ chapter: string }>;
@@ -15,50 +15,34 @@ interface ChapterProjectsPageProps {
 }
 
 export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps) {
-  const resolvedParams = use(params); 
+  const resolvedParams = use(params);
   const chapter = resolvedParams.chapter;
 
   const chapterInfo = chaptersData.find(ch => ch.chapterId === chapter);
   const mainColor = chapterInfo!.color.split('-').slice(0, 2).join('-');
   const { isDark } = useThemeContext();
-  const [projects, setProjects] = useState<ProjectType[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        setLoading(true);
-        setError(null);
 
-        // Simulate API delay
-        await new Promise((resolve) => setTimeout(resolve, 500));
+  const { data, isLoading, isError } = useApiQuery<ProjectType[]>(
+    {
+      queryKey: ["projects"],
+      url: "https://ieee-hsb-backend.vercel.app/api/projects",
+    }
+  );
+  const chapterProjects = useMemo(() => {
+      if (!data) return [];
+    // Filter projects by chapter
+    return data?.filter(
+      (p) => p.chapterId.toLowerCase() === chapter.toLowerCase()
+    );
+  }, [data, chapter]);
 
-        // Filter projects by chapter
-        const chapterProjects = projectsData.filter(
-          (p) => p.chapterId.toLowerCase() === chapter.toLowerCase()
-        );
 
-        // Sort by createdAt descending
-        const sortedData = [...chapterProjects].sort(
-          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
 
-        setProjects(sortedData);
-      } catch (err) {
-        setError('Failed to load projects. Please try again later.');
-        console.error('Error fetching projects:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, [chapter]);
 
   return (
     <div className="min-h-screen relative">
-      {!isDark && <div className="absolute -z-10 inset-0 bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]"
+      {!isDark && <div className="absolute -z-10 inset-0 bg-size-[3rem_3rem] mask-[radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]"
 
         style={{
           backgroundImage: `
@@ -71,7 +55,7 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
       {/* Hero Section */}
       <section
         className={`relative overflow-hidden`}
-        style={{ color: `var(--${mainColor}-100)`}}
+        style={{ color: `var(--${mainColor}-100)` }}
       >
         <div className="container mx-auto px-4">
           <motion.div
@@ -96,25 +80,25 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
       {/* Projects Content */}
       <section className="container mx-auto px-4 py-12">
         {/* Loading State */}
-        {loading && (
+        {isLoading && (
           <div className="flex justify-center items-center py-20">
             <LoadingSpinner />
           </div>
         )}
 
         {/* Error State */}
-        {error && !loading && (
+        {isError && !isLoading && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
             <div className="text-6xl mb-4">⚠️</div>
             <h3 className="text-2xl font-semibold text-foreground mb-2">
               Oops! Something went wrong
             </h3>
-            <p className="text-muted-foreground">{error}</p>
+            {/* <p className="text-muted-foreground">{error}</p> */}
           </motion.div>
         )}
 
         {/* Empty State */}
-        {!loading && !error && projects.length === 0 && (
+        {!isLoading && !isError && chapterProjects.length === 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
             <div className="text-6xl mb-4">📂</div>
             <h3 className="text-2xl font-semibold text-foreground mb-2">
@@ -127,10 +111,10 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
         )}
 
         {/* Projects Grid */}
-        {!loading && !error && projects.length > 0 && (
+        {!isLoading && !isError && chapterProjects.length > 0 && (
           <>
             <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
+              {chapterProjects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </motion.div>
@@ -138,7 +122,7 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
             {/* Projects Stats */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mt-12 text-center text-muted-foreground">
               <p>
-                Showing <span className="font-semibold text-ieee-aqua-100">{projects.length}</span> projects
+                Showing <span className="font-semibold text-ieee-aqua-100">{chapterProjects.length}</span> projects
               </p>
             </motion.div>
           </>

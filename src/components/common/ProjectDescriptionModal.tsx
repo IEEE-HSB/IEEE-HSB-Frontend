@@ -11,7 +11,7 @@ export default function ProjectDescriptionModal({ description, onClose }: Projec
                 <div className="flex items-center justify-between pb-4">
                     <h4 className="text-lg font-semibold mb-2 text-black">Project Description</h4>
 
-                   
+                    <p className='cursor-pointer' onClick={onClose}>X</p>
 
                 </div>
                 <div className="mt-4 p-4 bg-white rounded-lg shadow-sm">

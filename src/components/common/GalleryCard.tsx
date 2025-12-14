@@ -1,11 +1,11 @@
 "use client";
 
 import Image from 'next/image';
-import { GalleryItem } from '@/types/gallery';
+import { GalleryType } from '@/types/gallery';
 import { motion } from 'framer-motion';
 
 interface GalleryCardProps {
-  item: GalleryItem;
+  item: GalleryType;
   index: number;
 }
 
@@ -20,7 +20,7 @@ const chapterColors: Record<string, { bg: string; text: string }> = {
 };
 
 export default function GalleryCard({ item, index }: GalleryCardProps) {
-  const colors = chapterColors[item.chapterId] || { bg: 'bg-ieee-blue-100', text: 'text-white' };
+  const colors = chapterColors[item.chapterId!] || { bg: 'bg-ieee-blue-100', text: 'text-white' };
 
   return (
     <motion.div
@@ -44,7 +44,7 @@ export default function GalleryCard({ item, index }: GalleryCardProps) {
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-linear-to-t from-black/80 to-transparent">
         <h3 className="text-white font-semibold text-lg mb-2 line-clamp-2">
           {item.title}
         </h3>

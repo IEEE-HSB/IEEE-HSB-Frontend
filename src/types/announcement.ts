@@ -1,5 +1,5 @@
 export interface Announcement {
-  id: number;
+  id: string;
   title: string;
   description: string;
   link?: string;
@@ -7,3 +7,4 @@ export interface Announcement {
 }
 
 export type AnnouncementsData = Announcement[];
+export type AnnouncementType = Announcement;

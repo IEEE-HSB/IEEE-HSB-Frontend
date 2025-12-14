@@ -1,19 +1,29 @@
 "use client";
 
-import { useAnnouncements } from "@/hooks/useFetch";
-import type { Announcement } from "@/types/announcement";
+import { useApiQuery } from "@/hooks/useFetch";
+import type { Announcement, AnnouncementsData } from "@/types/announcement";
 import AnnouncementsCard from "@/components/AnnouncementsCard";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
 
 export default function AnnouncementPage() {
-  const { data: announcements, isLoading, isError } = useAnnouncements();
+  const { data: announcements, isLoading, isError } = useApiQuery<AnnouncementsData>(
+    {
+    queryKey: ["announcements"],
+    url: "https://ieee-hsb-backend.vercel.app/api/announcements",
+    select: data =>
+      data.sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() -
+          new Date(a.createdAt).getTime()
+      ),
+  }
+  );
 
   if (isLoading)
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Loading...</p>
-      </div>
+      <LoadingSpinner/>
     );
 
   if (isError)

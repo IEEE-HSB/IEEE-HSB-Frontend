@@ -5,13 +5,11 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get('authToken')?.value
   const path = req.nextUrl.pathname
 
-  // حماية الداشبورد
   if (path.startsWith('/dashboard') && !token) {
     return NextResponse.redirect(new URL('/login', req.url))
   }
 
-  // منع دخول login لو already logged in
-  if ((path === '/login' || path === '/register') && token) {
+  if ((path === '/login' || path === '/register' || path === '/resetcode' || path === '/forgetpassword') && token) {
     return NextResponse.redirect(new URL('/dashboard', req.url))
   }
 
@@ -19,5 +17,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login', '/register'],
+  matcher: ['/dashboard/:path*', '/login', '/register' , '/resetcode', '/forgetpassword'],
 }

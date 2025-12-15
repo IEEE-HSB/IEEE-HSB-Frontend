@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect, use, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Slider from "react-slick";
 import axios from "axios";
@@ -9,11 +9,13 @@ import { useThemeContext } from "@/context/ThemeContext";
 import { chaptersData } from "@/data/chaptersData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
 
 interface EventItem {
     id: number;
     name: string;
     details: string;
+    image: string;
     location: string;
     date: string; // YYYY-MM-DD
     chapterId: string;
@@ -35,41 +37,43 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
 
     const currentYear = new Date().getFullYear();
     const [selectedYear, setSelectedYear] = useState(currentYear.toString());
-    const [years, setYears] = useState<string[]>([]);
-    const [allEvents, setAllEvents] = useState<EventItem[]>([]);
+    // const [years, setYears] = useState<string[]>([]);
+    // const [allEvents, setAllEvents] = useState<EventItem[]>([]);
     const { isDark } = useThemeContext();
 
-    const { data, isLoading, error } = useQuery<EventsData>({
+    const { data, isLoading, isError, error } = useQuery<EventsData>({
         queryKey: ["events"],
         queryFn: async () => {
-            const response = await axios.get("https://raw.githubusercontent.com/cheetah-10/db.json/main/db.json");
-            return response.data.events;
+            const response = await axios.get("https://ieee-hsb-backend.vercel.app/api/events");
+            return response.data.data;
         },
     });
 
+    const years = useMemo(() => {
+        if (!data) return []
+        return Object.keys(data);
+    }, [data])
+
+    const chapterEvents = useMemo(() => {
+        if (!data) return []
+        return Object.values(data).flat().filter(
+            (e) => e.chapterId && e.chapterId.toLowerCase() === chapterId.toLowerCase()
+        );
+    }, [data, chapterId]);
+
+    const filteredEvents = useMemo(() => {
+        return chapterEvents.filter((event) => event.date.split('-')[0] == selectedYear)
+    }, [chapterEvents, selectedYear])
+
     useEffect(() => {
-        if (data) {
-            const newYears = Object.keys(data);
-            setYears(newYears);
-
-            const eventsFlat = Object.values(data).flat();
-
-            const chapterEvents = eventsFlat.filter(
-                (e) => e.chapterId && e.chapterId.toLowerCase() === chapterId.toLowerCase()
-            );
-
-            setAllEvents(chapterEvents);
-
-            if (!newYears.includes(selectedYear)) {
-                setSelectedYear(newYears[0] || currentYear.toString());
-            }
+        if (years.length && !years.includes(selectedYear)) {
+            setSelectedYear(years[0]);
         }
-    }, [data, chapterId, selectedYear, currentYear]);
+    }, [years, selectedYear]);
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error instanceof Error) return <div>Error fetching events: {error.message}</div>;
+    if (isLoading) return <LoadingSpinner />;
+    if (isError) return <div>Error fetching events: {error.message}</div>;
 
-    const filteredEvents = allEvents.filter((event) => event.date.split("-")[0] === selectedYear);
 
     const settings = {
         dots: false,
@@ -98,7 +102,7 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
             ></div>}
             {/* Slider Years */}
             <div className={`slider-container fixed z-10 w-full text-xl text-center bg-${mainColor}-100`}
-            style={{color: `var(--${mainColor}-60)`}}
+                style={{ color: `var(--${mainColor}-60)` }}
             >
                 <Slider {...settings}>
                     {years.map((year) => (
@@ -146,7 +150,7 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
                                                     GALLERY
                                                 </button>
                                                 <button
-                                                    className={`px-6 py-2 font-black leading-7 text-lg border-${mainColor}-100 border-2 bg-${mainColor}-100 text-gray-300 dark:text-${mainColor}-100 rounded-md hover:bg-transparent hover:text-${mainColor}-100 flex-1 transition-colors`}
+                                                    className={`px-6 py-2 font-black leading-7 text-lg border-${mainColor}-100 border-2 bg-${mainColor}-100 dark:bg-ieee-blue-100 dark:text-${mainColor}-100 rounded-md hover:bg-transparent hover:text-${mainColor}-100 flex-1 transition-colors`}
                                                 >
                                                     MORE DETAILS
                                                 </button>
@@ -156,8 +160,8 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
                                         <div
                                             className="lg:w-[40%] h-48 sm:h-64 lg:h-auto lg:me-10 border border-black rounded-xl lg:mt-0 m-7 box-border bg-green-500"
                                             style={{
-                                                backgroundImage:
-                                                    'linear-gradient(rgba(255, 255, 255, 0.87), rgba(255, 255, 255, 0.87)), url("/assets/logos/ieee.png")',
+                                                backgroundImage: `url(${event.image})`,
+
                                                 backgroundSize: "cover",
                                                 backgroundPosition: "center",
                                                 backgroundRepeat: "no-repeat",

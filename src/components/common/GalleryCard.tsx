@@ -11,12 +11,10 @@ interface GalleryCardProps {
 
 const chapterColors: Record<string, { bg: string; text: string }> = {
   WIE: { bg: 'bg-ieee-purple-100', text: 'text-white' },
-  CS: { bg: 'bg-ieee-blue-100', text: 'text-white' },
+  CS: { bg: 'bg-ieee-yellow-100', text: 'text-white' },
   PES: { bg: 'bg-ieee-green-100', text: 'text-white' },
   RAS: { bg: 'bg-ieee-red-100', text: 'text-white' },
-  IAS: { bg: 'bg-ieee-teal-100', text: 'text-white' },
-  EMBS: { bg: 'bg-ieee-aqua-100', text: 'text-white' },
-  'MTT-S': { bg: 'bg-ieee-cyan-100', text: 'text-white' },
+  COMSOC: { bg: 'bg-ieee-gold-100', text: 'text-white' },
 };
 
 export default function GalleryCard({ item, index }: GalleryCardProps) {

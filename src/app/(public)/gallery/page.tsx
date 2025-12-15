@@ -1,29 +1,40 @@
-"use client";
+'use client';
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import GalleryCard from '@/components/common/GalleryCard';
 import FilterBar from '@/components/common/FilterBar';
-import { galleryData } from '@/utils/galleryData';
-import { ChapterFilter } from '@/types/gallery';
+import { ChapterFilter, GalleryType } from '@/types/gallery';
 import { useThemeContext } from '@/context/ThemeContext';
+import { useApiQuery } from '@/hooks/useFetch';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
+import toast from 'react-hot-toast';
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState<ChapterFilter>('All');
-  const {isDark} = useThemeContext()
+  const { isDark } = useThemeContext();
+
+  const { data: gallery, isLoading, isError, error } = useApiQuery<GalleryType[]>({
+    queryKey: ["gallery"],
+    url: "https://ieee-hsb-backend.vercel.app/api/gallary",
+    method: "GET"
+  });
 
   // Filter gallery items based on selected chapter
   const filteredGallery = useMemo(() => {
-    if (activeFilter === 'All') {
-      return galleryData;
-    }
-    return galleryData.filter((item) => item.chapterId === activeFilter);
-  }, [activeFilter]);
+    if (!gallery) return [];
+    return activeFilter === 'All'
+      ? gallery
+      : gallery.filter((item) => item.chapterId === activeFilter);
+  }, [gallery, activeFilter]);
+
+  if (isLoading) return <LoadingSpinner />;
+  if (isError) return <div className="text-center py-20 text-red-500">Error loading gallery: {error?.message}</div>;
 
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-ieee-aqua-100 to-ieee-cyan-100 text-white pt-20 pb-28">
+      <section className="relative bg-linear-to-br from-ieee-aqua-100 to-ieee-cyan-100 text-white pt-20 pb-28">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -32,7 +43,7 @@ export default function GalleryPage() {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Event Gallery
+              Our Gallery
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
               Explore memorable moments from IEEE Helwan Student Branch events across all chapters
@@ -51,7 +62,7 @@ export default function GalleryPage() {
             <path
               d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V120Z"
               className="fill-background"
-              stroke={isDark? '#020618' : '#ffffff'}
+              stroke={isDark ? '#020618' : '#ffffff'}
             />
           </svg>
         </div>
@@ -80,10 +91,10 @@ export default function GalleryPage() {
           >
             <div className="text-6xl mb-4">📷</div>
             <h3 className="text-2xl font-semibold text-foreground mb-2">
-              No Events Found
+              No Gallery Found
             </h3>
             <p className="text-muted-foreground">
-              No events available for the selected chapter. Try selecting a different filter.
+              No Gallery available for the selected chapter. Try selecting a different filter.
             </p>
           </motion.div>
         )}
@@ -97,7 +108,7 @@ export default function GalleryPage() {
         >
           <p>
             Showing <span className="font-semibold text-ieee-aqua-100">{filteredGallery.length}</span> of{' '}
-            <span className="font-semibold text-ieee-aqua-100">{galleryData.length}</span> events
+            <span className="font-semibold text-ieee-aqua-100">{gallery?.length ?? 0}</span> items
           </p>
         </motion.div>
       </section>

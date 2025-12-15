@@ -7,4 +7,5 @@ export type GalleryType = {
   chapterId?: string,
 }
 
+
 export type ChapterFilter = 'All' | 'WIE' | 'CS' | 'PES' | 'RAS' | 'COMSOC';

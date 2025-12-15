@@ -6,6 +6,7 @@ import { withRole } from '@/components/protected/withRole';
 import { useApiQuery } from '@/hooks/useFetch'
 import { getAuthToken } from '@/lib/getAuthToken';
 import { EventType } from '@/types/event';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
@@ -32,18 +33,16 @@ function Page() {
     }
 
     // Fetch events from API
-    const { data: events, isLoading, isError } = useApiQuery<EventType[]>({
+    const { data: events, isLoading, isError } = useQuery<EventType[]>({
         queryKey: ["events"],
-        url: "https://ieee-hsb-backend.vercel.app/api/events",
-        method: "GET",
-        select: (res: any) => {
-            if (!res.data || typeof res.data !== "object") return [];
-            // flatten the data and map _id to id if needed
-            return Object.values(res.data.data || {}).flat().map((e: any) => ({
-                ...e,
-                id: e.id || e._id
-            })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        }
+        queryFn: async () => {
+            const res = await axios.get("https://ieee-hsb-backend.vercel.app/api/events");
+            const data = res.data.data as Record<string, EventType[]>; // type assertion
+            return Object.values(data)
+                .flat()
+                .map(e => ({ ...e, id: e.id || "" }))
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        },
     });
 
     const [eventsList, setEventsList] = useState<EventType[]>([]);

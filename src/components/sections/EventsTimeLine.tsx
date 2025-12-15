@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Slider from "react-slick";
 import axios from "axios";
@@ -16,6 +16,7 @@ interface EventItem {
     name: string;
     details: string;
     location: string;
+    image: string;
     date: string; // YYYY-MM-DD
 }
 
@@ -24,42 +25,40 @@ type EventsData = Record<string, EventItem[]>;
 export default function EventsTimeline() {
     const currentYear = new Date().getFullYear();
     const [selectedYear, setSelectedYear] = useState<string>(currentYear.toString());
-    const [years, setYears] = useState<string[]>([]);
-    const [allEvents, setAllEvents] = useState<EventItem[]>([]);
     const { isDark } = useThemeContext()
 
 
-    const { data, isLoading, error } = useQuery<EventsData>({
+    const { data, isLoading, isError, error } = useQuery<EventsData>({
         queryKey: ["events"],
         queryFn: async () => {
-            const response = await axios.get("https://raw.githubusercontent.com/cheetah-10/db.json/main/db.json");
-            // const parsedData = JSON.parse(response.data);
-            // console.log(parsedData)
-            return response.data.events;
+            const response = await axios.get("https://ieee-hsb-backend.vercel.app/api/events");
+            return response.data.data;
         },
     });
 
 
-    useEffect(() => {
-        if (data) {
-            const newYears = Object.keys(data);
-            setYears(newYears);
-            setAllEvents(Object.values(data).flat());
-            if (!newYears.includes(selectedYear)) {
-                setSelectedYear(newYears[0] || currentYear.toString());
-            }
-        }
-    }, [data, selectedYear, currentYear]);
+    const years = useMemo(() => {
+        if (!data) return []
+            return Object.keys(data);
+           
+    }, [data]);
+
+    const events = useMemo(()=>{
+        if (!data) return []
+         return Object.values(data).flat()
+    },[data])
+
+    const filteredEvents = useMemo(() => {
+            return events.filter((event) => event.date.split('-')[0] == selectedYear)
+        }, [events, selectedYear])
+    
 
     if (isLoading) return <div className="flex justify-center items-center py-20">
         <LoadingSpinner />
     </div>;
-    if (error instanceof Error)
+    if (isError)
         return <div className="flex justify-center items-center py-20">Error fetching events: {error.message}</div>;
 
-    const filteredEvents = allEvents.filter(
-        (event) => event.date.split("-")[0] === selectedYear
-    );
 
     const settings = {
         dots: false,
@@ -109,7 +108,7 @@ export default function EventsTimeline() {
                         <div
                             key={year}
                             onClick={() => setSelectedYear(year)}
-                            className={`cursor-pointer ${selectedYear === year ? "text-[#fff]" : ""} inline-block`}
+                            className={`cursor-pointer ${selectedYear === year ? "text-white" : ""} inline-block`}
                         >
                             <h3 className="font-sans font-black my-1">{year}</h3>
                         </div>
@@ -166,16 +165,16 @@ export default function EventsTimeline() {
                                             </div>
                                         </div>
 
-                                        <div className="lg:w-[40%] h-48 sm:h-64 lg:h-auto lg:me-10 border border-black rounded-xl lg:mt-0 m-7 box-border  bg-green-500"
-                                            style={{
-                                                backgroundImage:
-                                                    'linear-gradient(rgba(255, 255, 255, 0.87), rgba(255, 255, 255, 0.87)), url("/assets/logos/ieee.png")',
-                                                backgroundSize: "cover",
-                                                backgroundPosition: "center",
-                                                backgroundRepeat: "no-repeat",
-                                            }}>
+                                        <div
+  className="lg:w-[40%] h-48 sm:h-64 lg:h-auto lg:me-10 border border-black rounded-xl lg:mt-0 m-7 box-border"
+  style={{
+    backgroundImage: `url(${event.image})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+></div>
 
-                                        </div>
                                     </div>
                                 </div>
                             ))

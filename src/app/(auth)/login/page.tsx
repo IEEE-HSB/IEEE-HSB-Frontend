@@ -12,11 +12,14 @@ import IeeeLogo from "@/assets/logos/ieeeLogo";
 import { useThemeContext } from "@/context/ThemeContext";
 import axios from "axios";
 import { encrypt } from "@/lib/session";
+import { useContext } from "react";
+import { authContextObj } from "@/context/AuthContext";
 
 
 export default function Login() {
   const router = useRouter();
   const { isDark } = useThemeContext();
+const { login } = useContext(authContextObj);
 
 
   const initialValues = {
@@ -46,6 +49,7 @@ export default function Login() {
       {/* encrypt token and add it in cookies */ }
       const encryptedToken = encrypt(res.data.data.accessToken);
       document.cookie = `authToken=${encryptedToken}; path=/; max-age=${60 * 60 * 24}`; console.log(document.cookie);
+      login()
       toast.success(`Welcome back!`);
       router.push("/");
 

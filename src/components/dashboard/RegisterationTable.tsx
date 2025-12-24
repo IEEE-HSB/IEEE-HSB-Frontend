@@ -1,21 +1,22 @@
 import React from 'react';
 import { CheckCircle, XCircle, Clock, Eye } from 'lucide-react';
-import { Registeration } from '../../types/registerations';
+// import { Registeration } from '../../types/registerations';
+import { UserType } from '@/types/user';
 
 interface RegisterationTableProps {
-  registeration: Registeration[];
-  onApprove?: (id: string) => void;
-  onReject?: (id: string) => void;
+  users: UserType[];
+  onApprove?: (id: string, status: string) => void;
+  onReject?: (id: string, status: string) => void;
   showActions?: boolean;
 }
 
 export function RegisterationTable({
-  registeration,
+  users,
   onApprove,
   onReject,
   showActions = false,
 }: RegisterationTableProps) {
-  const getStatusBadge = (status: Registeration['status']) => {
+  const getStatusBadge = (status: UserType['status']) => {
     switch (status) {
       case 'approved':
         return (
@@ -75,47 +76,47 @@ export function RegisterationTable({
           </thead>
 
           <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
-            {registeration.filter(item => item.status === 'pending')
-              .map(registeration => (
+            {users.filter(item => item.status === 'pending')
+              .map(users => (
                 <tr
-                  key={registeration.id}
+                  key={users._id}
                   className="text-lg text-white text-center transition-colors bg-ieee-blue-80"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="">
-                      {registeration.volunteerName}
+                      {users.name}
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="">
-                      {registeration.chapter}
+                      {users.chapterId}
                     </div>
 
                   </td>
                   <td>
                     <div className="">
-                      {registeration.committee}
+                      {users.committee}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className="px-2 py-1">
-                      {registeration.role}
+                      {users.role}
                     </span>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap">{getStatusBadge(registeration.status)}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{getStatusBadge(users.status)}</td>
 
                     <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex gap-2 w-fit mx-auto">
                           <button
-                            onClick={() => onApprove?.(registeration.id)}
+                            onClick={() => onApprove?.(users._id,'active')}
                             className="p-2 cursor-pointer bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg hover:bg-green-200 dark:hover:bg-green-900/50 transition-all"
                             title="Approve"
                           >
                             <CheckCircle className="w-4 h-4" />
                           </button>
                           <button
-                            onClick={() => onReject?.(registeration.id)}
+                            onClick={() => onReject?.(users._id, 'rejected')}
                             className="p-2 cursor-pointer bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-900/50 transition-all"
                             title="Reject"
                           >
@@ -125,7 +126,7 @@ export function RegisterationTable({
                     </td>
                
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {new Date(registeration.registeredAt).toLocaleDateString()}
+                    {new Date(users.createdAt).toLocaleDateString()}
                   </td>
                 </tr>
               ))}
@@ -133,7 +134,7 @@ export function RegisterationTable({
         </table>
       </div>
 
-      {registeration.length === 0 && (
+      {users.length === 0 && (
         <div className="p-12 text-center">
           <Clock className="w-12 h-12 text-gray-400 mx-auto mb-3" />
           <p className="text-gray-500 dark:text-gray-400">No registerations yet</p>

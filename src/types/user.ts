@@ -1,12 +1,16 @@
 import { Committee, UserRole } from "./quiz";
 
-export interface User {
-  id: string;
+export type UserType ={
+  _id: string;
   name: string;
   email: string;
   role: UserRole;
+  chapterId: string;
   committee?: Committee;
-  avatar?: string;
+  status: string;
+  level: string;
+  badges: string[];
   points?: number;
-  rank?: number;
-}
+  createdAt: string;
+  updatedAt: string;
+} 

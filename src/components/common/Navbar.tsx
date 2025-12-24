@@ -76,14 +76,14 @@ export default function Navbar() {
                     >
 
                         {/* logo 207DA9*/}
-                        <div className="relative">
+                        <Link href='/' className="relative">
                             <div className="absolute inset-0 bg-gradient-to-br from-[#004d7a] to-[white] rounded-xl blur-lg opacity-35 transition-opacity" />
                             <IeeeLogo className="w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14" fillColor={isDark ? 'white' : '#207DA9'}></IeeeLogo>
-                        </div>
+                        </Link>
 
-                        <div className="flex flex-col items-start">
+                        <Link href='/' className="flex flex-col items-start">
                             <IeeeHelwan className="w-[120px] h-[35px] sm:w-[150px] sm:h-[45px] md:w-[170px] md:h-[50px]" fillColor={isDark ? 'white' : '#207DA9'} />
-                        </div>
+                        </Link>
                     </motion.button>
 
                     {/* Desktop Navigation */}
@@ -175,13 +175,13 @@ export default function Navbar() {
 
                                 {
                                     isAuthenticated ? (<Link
-                                        href={"/login"}
+                                        href="/login"
                                         onClick={logout}
                                         className="relative z-10"
                                     >
                                         Log out
                                     </Link>) : (<Link
-                                        href={"/login"}
+                                        href="/login"
                                         className="relative z-10"
                                     >
                                         Login

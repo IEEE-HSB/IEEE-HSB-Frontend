@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "IEEE HSB",
-  description: "Your gateway to IEEE HSB! Find events, workshops, student projects, quizzes, galleries, and everything happening across the IEEE Helwan Student Branch chapters — all in one easy platform.",
+  description: "Your gateway to IEEE Helwan Stuedent Branch! Find events, workshops, student projects, quizzes, galleries, and everything happening across the IEEE Helwan Student Branch chapters — all in one easy platform.",
   icons: {
     icon: "/assets/logos/ieeeIcon.png",
   },

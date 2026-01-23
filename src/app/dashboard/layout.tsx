@@ -1,4 +1,5 @@
 import Navbar from '@/components/dashboard/Navbar';
+import Script from 'next/script';
 import React from 'react'
 
 export default function DashboardLayout({
@@ -9,8 +10,18 @@ export default function DashboardLayout({
 }>) {
 
 
-    return (
-
+    return (<>
+ {/*  Google tag (gtag.js) */}
+      <Script strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-HQYJ619QV9"></Script>
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HQYJ619QV9');
+          `}
+      </Script>
 
 
         <div className=''>
@@ -20,7 +31,7 @@ export default function DashboardLayout({
                 {children}
             </div>
         </div>
-
+</>
 
 
     )

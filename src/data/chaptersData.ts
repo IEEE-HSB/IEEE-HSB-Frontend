@@ -40,7 +40,7 @@ export const chaptersData = [
         description: "Focused on the ever-evolving world of AI and communication systems. ComSoc offers 4 diverse tracks which are Analog IC, Digital IC, Embedded Systems and Machine Learning, where students explore real-world communication technologies through practical workshops and innovative projects.",
         title: "Communication Society",
         logo: "/assets/logos/comsocLogo.png",
-        color: 'ieee-gold-100',
+        color: 'ieee-black-80',
         whyJoinUs: [
             'Great learning opportunities',
             'Networking with professionals',

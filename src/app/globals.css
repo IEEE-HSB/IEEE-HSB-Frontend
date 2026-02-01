@@ -102,8 +102,11 @@
   --color-ieee-cyan-40: var(--ieee-cyan-40);
   --color-ieee-cyan-20: var(--ieee-cyan-20);
 
+  --color-ieee-black-100: var(--ieee-black-100);
   --color-ieee-black-80: var(--ieee-black-80);
-
+  --color-ieee-black-60: var(--ieee-black-60);
+  --color-ieee-black-40: var(--ieee-black-40);
+  --color-ieee-black-20: var(--ieee-black-20);
 }
 
 :root {
@@ -203,7 +206,13 @@
   --ieee-cyan-40: #C5E5FB;
   --ieee-cyan-20: #E7F3FE;
 
-  --ieee-black-80: #58595B;
+
+--ieee-black-100: #1C1C1E; /* near black – primary text */
+--ieee-black-80:  #58595B; /* الموجود عندك – secondary text */
+--ieee-black-60:  #8E8E93; /* muted text */
+--ieee-black-40:  #C7C7CC; /* borders / dividers */
+--ieee-black-20:  #E5E5EA; /* backgrounds / subtle fills */
+
 }
 
 .dark {
@@ -287,7 +296,8 @@
   --ieee-cyan-40: #8FC5C6;
   --ieee-cyan-20: #C6E1E1;
 
-  --ieee-black-80: #58595B;
+
+
 
 }
 

@@ -18,7 +18,7 @@ const chapterColors: Record<string, { bg: string; text: string }> = {
   CS: { bg: 'bg-ieee-yellow-100', text: 'text-white' },
   PES: { bg: 'bg-ieee-green-100', text: 'text-white' },
   RAS: { bg: 'bg-ieee-red-100', text: 'text-white' },
-  COMSOC: { bg: 'bg-ieee-orange-100', text: 'text-white' },
+  COMSOC: { bg: 'bg-ieee-black-80', text: 'text-black' },
 };
 
 const formatDate = (dateString: string) => {

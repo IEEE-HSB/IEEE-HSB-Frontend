@@ -27,7 +27,7 @@ export default function ProjectsModal({ images, onClose, bgColor, projectName}: 
 
                 {/* Header */}
                 <div className="flex text-white items-center justify-between border-b pb-4">
-                    <h3 className="text-xl font-medium text-heading">
+                    <h3 className="text-xl font-medium">
                         Look at this!🚀 <span className="text-lg">{projectName}</span>
                     </h3>
                     
@@ -47,7 +47,7 @@ export default function ProjectsModal({ images, onClose, bgColor, projectName}: 
                                 <img
                                     src={image}
                                     alt={`Slide ${index + 1}`}
-                                    className="max-h-[400px] object-contain mx-auto"
+                                    className="max-h-100 object-contain mx-auto"
                                 />
                             </div>
                         ))}

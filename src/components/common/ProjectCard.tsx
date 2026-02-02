@@ -18,7 +18,7 @@ const chapterColors: Record<string, { bg: string; text: string }> = {
   CS: { bg: 'bg-ieee-yellow-100', text: 'text-white' },
   PES: { bg: 'bg-ieee-green-100', text: 'text-white' },
   RAS: { bg: 'bg-ieee-red-100', text: 'text-white' },
-  COMSOC: { bg: 'bg-ieee-black-80', text: 'text-black' },
+  COMSOC: { bg: 'bg-ieee-black-80', text: 'text-white' },
 };
 
 const formatDate = (dateString: string) => {
@@ -36,8 +36,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
   const [images, setImages] = useState<string[]>([]);
 
-  function openImageModal(subImages: string[]) {
-    setImages(subImages);
+  const MAX_WORDS = 40;
+  const isLong = project.description.split(" ").length > MAX_WORDS;
+
+
+  function openImageModal(subImages: string[] | string) {
+    setImages(Array.isArray(subImages) ? subImages : [subImages]);
     setIsImageModalOpen(true);
   }
 
@@ -62,29 +66,29 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       className="group bg-card border border-border rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
     >
       {/* Image */}
-      
-        <div className="relative w-full h-48 overflow-hidden bg-muted cursor-pointer"
-        onClick={() => project.subImages && openImageModal(project.subImages!)}>
 
-          <Image
-            src={project.image ? project.image : "/assets/logos/ieee.png"}
+      <div className="relative w-full h-48 overflow-hidden bg-muted cursor-pointer"
+        onClick={() => project.image && openImageModal(project.image)}>
 
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-          <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+        <Image
+          src={project.image ? project.image : "/assets/logos/ieee.png"}
 
-          {/* Chapter Badge on Image */}
-          <div
-            className="absolute top-3 right-3">
-            <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${colors.bg} ${colors.text} shadow-lg`}>
-              {project.chapterId}
-            </span>
-          </div>
+          alt={project.title}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+
+        {/* Chapter Badge on Image */}
+        <div
+          className="absolute top-3 right-3">
+          <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${colors.bg} ${colors.text} shadow-lg`}>
+            {project.chapterId}
+          </span>
         </div>
-      
+      </div>
+
 
       {/* Content */}
       <div className="p-6 bg-white dark:bg-gray-900">
@@ -95,11 +99,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Description */}
         <div className="mb-4">
-          <p className="text-muted-foreground text-sm  line-clamp-3">
+          <p className={`text-muted-foreground text-sm ${isLong?'line-clamp-3': ''}`}>
             {project.description}
           </p>
-          <p onClick={openDescriptionModal}
-            className="text-blue-600 cursor-pointer">Read More</p>
+          {isLong ?<p onClick={openDescriptionModal}
+            className="text-blue-600 cursor-pointer">Read More</p>: ''}
           {isDescriptionModalOpen && (
             <ProjectDescriptionModal description={project.description} onClose={closeDescriptionModal} />
           )}

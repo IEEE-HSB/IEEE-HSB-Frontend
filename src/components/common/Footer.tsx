@@ -9,11 +9,10 @@ import Image from "next/image";
 import Link from "next/link";
 export function Footer() {
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Github, href: "#", label: "Github" },
+    { icon: Facebook, href: "https://www.facebook.com/ieeehsb/", label: "Facebook" },
+    { icon: Instagram, href: "https://www.instagram.com/ieee_hsb/", label: "Instagram" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/ieee-helwan-sb", label: "LinkedIn" },
+    // { icon: Github, href: "#", label: "Github" },
   ];
   const { isDark } = useThemeContext()
 
@@ -96,6 +95,7 @@ export function Footer() {
                     whileTap={{ scale: 0.95 }}
                     className="w-11 h-11 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white/20 transition-all border border-white/10 shadow-lg"
                     aria-label={social.label}
+                    target="_blank"
                   >
                     <social.icon className="h-5 w-5" />
                   </motion.a>
@@ -138,9 +138,9 @@ export function Footer() {
 
               { name: "RAS", src: "/assets/logos/rasLogo.png" },
               { name: "PES", src: "/assets/logos/pesLogo.png" },
+              { name: "WIE", src: "/assets/logos/wieLogo.png" },
               { name: "ComSoc", src: "/assets/logos/comsocLogo.png" },
               { name: "CS", src: "/assets/logos/csLogo.png" },
-              { name: "WIE", src: "/assets/logos/wieLogo.png" },
             ].map((chapter, index) => (
               <motion.div
                 key={chapter.name}
@@ -149,7 +149,7 @@ export function Footer() {
                 transition={{ delay: 0.5 + index * 0.05 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="text-sm backdrop-blur-sm flex items-center justify-center w-[60px] h-[60px]"
+                className="text-sm backdrop-blur-sm flex items-center justify-center w-15 h-15"
               // style={{ backgroundColor: `${chapter.color}20` }}
               >
                 <Link href={`/${chapter.name.toLowerCase()}`}>

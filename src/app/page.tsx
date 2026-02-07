@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Button } from '@/components/ui/button';
 import Chapters from '@/components/sections/Chapters';
+import ChairPersons from '@/components/sections/Chairpersons';
 
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
   function scrollToChapters() {
     const chaptersSection = document.getElementById('chapters-section');
     if (chaptersSection) {
-      chaptersSection.scrollIntoView({ behavior: 'smooth'});
+      chaptersSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
@@ -28,7 +29,7 @@ export default function Home() {
               alt="Technology Network Background"
               className="w-full h-full object-cover opacity-30 dark:opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-ieee-blue-100/45 to-background"></div>
+            <div className="absolute inset-0 bg-linear-to-b from-ieee-blue-100/45 to-background"></div>
           </div>
 
           {/* Content */}
@@ -39,7 +40,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="mb-6 text-[#717171] font-bold text-[20px] leading-[150%] tracking-[-0.011em] text-center align-middle"
             >
-             IEEE Helwan Student Branch
+              IEEE Helwan Student Branch
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -76,23 +77,31 @@ export default function Home() {
             {/* <Link href="/cs">
               <button>Go to CS Chapter</button>
             </Link> */}
-           
+
 
           </div>
         </section>
 
         {/*Chapters Section */}
-        <section id="chapters-section" className="pb-10 bg-gradient-to-b from-background to-ieee-blue-100/10">
+        <section id="chapters-section" className="pb-10 bg-linear-to-b from-background to-ieee-blue-100/10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4">Our Chapters</h2>
+            <h2 className="text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4 uppercase">Our Chapters</h2>
             <p className="text-lg text-[#706d6d]  mx-auto max-w-2xl pb-5 pt-2">
               Explore the diverse chapters of IEEE Helwan Student Branch, each dedicated to advancing knowledge and innovation in their respective fields.
             </p>
-           
-            <Chapters/>
-
+            <Chapters />
           </div>
-         
+        </section>
+
+
+        <section className='py-10'>
+          <div className="text-center">
+            <p className="text-2xl md:text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4">
+              MEET OUR CHAIRPERSONS
+            </p>
+          </div>
+          <ChairPersons />
+
         </section>
 
       </div>

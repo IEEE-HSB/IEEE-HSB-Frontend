@@ -35,11 +35,10 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
       {!hideFooter && (
         <button
           onClick={() => setIsGameOpen(true)}
-          className="fixed bottom-8 right-8 bg-gradient-to-r from-ieee-aqua-80 to-ieee-cyan-80 text-white px-8 py-4 rounded-full shadow-2xl hover:shadow-ieee-yellow-100/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 z-50 group border-2 border-ieee-yellow-100/30"
+          className="fixed bottom-8 right-8 bg-linear-to-r from-ieee-aqua-80 to-ieee-cyan-80 text-white p-4 rounded-full shadow-2xl hover:shadow-ieee-yellow-100/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 z-50 group border-2 border-ieee-yellow-100/30 cursor-pointer"
         >
-          <Gamepad2 className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-          <span>Play IEEE Game</span>
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFD100]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
+          <Gamepad2 className="w-7 h-7 group-hover:rotate-12 transition-transform" />
+          <span className="md:block hidden">Play IEEE Game</span>
         </button>
       )}
 

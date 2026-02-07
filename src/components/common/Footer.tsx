@@ -48,7 +48,7 @@ export function Footer() {
         </svg>
       </div>
 
-      <div className="relative bg-gradient-to-br from-ieee-blue-100 via-ieee-blue-80 to-ieee-blue-100 text-white">
+      <div className="relative bg-linear-to-br from-ieee-blue-100 via-ieee-blue-80 to-ieee-blue-100 text-white">
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -146,7 +146,7 @@ export function Footer() {
                 key={chapter.name}
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + index * 0.05 }}
+                transition={{ delay: 0 + index * 0.05 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.1, y: -2 }}
                 className="text-sm backdrop-blur-sm flex items-center justify-center w-15 h-15"

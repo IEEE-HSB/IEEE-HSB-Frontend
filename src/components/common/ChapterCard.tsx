@@ -11,7 +11,7 @@ export default function ChapterCard(props: {chapterId: string, title: string; im
     }
     return (<>
 
-        <div className="relative bg-transparent w-full h-full p-6 border border-ieee-blue-100 rounded-2xl shadow-xs">
+        <div className="relative bg-white dark:bg-[#0F172B] w-full h-full p-6 border border-ieee-blue-100 rounded-2xl shadow-xs">
             <div className="flex flex-col items-center">
                 <img className={`w-24 h-24 mb-6 rounded-full p-1`}
                     style={{ backgroundColor: `var(--${color})` }}

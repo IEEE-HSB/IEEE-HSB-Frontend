@@ -23,13 +23,13 @@ export default function RoadmapsPage() {
 
     // Filter by category
     if (selectedCategory !== 'All') {
-      filtered = filtered.filter((roadmap: any) => roadmap.category === selectedCategory);
+      filtered = filtered.filter((roadmap) => roadmap.category === selectedCategory);
     }
 
     // Filter by search term
     if (searchTerm) {
       const lowerSearch = searchTerm.toLowerCase();
-      filtered = filtered.filter((roadmap: any) => 
+      filtered = filtered.filter((roadmap) => 
         roadmap.title.toLowerCase().includes(lowerSearch) ||
         roadmap.description.toLowerCase().includes(lowerSearch)
       );
@@ -39,9 +39,9 @@ export default function RoadmapsPage() {
     const sorted = [...filtered].sort((a, b) => {
       switch (sortOption) {
         case 'latest':
-          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+          return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
         case 'oldest':
-          return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+          return new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime();
         default:
           return 0;
       }

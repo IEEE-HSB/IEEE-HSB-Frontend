@@ -22,7 +22,7 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
     if (navigator.share) {
       navigator.share({
         title: article?.title,
-        text: article?.description,
+        text: article?.excerpt,
         url: window.location.href,
       }).catch(() => {});
     } else {
@@ -44,7 +44,7 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
       <div className="container mx-auto px-4 py-20 text-center">
         <h1 className="text-3xl font-bold mb-4">Article Not Found</h1>
         <p className="text-muted-foreground mb-8">
-          The article you're looking for doesn't exist or has been removed.
+          The article you&apos;re looking for doesn&apos;t exist or has been removed.
         </p>
         <Button onClick={() => router.push('/knowledge-hub/articles')}>
           Back to Articles
@@ -154,7 +154,7 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
             <h2 className="text-2xl font-bold mb-4 text-foreground">Overview</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-muted-foreground leading-relaxed">
-                {article.description}
+                {article.excerpt}
               </p>
             </div>
           </section>

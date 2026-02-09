@@ -23,15 +23,15 @@ export default function ArticlesPage() {
 
     // Filter by category
     if (selectedCategory !== 'All') {
-      filtered = filtered.filter((article: any) => article.category === selectedCategory);
+      filtered = filtered.filter((article) => article.category === selectedCategory);
     }
 
     // Filter by search term
     if (searchTerm) {
       const lowerSearch = searchTerm.toLowerCase();
-      filtered = filtered.filter((article: any) => 
+      filtered = filtered.filter((article) => 
         article.title.toLowerCase().includes(lowerSearch) ||
-        article.description.toLowerCase().includes(lowerSearch) ||
+        article.excerpt.toLowerCase().includes(lowerSearch) ||
         article.tags.some((tag: string) => tag.toLowerCase().includes(lowerSearch))
       );
     }
@@ -40,9 +40,9 @@ export default function ArticlesPage() {
     const sorted = [...filtered].sort((a, b) => {
       switch (sortOption) {
         case 'latest':
-          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+          return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
         case 'oldest':
-          return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+          return new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime();
         case 'mostViewed':
           return (b.views || 0) - (a.views || 0);
         default:

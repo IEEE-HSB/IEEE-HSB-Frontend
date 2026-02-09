@@ -1,14 +1,14 @@
 'use client';
 
-import { ArticleCategory, KnowledgeFilter, RoadmapCategory, RoadmapFilter } from '@/types/knowledge-hub';
+import { KnowledgeFilter, RoadmapFilter } from '@/types/knowledge-hub';
 
-interface CategoryFilterProps {
-  activeCategory: KnowledgeFilter | RoadmapFilter;
-  onCategoryChange: (category: KnowledgeFilter | RoadmapFilter) => void;
+interface CategoryFilterProps<T extends KnowledgeFilter | RoadmapFilter = KnowledgeFilter> {
+  activeCategory: T;
+  onCategoryChange: (category: T) => void;
   type?: 'article' | 'roadmap';
 }
 
-const articleCategories: (KnowledgeFilter)[] = [
+const articleCategories: KnowledgeFilter[] = [
   'All',
   'Tutorial',
   'Research',
@@ -17,7 +17,7 @@ const articleCategories: (KnowledgeFilter)[] = [
   'Case Study',
 ];
 
-const roadmapCategories: (RoadmapFilter)[] = [
+const roadmapCategories: RoadmapFilter[] = [
   'All',
   'Software Engineering',
   'Power Systems',
@@ -25,14 +25,16 @@ const roadmapCategories: (RoadmapFilter)[] = [
   'Communications',
   'AI & ML',
   'Embedded Systems',
+  'Web Development',
+  'Data Science',
 ];
 
-export default function CategoryFilter({ 
+export default function CategoryFilter<T extends KnowledgeFilter | RoadmapFilter = KnowledgeFilter>({ 
   activeCategory, 
   onCategoryChange,
   type = 'article' 
-}: CategoryFilterProps) {
-  const categories = type === 'article' ? articleCategories : roadmapCategories;
+}: CategoryFilterProps<T>) {
+  const categories = (type === 'article' ? articleCategories : roadmapCategories) as T[];
 
   return (
     <div className="flex items-center gap-2 overflow-x-auto pb-2">

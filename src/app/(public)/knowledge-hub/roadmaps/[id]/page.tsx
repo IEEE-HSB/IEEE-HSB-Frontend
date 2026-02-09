@@ -28,7 +28,7 @@ export default function RoadmapDetailPage({ params }: { params: Promise<{ id: st
       <div className="container mx-auto px-4 py-20 text-center">
         <h1 className="text-3xl font-bold mb-4">Roadmap Not Found</h1>
         <p className="text-muted-foreground mb-8">
-          The roadmap you're looking for doesn't exist or has been removed.
+          The roadmap you&apos;re looking for doesn&apos;t exist or has been removed.
         </p>
         <Button onClick={() => router.push('/knowledge-hub/roadmaps')}>
           Back to Roadmaps

@@ -21,7 +21,7 @@ export default function ResearchPage() {
             Research & References
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            This section is under construction. Soon you'll be able to access research papers, academic resources, and references from our volunteers.
+            This section is under construction. Soon you&apos;ll be able to access research papers, academic resources, and references from our volunteers.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">

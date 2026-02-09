@@ -1,70 +1,70 @@
 {
   "chairpersons": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
       "story": "Short story about yourself"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "John Doe",
       "image": "assets/images/chairperson.png",
       "title": "Web Master",
@@ -198,70 +198,70 @@
   },
   "announcements": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Recruitment is Now Open!",
       "description": "Apply now to join IEEE Helwan SB and become part of our innovative community.",
       "link": "https://apply.ieeehelwan.org",
       "createdAt": "2025-11-08T10:00:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Workshop Registration Open",
       "description": "Join our new workshop on AI Fundamentals.",
       "link": "https://ieeehelwan.org/workshops",
       "createdAt": "2025-11-09T12:00:00Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Recruitment is Now Open!",
       "description": "Apply now to join IEEE Helwan SB and become part of our innovative community.",
       "link": "https://apply.ieeehelwan.org",
       "createdAt": "2025-11-08T10:00:00Z"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Workshop Registration Open",
       "description": "Join our new workshop on AI Fundamentals.",
       "link": "https://ieeehelwan.org/workshops",
       "createdAt": "2025-11-09T12:00:00Z"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Recruitment is Now Open!",
       "description": "Apply now to join IEEE Helwan SB and become part of our innovative community.",
       "link": "https://apply.ieeehelwan.org",
       "createdAt": "2025-11-08T10:00:00Z"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Workshop Registration Open",
       "description": "Join our new workshop on AI Fundamentals.",
       "link": "https://ieeehelwan.org/workshops",
       "createdAt": "2025-11-09T12:00:00Z"
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Workshop Registration Open",
       "description": "Join our new workshop on AI Fundamentals.",
       "link": "https://ieeehelwan.org/workshops",
       "createdAt": "2025-11-09T12:00:00Z"
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Workshop Registration Open",
       "description": "Join our new workshop on AI Fundamentals.",
       "link": "https://ieeehelwan.org/workshops",
       "createdAt": "2025-11-09T12:00:00Z"
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Workshop Registration Open",
       "description": "Join our new workshop on AI Fundamentals.",
       "link": "https://ieeehelwan.org/workshops",
       "createdAt": "2025-11-09T12:00:00Z"
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "Workshop Registration Open",
       "description": "Join our new workshop on AI Fundamentals.",
       "link": "https://ieeehelwan.org/workshops",
@@ -305,7 +305,8 @@
           ],
           "correctAnswer": 0
         }
-      ]
+      ],
+      "started": true
     },
     {
       "id": "quiz2",

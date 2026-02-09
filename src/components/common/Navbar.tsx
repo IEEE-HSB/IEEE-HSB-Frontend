@@ -49,7 +49,7 @@ export default function Navbar() {
     ]
 
     if (isAuthenticated) {
-        navLinks.push({ name: "Dashboard", page: "dashboard" });
+        navLinks.push({ name: "ئDashboard", page: "dashboard" });
     }
 
 

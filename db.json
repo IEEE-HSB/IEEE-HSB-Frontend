@@ -267,5 +267,242 @@
       "link": "https://ieeehelwan.org/workshops",
       "createdAt": "2025-11-09T12:00:00Z"
     }
+  ],
+  "quizzes": [
+    {
+      "id": "quiz1",
+      "chapter": "ras",
+      "committee": "Robotics",
+      "title": "Robotics Basics",
+      "description": "Test your knowledge on the fundamentals of robotics.",
+      "questions": 10,
+      "points": 10,
+      "timeLimit": 15,
+      "isGeneral": true,
+      "startDate": "2026-02-01T00:00:00Z",
+      "durationDays": 7,
+      "difficulty": "easy",
+      "quizQuestions": [
+        {
+          "id": "q1",
+          "question": "What is the primary function of a robot?",
+          "options": [
+            "To perform tasks autonomously",
+            "To entertain humans",
+            "To replace humans in all jobs",
+            "To connect to the internet"
+          ],
+          "correctAnswer": 0
+        },
+        {
+          "id": "q2",
+          "question": "Which sensor is commonly used for distance measurement in robots?",
+          "options": [
+            "Ultrasonic sensor",
+            "Temperature sensor",
+            "Light sensor",
+            "Pressure sensor"
+          ],
+          "correctAnswer": 0
+        }
+      ]
+    },
+    {
+      "id": "quiz2",
+      "chapter": "wie",
+      "committee": "HR",
+      "title": "Women in Engineering",
+      "description": "Learn about the contributions of women in engineering fields.",
+      "questions": 8,
+      "timeLimit": 10,
+      "points": 10,
+      "isGeneral": false,
+      "startDate": "2026-02-05T00:00:00Z",
+      "durationDays": 5,
+      "difficulty": "medium",
+      "quizQuestions": [
+        {
+          "id": "q1",
+          "question": "Who was the first woman to receive a degree in engineering?",
+          "options": [
+            "Edith Clarke",
+            "Ada Lovelace",
+            "Emily Roebling",
+            "Hertha Ayrton"
+          ],
+          "correctAnswer": 2
+        },
+        {
+          "id": "q2",
+          "question": "Which field of engineering has the highest percentage of women?",
+          "options": [
+            "Biomedical Engineering",
+            "Mechanical Engineering",
+            "Civil Engineering",
+            "Electrical Engineering"
+          ],
+          "correctAnswer": 0
+        },
+        {
+          "id": "q3",
+          "question": "In which year was the Society of Women Engineers (SWE) founded?",
+          "options": [
+            "1950",
+            "1920",
+            "1940",
+            "1960"
+          ],
+          "correctAnswer": 2
+        }
+      ],
+      "started": true
+    },
+    {
+      "id": "quiz2",
+      "chapter": "wie",
+      "committee": "HR",
+      "title": "Women in Engineering",
+      "description": "Learn about the contributions of women in engineering fields.",
+      "questions": 8,
+      "timeLimit": 10,
+      "points": 10,
+      "isGeneral": false,
+      "startDate": "2026-02-05T00:00:00Z",
+      "durationDays": 5,
+      "difficulty": "medium",
+      "quizQuestions": [
+        {
+          "id": "q1",
+          "question": "Who was the first woman to receive a degree in engineering?",
+          "options": [
+            "Edith Clarke",
+            "Ada Lovelace",
+            "Emily Roebling",
+            "Hertha Ayrton"
+          ],
+          "correctAnswer": 2
+        },
+        {
+          "id": "q2",
+          "question": "Which field of engineering has the highest percentage of women?",
+          "options": [
+            "Biomedical Engineering",
+            "Mechanical Engineering",
+            "Civil Engineering",
+            "Electrical Engineering"
+          ],
+          "correctAnswer": 0
+        },
+        {
+          "id": "q3",
+          "question": "In which year was the Society of Women Engineers (SWE) founded?",
+          "options": [
+            "1950",
+            "1920",
+            "1940",
+            "1960"
+          ],
+          "correctAnswer": 2
+        }
+      ]
+    },
+    {
+      "id": "quiz2",
+      "chapter": "wie",
+      "committee": "HR",
+      "title": "Women in Engineering",
+      "description": "Learn about the contributions of women in engineering fields.",
+      "questions": 8,
+      "timeLimit": 10,
+      "points": 10,
+      "isGeneral": false,
+      "startDate": "2026-02-05T00:00:00Z",
+      "durationDays": 5,
+      "difficulty": "medium",
+      "quizQuestions": [
+        {
+          "id": "q1",
+          "question": "Who was the first woman to receive a degree in engineering?",
+          "options": [
+            "Edith Clarke",
+            "Ada Lovelace",
+            "Emily Roebling",
+            "Hertha Ayrton"
+          ],
+          "correctAnswer": 2
+        },
+        {
+          "id": "q2",
+          "question": "Which field of engineering has the highest percentage of women?",
+          "options": [
+            "Biomedical Engineering",
+            "Mechanical Engineering",
+            "Civil Engineering",
+            "Electrical Engineering"
+          ],
+          "correctAnswer": 0
+        },
+        {
+          "id": "q3",
+          "question": "In which year was the Society of Women Engineers (SWE) founded?",
+          "options": [
+            "1950",
+            "1920",
+            "1940",
+            "1960"
+          ],
+          "correctAnswer": 2
+        }
+      ]
+    },
+    {
+      "id": "quiz2",
+      "chapter": "wie",
+      "committee": "HR",
+      "title": "Women in Engineering",
+      "description": "Learn about the contributions of women in engineering fields.",
+      "questions": 8,
+      "timeLimit": 10,
+      "points": 10,
+      "isGeneral": false,
+      "startDate": "2026-02-05T00:00:00Z",
+      "durationDays": 5,
+      "difficulty": "medium",
+      "quizQuestions": [
+        {
+          "id": "q1",
+          "question": "Who was the first woman to receive a degree in engineering?",
+          "options": [
+            "Edith Clarke",
+            "Ada Lovelace",
+            "Emily Roebling",
+            "Hertha Ayrton"
+          ],
+          "correctAnswer": 2
+        },
+        {
+          "id": "q2",
+          "question": "Which field of engineering has the highest percentage of women?",
+          "options": [
+            "Biomedical Engineering",
+            "Mechanical Engineering",
+            "Civil Engineering",
+            "Electrical Engineering"
+          ],
+          "correctAnswer": 0
+        },
+        {
+          "id": "q3",
+          "question": "In which year was the Society of Women Engineers (SWE) founded?",
+          "options": [
+            "1950",
+            "1920",
+            "1940",
+            "1960"
+          ],
+          "correctAnswer": 2
+        }
+      ]
+    }
   ]
 }

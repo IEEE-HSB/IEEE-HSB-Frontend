@@ -1,6 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import axios, { AxiosRequestConfig, Method } from "axios";
-
 type ApiQueryOptions<T> = {
   queryKey: readonly unknown[];
   url: string; 
@@ -37,8 +36,7 @@ export function useApiQuery<T>(
         data,
         headers,
       });
-
-      const result: T = res.data.data;
+ const result: T = res.data?.data ?? res.data;
 
       return select ? select(result) : result;
     },

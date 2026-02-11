@@ -6,7 +6,7 @@ import { useThemeContext } from "@/context/ThemeContext";
 import { Chapter, Committee, chapterCommittees } from "@/types/quiz";
 import { chaptersData } from "@/data/chaptersData";
 import Link from "next/link";
-
+import { getChapterMainColor } from "@/lib/utils";
 interface QuizzesPageProps {
   params: Promise<{ chapter: string }>;
 }
@@ -14,10 +14,7 @@ interface QuizzesPageProps {
 export default function QuizzesPage({ params }: QuizzesPageProps) {
   const resolvedParams = use(params);
   const chapter = resolvedParams.chapter;
-
-  const chapterInfo = chaptersData.find((ch) => ch.chapterId === chapter);
-  const mainColor = chapterInfo!.color.split("-").slice(0, 2).join("-");
-
+  const mainColor =getChapterMainColor(chapter, chaptersData)
   const { isDark } = useThemeContext();
   const chapterKey = chapter.toUpperCase() as Chapter;
   const committeesForChapter: Committee[] = chapterCommittees[chapterKey] || [];
@@ -67,20 +64,22 @@ export default function QuizzesPage({ params }: QuizzesPageProps) {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-         
             className="text-center text-gray-700 text-lg py-20"
           >
             No committees available for {chapterKey}.
           </motion.p>
         ) : (
-          <motion.ul layout className="grid grid-cols-1 gap-6">
-            {committeesForChapter.map((committee) => (
+          <motion.ul
+            layout
+            className="grid grid-cols-1 gap-6 max-w-4xl mx-auto"
+          >
+            {committeesForChapter.map((committee, index) => (
               <motion.li
                 key={committee}
                 layout
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2+0.2*committeesForChapter.indexOf(committee) }}
+                transition={{ duration: 0.8, delay: 0.2 + 0.2 * index }}
               >
                 <Link
                   href={`/${chapter}/quizzes/${committee.replace(/\s+/g, "-").toLowerCase()}`}

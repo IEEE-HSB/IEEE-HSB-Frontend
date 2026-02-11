@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useStartQuiz } from "@/hooks/useQuizzes";
+import { useQuizzesContext } from "@/context/QuizzesContext";
 import { useRouter } from "next/navigation";
 import { Quiz } from "@/types/quiz";
 import { getChapterMainColor } from "@/lib/utils";
@@ -10,8 +10,8 @@ import { toast } from "react-hot-toast";
 
 interface QuizCardProps {
   quiz: Quiz;
-  chapter: string;
-  committee: string;
+  chapter: Quiz["chapter"];
+  committee: Quiz["committee"];
 }
 
 export default function QuizCard({ quiz, chapter, committee }: QuizCardProps) {
@@ -28,20 +28,21 @@ export default function QuizCard({ quiz, chapter, committee }: QuizCardProps) {
 
   const mainColor = getChapterMainColor(chapter, chaptersData);
 
-  const startQuiz = useStartQuiz();
+  const { startQuizMutation } = useQuizzesContext();
+  
   const router = useRouter();
-
-  const handleStartQuiz = async () => {
-    try {
-      await startQuiz.mutateAsync(quiz.id);
+const handleStartQuiz = async () => {
+  try {
+    await startQuizMutation.mutateAsync(quiz.id);
+    if (committee) {
       router.push(
         `/${chapter}/quizzes/${committee.replace(/\s+/g, "-").toLowerCase()}/${quiz.id}`,
       );
-    } catch (error) {
-      toast.error("Failed to start quiz");
     }
-  };
-
+  } catch (error) {
+    toast.error("Failed to start quiz");
+  }
+};
   return (
     <motion.li
       initial={{ opacity: 0, y: 20 }}
@@ -49,22 +50,21 @@ export default function QuizCard({ quiz, chapter, committee }: QuizCardProps) {
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
       className="
-        relative
-        p-5
-        rounded-xl
-        border-2
-        bg-transparent
-        shadow-md
-        flex
-        flex-col
-        justify-between
-        w-full
-        max-w-64
-        h-auto
-        min-h-64
-        mx-auto
-        max-[270px]:p-3
-      "
+  relative
+  p-5
+  rounded-xl
+  border-2
+  bg-transparent
+  shadow-md
+  flex
+  flex-col
+  justify-between
+  w-full
+  max-w-64
+  h-auto
+  min-h-64
+  max-[270px]:p-3
+"
       style={{ borderColor: `var(--${mainColor}-100)` }}
     >
       {!quiz.isGeneral && !isExpired && (

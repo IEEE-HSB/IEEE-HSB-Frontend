@@ -46,7 +46,10 @@ export interface Quiz {
   difficulty: Difficulty;
   quizQuestions: QuizQuestion[];
 }
-
+export interface UserAnswer {
+  questionId: string;
+  selectedOptionIndex: number;
+}
 
 export const chapterCommittees: Record<Chapter, Committee[]> = {
   CS: [

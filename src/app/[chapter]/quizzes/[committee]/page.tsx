@@ -3,13 +3,13 @@
 import { use } from "react";
 import { chaptersData } from "@/data/chaptersData";
 import { useState } from "react";
-import { useQuizzes } from "@/hooks/useQuizzes";
 import QuizCard from "@/components/Quizzes/QuizCard";
 import DifficultyFilter from "@/components/Quizzes/DifficultyFilter";
 import { useThemeContext } from "@/context/ThemeContext";
 import { formatCommitteeName, getChapterMainColor } from "@/lib/utils";
 import { Quiz } from "@/types/quiz";
 import { motion } from "framer-motion";
+import { useQuizzesContext } from "@/context/QuizzesContext";
 
 interface CommitteePageProps {
   params: Promise<{ chapter: string; committee: string }>;
@@ -29,27 +29,37 @@ export default function CommitteePage({ params }: CommitteePageProps) {
   const decodedCommittee = decodeURIComponent(committee);
   const committeeName = formatCommitteeName(decodedCommittee);
 
+
+  const { useGetQuizzes } = useQuizzesContext();
   const {
     data: quizzes,
     isLoading,
     error,
-  } = useQuizzes({
+  } = useGetQuizzes({
     chapter,
     committee: decodedCommittee,
   });
 
-  const filteredQuizzes = quizzes?.filter((q) => {
-    const start = new Date(q.startDate);
-    const end = new Date(start);
-    end.setDate(end.getDate() + q.durationDays);
-    const isExpired = new Date() > end;
-    const isGeneralEffective = q.isGeneral || isExpired;
-    const isContestActive = !q.isGeneral && !isExpired;
-    const typeMatch = toggle ? isContestActive : isGeneralEffective;
-    const difficultyMatch =
-      difficultyFilter === "all" || q.difficulty === difficultyFilter;
-    return typeMatch && difficultyMatch;
-  });
+  const filteredQuizzes = quizzes
+    ?.map((q) => {
+      const start = new Date(q.startDate);
+      const end = new Date(start);
+      end.setDate(end.getDate() + q.durationDays);
+
+      const isExpired = new Date() > end;
+
+      return { ...q, isExpired, isGeneral: q.isGeneral || isExpired };
+    })
+    .filter((q) => {
+      const isGeneralEffective = q.isGeneral;
+      const isContestActive = !q.isGeneral && !q.isExpired;
+      const typeMatch = toggle ? isContestActive : isGeneralEffective;
+
+      const difficultyMatch =
+        difficultyFilter === "all" || q.difficulty === difficultyFilter;
+
+      return typeMatch && difficultyMatch;
+    });
 
   return (
     <div className="min-h-screen relative">
@@ -66,7 +76,7 @@ export default function CommitteePage({ params }: CommitteePageProps) {
       )}
 
       <section className="relative">
-        <div className="w-full max-w-7xl mx-auto px-2 sm:px-4">
+        <div className="w-full max-w-7xl mx-auto px-5 sm:px-4">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -134,7 +144,7 @@ export default function CommitteePage({ params }: CommitteePageProps) {
             </div>
 
             {/* Quizzes */}
-            {isLoading && <p>Loading quizzes...</p>}
+            {isLoading && <p className="text-center">Loading quizzes...</p>}
             {!isLoading && filteredQuizzes?.length === 0 && (
               <p className="text-center">No quizzes available</p>
             )}
@@ -155,7 +165,9 @@ export default function CommitteePage({ params }: CommitteePageProps) {
                 gap-6
                 w-full
                 max-w-7xl
-                justify-items-center
+               justify-items-center
+              sm:justify-items-start
+
               "
             >
               {filteredQuizzes?.map((quiz: Quiz) => (
@@ -163,7 +175,7 @@ export default function CommitteePage({ params }: CommitteePageProps) {
                   key={quiz.id}
                   quiz={quiz}
                   chapter={chapter}
-                  committee={committee}
+                  committee={quiz.committee}
                 />
               ))}
             </ul>

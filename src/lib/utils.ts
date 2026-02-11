@@ -1,8 +1,8 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 //for normalizing strings to be used in URLs or comparisons in quiz filtering
 export const normalizeString = (value?: string) =>
@@ -15,7 +15,9 @@ export const formatCommitteeName = (committee?: string) => {
     .replace(/[-_]/g, " ")
     .split(/([&\s]+)/)
     .map((part) =>
-      /^[&\s]+$/.test(part) ? part : part.charAt(0).toUpperCase() + part.slice(1)
+      /^[&\s]+$/.test(part)
+        ? part
+        : part.charAt(0).toUpperCase() + part.slice(1),
     )
     .join("");
 };
@@ -25,9 +27,18 @@ interface Chapter {
   color: string;
 }
 
-export const getChapterMainColor = (chapterId: string, chaptersData: Chapter[]) => {
+export const getChapterMainColor = (
+  chapterId?: string,
+  chaptersData: Chapter[] = [],
+) => {
+  if (!chapterId) return "gray";
+
   const chapterInfo = chaptersData.find(
-    (ch) => ch.chapterId.toLowerCase() === chapterId.toLowerCase()
+    (ch) => ch.chapterId.toLowerCase() === chapterId.toLowerCase(),
   );
-  return chapterInfo ? chapterInfo.color.split("-").slice(0, 2).join("-") : "gray";
+
+  if (!chapterInfo || !chapterInfo.color) return "gray";
+
+  const parts = chapterInfo.color.split("-");
+  return parts.length >= 2 ? parts.slice(0, 2).join("-") : "gray";
 };

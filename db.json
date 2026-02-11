@@ -278,9 +278,87 @@
       "questions": 10,
       "points": 10,
       "timeLimit": 15,
-      "isGeneral": true,
+      "isGeneral": false,
       "startDate": "2026-02-01T00:00:00Z",
-      "durationDays": 7,
+      "durationDays": 30,
+      "difficulty": "easy",
+      "quizQuestions": [
+        {
+          "id": "q1",
+          "question": "What is the primary function of a robot?",
+          "options": [
+            "To perform tasks autonomously",
+            "To entertain humans",
+            "To replace humans in all jobs",
+            "To connect to the internet"
+          ],
+          "correctAnswer": 0
+        },
+        {
+          "id": "q2",
+          "question": "Which sensor is commonly used for distance measurement in robots?",
+          "options": [
+            "Ultrasonic sensor",
+            "Temperature sensor",
+            "Light sensor",
+            "Pressure sensor"
+          ],
+          "correctAnswer": 0
+        }
+      ],
+      "started": true
+    },
+    {
+      "id": "quiz2",
+      "chapter": "ras",
+      "committee": "Robotics",
+      "title": "Robotics Basics",
+      "description": "Test your knowledge on the fundamentals of robotics.",
+      "questions": 10,
+      "points": 10,
+      "timeLimit": 15,
+      "isGeneral": false,
+      "startDate": "2026-02-01T00:00:00Z",
+      "durationDays": 30,
+      "difficulty": "easy",
+      "quizQuestions": [
+        {
+          "id": "q1",
+          "question": "What is the primary function of a robot?",
+          "options": [
+            "To perform tasks autonomously",
+            "To entertain humans",
+            "To replace humans in all jobs",
+            "To connect to the internet"
+          ],
+          "correctAnswer": 0
+        },
+        {
+          "id": "q2",
+          "question": "Which sensor is commonly used for distance measurement in robots?",
+          "options": [
+            "Ultrasonic sensor",
+            "Temperature sensor",
+            "Light sensor",
+            "Pressure sensor"
+          ],
+          "correctAnswer": 0
+        }
+      ],
+      "started": true
+    },
+    {
+      "id": "quiz3",
+      "chapter": "ras",
+      "committee": "Robotics",
+      "title": "Robotics Basics",
+      "description": "Test your knowledge on the fundamentals of robotics.",
+      "questions": 10,
+      "points": 10,
+      "timeLimit": 15,
+      "isGeneral": false,
+      "startDate": "2026-02-01T00:00:00Z",
+      "durationDays": 30,
       "difficulty": "easy",
       "quizQuestions": [
         {
@@ -317,9 +395,9 @@
       "questions": 8,
       "timeLimit": 10,
       "points": 10,
-      "isGeneral": false,
+      "isGeneral": true,
       "startDate": "2026-02-05T00:00:00Z",
-      "durationDays": 5,
+      "durationDays": 8,
       "difficulty": "medium",
       "quizQuestions": [
         {
@@ -359,149 +437,336 @@
       "started": true
     },
     {
-      "id": "quiz2",
-      "chapter": "wie",
-      "committee": "HR",
-      "title": "Women in Engineering",
-      "description": "Learn about the contributions of women in engineering fields.",
-      "questions": 8,
-      "timeLimit": 10,
+      "id": "quiz3",
+      "chapter": "comsoc",
+      "committee": "FR",
+      "title": "Communications Technology",
+      "description": "Explore the latest advancements in communications technology.",
+      "questions": 12,
       "points": 10,
+      "timeLimit": 0.5,
       "isGeneral": false,
-      "startDate": "2026-02-05T00:00:00Z",
-      "durationDays": 5,
-      "difficulty": "medium",
+      "startDate": "2026-02-10T00:00:00Z",
+      "durationDays": 10,
+      "difficulty": "hard",
       "quizQuestions": [
         {
           "id": "q1",
-          "question": "Who was the first woman to receive a degree in engineering?",
+          "question": "What does 5G stand for in telecommunications?",
           "options": [
-            "Edith Clarke",
-            "Ada Lovelace",
-            "Emily Roebling",
-            "Hertha Ayrton"
+            "Fifth Generation",
+            "Fifth Gigabyte",
+            "Fifth Gateway",
+            "Fifth Geolocation"
           ],
-          "correctAnswer": 2
+          "correctAnswer": 0
         },
         {
           "id": "q2",
-          "question": "Which field of engineering has the highest percentage of women?",
+          "question": "Which technology is used for short-range wireless communication?",
           "options": [
-            "Biomedical Engineering",
-            "Mechanical Engineering",
-            "Civil Engineering",
-            "Electrical Engineering"
+            "Bluetooth",
+            "Wi-Fi",
+            "NFC",
+            "Zigbee"
           ],
           "correctAnswer": 0
         },
         {
           "id": "q3",
-          "question": "In which year was the Society of Women Engineers (SWE) founded?",
+          "question": "What is the primary purpose of a modem in communications?",
           "options": [
-            "1950",
-            "1920",
-            "1940",
-            "1960"
+            "To modulate and demodulate signals",
+            "To amplify signals",
+            "To route data packets",
+            "To encrypt data"
           ],
-          "correctAnswer": 2
+          "correctAnswer": 0
+        }
+      ],
+      "started": true
+    }
+  ],
+  "submit": [
+    {
+      "id": "3f97",
+      "quizId": "quiz3",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 0
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 0
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": 0
+        }
+      ],
+      "score": 30,
+      "timestamp": "2026-02-11T16:00:37.954Z"
+    },
+    {
+      "id": "a876",
+      "quizId": "quiz3",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 3
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 3
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": 2
         }
       ]
     },
     {
-      "id": "quiz2",
-      "chapter": "wie",
-      "committee": "HR",
-      "title": "Women in Engineering",
-      "description": "Learn about the contributions of women in engineering fields.",
-      "questions": 8,
-      "timeLimit": 10,
-      "points": 10,
-      "isGeneral": false,
-      "startDate": "2026-02-05T00:00:00Z",
-      "durationDays": 5,
-      "difficulty": "medium",
-      "quizQuestions": [
+      "id": "95ef",
+      "answers": [
         {
-          "id": "q1",
-          "question": "Who was the first woman to receive a degree in engineering?",
-          "options": [
-            "Edith Clarke",
-            "Ada Lovelace",
-            "Emily Roebling",
-            "Hertha Ayrton"
-          ],
-          "correctAnswer": 2
+          "questionId": "q1",
+          "selectedOptionIndex": 0
         },
         {
-          "id": "q2",
-          "question": "Which field of engineering has the highest percentage of women?",
-          "options": [
-            "Biomedical Engineering",
-            "Mechanical Engineering",
-            "Civil Engineering",
-            "Electrical Engineering"
-          ],
-          "correctAnswer": 0
+          "questionId": "q2",
+          "selectedOptionIndex": 1
         },
         {
-          "id": "q3",
-          "question": "In which year was the Society of Women Engineers (SWE) founded?",
-          "options": [
-            "1950",
-            "1920",
-            "1940",
-            "1960"
-          ],
-          "correctAnswer": 2
+          "questionId": "q3",
+          "selectedOptionIndex": 2
         }
       ]
     },
     {
-      "id": "quiz2",
-      "chapter": "wie",
-      "committee": "HR",
-      "title": "Women in Engineering",
-      "description": "Learn about the contributions of women in engineering fields.",
-      "questions": 8,
-      "timeLimit": 10,
-      "points": 10,
-      "isGeneral": false,
-      "startDate": "2026-02-05T00:00:00Z",
-      "durationDays": 5,
-      "difficulty": "medium",
-      "quizQuestions": [
+      "id": "07e8",
+      "answers": [
         {
-          "id": "q1",
-          "question": "Who was the first woman to receive a degree in engineering?",
-          "options": [
-            "Edith Clarke",
-            "Ada Lovelace",
-            "Emily Roebling",
-            "Hertha Ayrton"
-          ],
-          "correctAnswer": 2
+          "questionId": "q1",
+          "selectedOptionIndex": 0
         },
         {
-          "id": "q2",
-          "question": "Which field of engineering has the highest percentage of women?",
-          "options": [
-            "Biomedical Engineering",
-            "Mechanical Engineering",
-            "Civil Engineering",
-            "Electrical Engineering"
-          ],
-          "correctAnswer": 0
+          "questionId": "q2",
+          "selectedOptionIndex": 2
         },
         {
-          "id": "q3",
-          "question": "In which year was the Society of Women Engineers (SWE) founded?",
-          "options": [
-            "1950",
-            "1920",
-            "1940",
-            "1960"
-          ],
-          "correctAnswer": 2
+          "questionId": "q3",
+          "selectedOptionIndex": 3
+        }
+      ]
+    },
+    {
+      "id": "3510",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 0
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 3
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": 2
+        }
+      ]
+    },
+    {
+      "id": "6581",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 0
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 3
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": 2
+        }
+      ]
+    },
+    {
+      "id": "b237",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 2
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 2
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": 2
+        }
+      ]
+    },
+    {
+      "id": "2248",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": -1
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": -1
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": -1
+        }
+      ]
+    },
+    {
+      "id": "83ba",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": -1
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": -1
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": -1
+        }
+      ]
+    },
+    {
+      "id": "acd7",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 1
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 2
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": 3
+        }
+      ]
+    },
+    {
+      "id": "3e6c",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": -1
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": -1
+        },
+        {
+          "questionId": "q3",
+          "selectedOptionIndex": -1
+        }
+      ]
+    },
+    {
+      "id": "db51",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 0
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "8c84",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 0
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 2
+        }
+      ]
+    },
+    {
+      "id": "8ca9",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 3
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "4b53",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 0
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 2
+        }
+      ]
+    },
+    {
+      "id": "c214",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 1
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "f5ed",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 1
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "0d5e",
+      "answers": [
+        {
+          "questionId": "q1",
+          "selectedOptionIndex": 0
+        },
+        {
+          "questionId": "q2",
+          "selectedOptionIndex": 1
         }
       ]
     }

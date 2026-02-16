@@ -5,6 +5,8 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Button } from '@/components/ui/button';
 import Chapters from '@/components/sections/Chapters';
 import ChairPersons from '@/components/sections/Chairpersons';
+import SponsorsMarquee from '@/components/sections/Sponsors';
+import Link from 'next/link';
 
 
 export default function Home() {
@@ -29,7 +31,7 @@ export default function Home() {
               alt="Technology Network Background"
               className="w-full h-full object-cover opacity-30 dark:opacity-20"
             />
-            <div className="absolute inset-0 bg-linear-to-b from-ieee-blue-100/45 to-background"></div>
+            <div className="absolute inset-0 bg-linear-to-b from-ieee-blue-100/20 to-background"></div>
           </div>
 
           {/* Content */}
@@ -94,13 +96,25 @@ export default function Home() {
         </section>
 
 
-        <section className='py-10'>
+        {/* <section className='py-10'>
           <div className="text-center">
             <p className="text-2xl md:text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4">
               MEET OUR CHAIRPERSONS
             </p>
           </div>
           <ChairPersons />
+
+        </section> */}
+
+        {/*Sponsors Section */}
+        <section className="py-10 bg-eee-blue-100/10 relative text-center">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4 uppercase">Our Sponsors</h2>
+            <p className="text-lg text-[#706d6d]  mx-auto max-w-2xl pb-5 pt-2">
+            </p>
+            <SponsorsMarquee />
+          </div>
+          <Link href="/sponsors" className="bg-ieee-blue-100  p-3 my-5 mx-auto rounded text-white">View All Sponsors</Link>
 
         </section>
 

@@ -91,18 +91,8 @@ export default function Home() {
             </p>
             <Chapters />
           </div>
-        </section>
+        </section
 
-
-        <section className='py-10'>
-          <div className="text-center">
-            <p className="text-2xl md:text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4">
-              MEET OUR CHAIRPERSONS
-            </p>
-          </div>
-          <ChairPersons />
-
-        </section>
 
       </div>
 

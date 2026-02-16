@@ -44,6 +44,7 @@ export default function Navbar() {
         { name: "Events", page: "events" },
         { name: "Projects", page: "projects" },
         { name: "Gallery", page: "gallery" },
+        { name: "Knowlege Hub", page: "knowledge-hub" },
         { name: "Announcements", page: "announcements" },
         { name: "Contact", page: "contact" },
     ]

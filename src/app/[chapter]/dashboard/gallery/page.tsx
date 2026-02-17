@@ -36,7 +36,7 @@ function Page() {
 
     const { data: gallery, isLoading, isError } = useApiQuery<GalleryType[]>({
         queryKey: ["gallery"],
-        url: "https://ieee-hsb-backend.vercel.app/api/gallary",
+        url: "https://api.ieeehsb.com/api/gallary",
         method: "GET"
     });
 
@@ -51,7 +51,7 @@ function Page() {
     //delete event
     const handleDeleteGallery = async (galleryId: string) => {
         try {
-            await axios.delete(`https://ieee-hsb-backend.vercel.app/api/gallary/${galleryId}`, {
+            await axios.delete(`https://api.ieeehsb.com/api/gallary/${galleryId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,

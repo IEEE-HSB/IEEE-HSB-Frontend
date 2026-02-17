@@ -52,7 +52,7 @@ export default function CreateGalleryModal({ onClose, setGalleryList }: CreateGa
         try {
             setLoading(true)
             const res = await axios.post(
-                'https://ieee-hsb-backend.vercel.app/api/gallary',
+                'https://api.ieeehsb.com/api/gallary',
                 formData,
                 {
                     headers: {

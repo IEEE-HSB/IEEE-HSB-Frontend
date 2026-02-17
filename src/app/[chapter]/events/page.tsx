@@ -44,7 +44,7 @@ export default function ChapterEvents({ params }: ChapterEventsProps) {
     const { data, isLoading, isError, error } = useQuery<EventsData>({
         queryKey: ["events"],
         queryFn: async () => {
-            const response = await axios.get("https://ieee-hsb-backend.vercel.app/api/events");
+            const response = await axios.get("https://api.ieeehsb.com/api/events");
             return response.data.data;
         },
     });

@@ -76,7 +76,7 @@ export default function Register() {
   const handleRegister = async (values: typeof initialValues) => {
     try {
       await axios.post(
-        "https://ieee-hsb-backend.vercel.app/api/auth/register",
+        "https://api.ieeehsb.com/api/auth/register",
         values
       );
       setOpenModal(true);

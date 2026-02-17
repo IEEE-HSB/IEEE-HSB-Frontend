@@ -16,7 +16,7 @@ export default function GalleryPage() {
 
   const { data: gallery, isLoading, isError, error } = useApiQuery<GalleryType[]>({
     queryKey: ["gallery"],
-    url: "https://ieee-hsb-backend.vercel.app/api/gallary",
+    url: "https://api.ieeehsb.com/api/gallary",
     method: "GET"
   });
 

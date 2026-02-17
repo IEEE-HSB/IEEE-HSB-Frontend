@@ -36,7 +36,7 @@ function Page() {
     const { data: events, isLoading, isError } = useQuery<EventType[]>({
         queryKey: ["events"],
         queryFn: async () => {
-            const res = await axios.get("https://ieee-hsb-backend.vercel.app/api/events");
+            const res = await axios.get("https://api.ieeehsb.com/api/events");
             const data = res.data.data as Record<string, EventType[]>; // type assertion
             return Object.values(data)
                 .flat()
@@ -56,7 +56,7 @@ function Page() {
     // Delete event
     const handleDeleteEvent = async (eventId: string) => {
         try {
-            await axios.delete(`https://ieee-hsb-backend.vercel.app/api/events/${eventId}`, {
+            await axios.delete(`https://api.ieeehsb.com/api/events/${eventId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,

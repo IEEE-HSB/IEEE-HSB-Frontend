@@ -42,7 +42,7 @@ const { login } = useContext(authContextObj);
   const handleLogin = async (values: typeof initialValues) => {
     try {
       const res = await axios.post(
-        "https://ieee-hsb-backend.vercel.app/api/auth/login",
+        "https://api.ieeehsb.com/api/auth/login",
         values
       );
 

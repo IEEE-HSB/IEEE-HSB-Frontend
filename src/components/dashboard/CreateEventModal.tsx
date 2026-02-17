@@ -56,7 +56,7 @@ export default function CreateEventModal({ onClose, setEventList }: { onClose: (
         try {
             setLoading(true)
             const res = await axios.post(
-                'https://ieee-hsb-backend.vercel.app/api/events',
+                'https://api.ieeehsb.com/api/events',
                 formData,
                 {
                     headers: {

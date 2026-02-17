@@ -7,7 +7,7 @@ export function useEvents() {
     queryKey: ["events"],
     queryFn: async () => {
       const res = await axios.get(
-        "https://ieee-hsb-backend.vercel.app/api/events"
+        "https://api.ieeehsb.com/api/events"
       );
 
       const data: Record<string, EventType[]> = res.data.data;

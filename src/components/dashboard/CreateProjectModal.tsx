@@ -69,7 +69,7 @@ export default function CreateProjectModal({
     try {
       setLoading(true)
       const res = await axios.post(
-        'https://ieee-hsb-backend.vercel.app/api/projects',
+        'https://api.ieeehsb.com/api/projects',
         formData,
         {
           headers: {

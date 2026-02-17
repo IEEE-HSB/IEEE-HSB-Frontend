@@ -37,7 +37,7 @@ import toast from 'react-hot-toast';
 
     const { data: projects, isLoading, isError } = useApiQuery<ProjectType[]>({
         queryKey: ["projects"],
-        url: "https://ieee-hsb-backend.vercel.app/api/projects",
+        url: "https://api.ieeehsb.com/api/projects",
         method: "GET",
     });
 
@@ -54,7 +54,7 @@ import toast from 'react-hot-toast';
     //delete Project
     const handleDeleteProject = async (projectId: string) => {
         try {
-            await axios.delete(`https://ieee-hsb-backend.vercel.app/api/projects/${projectId}`, {
+            await axios.delete(`https://api.ieeehsb.com/api/projects/${projectId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,

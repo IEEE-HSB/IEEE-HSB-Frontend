@@ -18,7 +18,7 @@ export default function ForgetPassword() {
 
     setLoading(true)
     try {
-      const res = await axios.post('https://ieee-hsb-backend.vercel.app/api/auth/forgot-password', { email })
+      const res = await axios.post('https://api.ieeehsb.com/api/auth/forgot-password', { email })
       toast.success(res.data.message || 'Reset code sent successfully')
       router.push('/resetcode')
     } catch (error: unknown) {

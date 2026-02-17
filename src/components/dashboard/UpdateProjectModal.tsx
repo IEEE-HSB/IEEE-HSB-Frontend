@@ -67,7 +67,7 @@ export default function UpdateProjectModal({ onClose, id, projectsList, setProje
     try {
       setLoading(true)
       const res = await axios.patch(
-        `https://ieee-hsb-backend.vercel.app/api/projects/${id}`,
+        `https://api.ieeehsb.com/api/projects/${id}`,
         formData,
         {
           headers: {

@@ -68,7 +68,7 @@ export default function ResetPassword() {
     if (otp.length < 6) return toast.error("OTP must be 6 digits")
     setLoading(true)
     try {
-      await axios.post('https://ieee-hsb-backend.vercel.app/api/auth/reset-password', {
+      await axios.post('https://api.ieeehsb.com/api/auth/reset-password', {
         email: values.email,
         otp,
         password: values.password,

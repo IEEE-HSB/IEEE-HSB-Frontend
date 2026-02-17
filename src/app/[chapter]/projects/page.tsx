@@ -26,7 +26,7 @@ export default function ChapterProjectsPage({ params }: ChapterProjectsPageProps
   const { data, isLoading, isError } = useApiQuery<ProjectType[]>(
     {
       queryKey: ["projects"],
-      url: "https://ieee-hsb-backend.vercel.app/api/projects",
+      url: "https://api.ieeehsb.com/api/projects",
     }
   );
   const chapterProjects = useMemo(() => {

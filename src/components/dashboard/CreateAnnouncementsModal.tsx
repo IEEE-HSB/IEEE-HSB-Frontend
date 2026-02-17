@@ -45,7 +45,7 @@ export default function CreateAnnouncementsModal({ onClose, setAnnouncementsList
         try {
             setLoading(true)
             const res = await axios.post(
-                'https://ieee-hsb-backend.vercel.app/api/announcements',
+                'https://api.ieeehsb.com/api/announcements',
                 { title, description, link },
                 {
                     headers: {

@@ -34,7 +34,7 @@ export default function UserProvider({ children }: { children: ReactNode }) {
     isLoading,
   } = useApiQuery<UserType>({
     queryKey: ["me"],
-    url: "https://ieee-hsb-backend.vercel.app/api/user/me",
+    url: "https://api.ieeehsb.com/api/user/me",
     enabled: !!token,
     headers: {
       Authorization: `Bearer ${token}`,

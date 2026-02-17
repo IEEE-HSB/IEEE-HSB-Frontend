@@ -50,7 +50,7 @@ export default function UpdateAnnouncementModal({ onClose, id, announcementsList
     try {
       setLoading(true)
       const res = await axios.patch(
-        `https://ieee-hsb-backend.vercel.app/api/announcements/${id}`,
+        `https://api.ieeehsb.com/api/announcements/${id}`,
         { title, description, link }, {
         headers: {
           Authorization: `Bearer ${token}`,

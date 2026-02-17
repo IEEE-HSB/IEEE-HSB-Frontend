@@ -7,7 +7,7 @@ export function useUsers() {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axios.get(
-        "https://ieee-hsb-backend.vercel.app/api/user"
+        "https://api.ieeehsb.com/api/user"
       );
       return res.data.data as UserType[];
 

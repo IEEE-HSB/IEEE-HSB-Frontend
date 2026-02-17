@@ -67,7 +67,7 @@ export default function UpdateEventModal({ onClose, id, eventsList, setEventsLis
     try {
       setLoading(true)
       const res = await axios.put(
-        `https://ieee-hsb-backend.vercel.app/api/events/${id}`,
+        `https://api.ieeehsb.com/api/events/${id}`,
         formData,
         {
           headers: {

@@ -16,7 +16,7 @@ export default function Dashboard() {
 
   async function handleUpdateStatus(id: string, status: string) {
     try {
-      await axios.patch(`https://ieee-hsb-backend.vercel.app/api/user/${id}/states`, 
+      await axios.patch(`https://api.ieeehsb.com/api/user/${id}/states`, 
         {status}
       , {headers:
         {Authorization: `Bearer ${token}`},}

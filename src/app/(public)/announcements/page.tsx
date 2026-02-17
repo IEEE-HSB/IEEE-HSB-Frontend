@@ -11,7 +11,7 @@ export default function AnnouncementPage() {
   const { data: announcements, isLoading, isError } = useApiQuery<AnnouncementsData>(
     {
     queryKey: ["announcements"],
-    url: "https://ieee-hsb-backend.vercel.app/api/announcements",
+    url: "https://api.ieeehsb.com/api/announcements",
     select: data =>
       data.sort(
         (a, b) =>

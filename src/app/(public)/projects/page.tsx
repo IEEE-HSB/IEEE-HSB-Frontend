@@ -17,7 +17,7 @@ export default function ProjectsPage() {
   const { data, isLoading, isError } = useApiQuery<ProjectType[]>(
     {
       queryKey: ["projects"],
-      url: "https://ieee-hsb-backend.vercel.app/api/projects",
+      url: "https://api.ieeehsb.com/api/projects",
     }
   );
   useEffect(() => {

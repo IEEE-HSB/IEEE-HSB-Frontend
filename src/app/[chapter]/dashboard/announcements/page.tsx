@@ -37,7 +37,7 @@ function Page() {
     const { data: announcements, isLoading, isError } = useApiQuery<AnnouncementsData>(
         {
         queryKey: ["announcements"],
-        url: "https://ieee-hsb-backend.vercel.app/api/announcements",
+        url: "https://api.ieeehsb.com/api/announcements",
    
       })
 
@@ -52,7 +52,7 @@ function Page() {
     //delete event
     const handleDeleteAnnouncement = async (announcementId: string) => {
         try {
-            await axios.delete(`https://ieee-hsb-backend.vercel.app/api/announcements/${announcementId}`, {
+            await axios.delete(`https://api.ieeehsb.com/api/announcements/${announcementId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },

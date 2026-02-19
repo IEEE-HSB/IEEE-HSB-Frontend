@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,8 @@ import Chapters from '@/components/sections/Chapters';
 import ChairPersons from '@/components/sections/Chairpersons';
 import SponsorsMarquee from '@/components/sections/Sponsors';
 import Link from 'next/link';
+import Popout from '@/components/Popout';
+import Image from 'next/image';
 
 
 export default function Home() {
@@ -17,12 +19,18 @@ export default function Home() {
       chaptersSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
+    
+  const [show, setShow] = useState(true);
+  useEffect(()=>{
+    const timer =setTimeout(()=>{setShow(false)},3000)
+    return()=>clearTimeout(timer)
+  },[])
 
   return (
     <div>
-      <div className="min-h-screen">
+      <div className="min-h-screen relative">
         {/* Hero Section */}
+        {/* <Decor /> */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
@@ -33,7 +41,12 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-linear-to-b from-ieee-blue-100/20 to-background"></div>
           </div>
+          <div className="flex fixed top-20 left-0 w-full pointer-events-none z-999">
+            <Image className='z-999  top-0' alt='' src='/assets/ramadan.png' width={1000} height={300} />
+            <Image className='z-999  top-0' alt='' src='/assets/ramadan.png' width={1000} height={200} />
 
+          </div>
+          <Popout/>
           {/* Content */}
           <div className="relative z-10 text-center px-4 mx-auto">
             <motion.p
@@ -83,7 +96,6 @@ export default function Home() {
 
           </div>
         </section>
-
         {/*Chapters Section */}
         <section id="chapters-section" className="pb-10 bg-linear-to-b from-background to-ieee-blue-100/10">
           <div className="text-center mb-12">

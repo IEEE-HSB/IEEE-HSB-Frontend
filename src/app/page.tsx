@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,8 @@ import Chapters from '@/components/sections/Chapters';
 import ChairPersons from '@/components/sections/Chairpersons';
 import SponsorsMarquee from '@/components/sections/Sponsors';
 import Link from 'next/link';
+import Popout from '@/components/Popout';
+import Image from 'next/image';
 
 
 export default function Home() {
@@ -17,11 +19,16 @@ export default function Home() {
       chaptersSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
+    
+  const [show, setShow] = useState(true);
+  useEffect(()=>{
+    const timer =setTimeout(()=>{setShow(false)},3000)
+    return()=>clearTimeout(timer)
+  },[])
 
   return (
     <div>
-      <div className="min-h-screen">
+      <div className="min-h-screen relative">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
@@ -33,13 +40,19 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-linear-to-b from-ieee-blue-100/20 to-background"></div>
           </div>
+          <div className="flex fixed top-20 left-0 w-full pointer-events-none z-999">
+            <Image className='z-999  top-0' alt='' src='/assets/ramadan.png' width={1000} height={300} />
+            <Image className='z-999  top-0' alt='' src='/assets/ramadan.png' width={1000} height={200} />
+
+          </div>
+                    <Popout/>
 
           {/* Content */}
           <div className="relative z-10 text-center px-4 mx-auto">
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 3.1 }} //0
               className="mb-6 text-[#717171] font-bold text-[20px] leading-[150%] tracking-[-0.011em] text-center align-middle"
             >
               IEEE Helwan Student Branch
@@ -47,7 +60,7 @@ export default function Home() {
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 3.3 }} //.2
               className=' text-shadow-2xs text-white font-bold text-2xl text-center uppercase md:font-black md:text-[40px]'
             >
               Empowering Innovation, Inspiring Growth <span className='text-[#00629B]'>-IEEE Helwan</span>
@@ -55,7 +68,7 @@ export default function Home() {
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 3.3 }} //.2
               className="text-[16px] mb-8 text-[#706d6d] tracking-[-0.011em] font-medium lg:px-32 px-5 mt-7"
             >
               IEEE, Institute of Electrical and Electronics Engineers, is the biggest professional association that is dedicated to advancing technological innovation and excellence. It was formed in 1963 with roots that go back to 1884.
@@ -66,7 +79,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 3.4 }}
             >
               <Button
                 onClick={scrollToChapters}
@@ -83,7 +96,6 @@ export default function Home() {
 
           </div>
         </section>
-
         {/*Chapters Section */}
         <section id="chapters-section" className="pb-10 bg-linear-to-b from-background to-ieee-blue-100/10">
           <div className="text-center mb-12">

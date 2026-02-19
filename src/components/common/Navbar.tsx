@@ -115,7 +115,7 @@ export default function Navbar() {
                                     <motion.div
                                         className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full transition-all duration-300 ${isActive
                                             ? "bg-[#00629B] dark:bg-[#FFD100] opacity-100"
-                                            : "bg-gradient-to-r from-ieee-blue-80 to-ieee-blue-100 dark:from-ieee-gold-60 dark:to-ieee-gold-100 opacity-0"
+                                            : "bg-linear-to-r from-ieee-blue-80 to-ieee-blue-100 dark:from-ieee-gold-60 dark:to-ieee-gold-100 opacity-0"
                                             }`}
                                     />
                                 </motion.div>

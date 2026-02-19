@@ -30,7 +30,6 @@ export default function Home() {
     <div>
       <div className="min-h-screen relative">
         {/* Hero Section */}
-        {/* <Decor /> */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
@@ -46,13 +45,14 @@ export default function Home() {
             <Image className='z-999  top-0' alt='' src='/assets/ramadan.png' width={1000} height={200} />
 
           </div>
-          <Popout/>
+                    <Popout/>
+
           {/* Content */}
           <div className="relative z-10 text-center px-4 mx-auto">
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 3.1 }} //0
               className="mb-6 text-[#717171] font-bold text-[20px] leading-[150%] tracking-[-0.011em] text-center align-middle"
             >
               IEEE Helwan Student Branch
@@ -60,7 +60,7 @@ export default function Home() {
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 3.3 }} //.2
               className=' text-shadow-2xs text-white font-bold text-2xl text-center uppercase md:font-black md:text-[40px]'
             >
               Empowering Innovation, Inspiring Growth <span className='text-[#00629B]'>-IEEE Helwan</span>
@@ -68,7 +68,7 @@ export default function Home() {
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 3.3 }} //.2
               className="text-[16px] mb-8 text-[#706d6d] tracking-[-0.011em] font-medium lg:px-32 px-5 mt-7"
             >
               IEEE, Institute of Electrical and Electronics Engineers, is the biggest professional association that is dedicated to advancing technological innovation and excellence. It was formed in 1963 with roots that go back to 1884.
@@ -79,7 +79,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 3.4 }}
             >
               <Button
                 onClick={scrollToChapters}

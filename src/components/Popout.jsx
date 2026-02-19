@@ -20,11 +20,8 @@ export default function Popout() {
                 animate={
                     startExit
                         ? {
-                            x: [0,  0,  55,    120, 250, 360, 250, 120, 55,  0,  -55,  -120, -250, -360, -250, -120, -55, 0],
-                            y: [0, -360, 250, -180, -55, 0,   55,  180, 250, 360, 250, 180, 55, 0,   -55, -180, -250, -360, 0],
-                            // rotate: [0, 20, -20, 30, -30, 45, 90],
-                            scale: [1, .2, .2],
-                            opacity: [1, 1, 1, 1, 0.9, 0.9, .9, .9, .8, .6, .6, .6, .6, 0],
+                            scale: [.1],
+                            opacity: [0],
                         }
                         : {
                             opacity: 1,
@@ -32,10 +29,10 @@ export default function Popout() {
                         }
                 }
                 transition={{
-                    duration: startExit ? 3 : 0.8,
+                    duration: 0.7,
                     ease: "easeInOut",
                 }}
-                className="bg-ieee-blue-100 flex text-white px-8 py-4 rounded-2xl gap-2 text-xl font-bold shadow-2xl"
+                className="from-yellow-800 to-yellow-500 bg-linear-to-r flex text-white px-8 py-4 rounded-2xl gap-2 text-xl font-bold shadow-2xl"
             >
                  Ramadan Mubarak <Moon className="text-yellow-300"/>
             </motion.div>

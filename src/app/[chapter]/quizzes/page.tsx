@@ -90,7 +90,7 @@ export default function QuizzesPage({ params }: QuizzesPageProps) {
                     color: `var(--${mainColor}-100)`,
                   }}
                 >
-                  {committee}
+                  {committee} 
                 </Link>
               </motion.li>
             ))}

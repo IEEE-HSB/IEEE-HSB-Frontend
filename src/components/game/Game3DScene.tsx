@@ -214,10 +214,10 @@ export const buildingsData: BuildingData[] = [
   },
   {
     id: 'fr',
-    name: 'FR',
+    name: 'Sponsorship',
     color: '#0085CA',
     position: getCircularPosition(1, 6, 14),
-    question: 'Fundraising team focuses on?',
+    question: 'Sponsorship team focuses on?',
     answers: [
       'Coding projects',
       'Securing financial support',
@@ -268,20 +268,6 @@ export const buildingsData: BuildingData[] = [
     ],
     correctAnswer: 1
   },
-  {
-    id: 'ld',
-    name: 'L&D',
-    color: '#FFD100',
-    position: getCircularPosition(5, 6, 14),
-    question: 'L&D handles?',
-    answers: [
-      'Programming tasks',
-      'Event planning & setup',
-      'Database design',
-      'Algorithm optimization'
-    ],
-    correctAnswer: 1
-  }
 ];
 
 export function Game3DScene() {

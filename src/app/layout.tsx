@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import LayoutContent from "./LayoutContent";
 import QueryProvider from "@/providers/QueryProvider";
 import AuthContextProvider from "@/context/AuthContext";
+import { QuizzesProvider } from "@/context/QuizzesContext";
 import UserProvider from "@/context/UserContext";
 import Script from "next/script";
 
@@ -61,7 +62,9 @@ export default function RootLayout({
               <UserProvider>
 
                 <LayoutContent>
+                  <QuizzesProvider>
                   {children}
+                  </QuizzesProvider>
                 </LayoutContent>
               </UserProvider>
 

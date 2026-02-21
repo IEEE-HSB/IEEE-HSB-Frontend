@@ -4,40 +4,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import IeeeLogo from "@/assets/logos/ieeeLogo";
+import { chaptersData } from "@/data/chaptersData";
 
 export default function About() {
-  const chapters = [
-    {
-      name: "RAS",
-      desc: "Robotics & Automation Society",
-      src: "/assets/logos/rasLogo.png",
-      color: "#BA0C2F",
-    },
-    {
-      name: "PES",
-      desc: "Power & Energy Society",
-      src: "/assets/logos/pesLogo.png",
-      color: "#64A70B",
-    },
-    {
-      name: "ComSoc",
-      desc: "Communications Society",
-      src: "/assets/logos/comsocLogo.png",
-      color: "#FFD100",
-    },
-    {
-      name: "CS",
-      desc: "Computer Society",
-      src: "/assets/logos/csLogo.png",
-      color: "#F2A900",
-    },
-    {
-      name: "WIE",
-      desc: "Women in Engineering",
-      src: "/assets/logos/wieLogo.png",
-      color: "#981D97",
-    },
-  ];
+ 
 
   return (
     <div className="min-h-screen overflow-hidden bg-white dark:bg-ieee-blue-100 transition-colors duration-500">
@@ -123,19 +93,26 @@ export default function About() {
             About IEEE Helwan SB
           </h2>
           <div className="flex">
-            <IeeeLogo size={20} fillColor="#00629B" className="w-[50px] mr-2 ms-0"/>
+            <IeeeLogo
+              size={20}
+              fillColor="#00629B"
+              className="w-[50px] mr-2 ms-0"
+            />
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex flex-row gap-4 items-center mb-3">
-              IEEE Helwan SB is the 3rd
-              created branch in Egypt and was the very first student organization
-              founded at Helwan University.
+              IEEE Helwan SB is the 3rd created branch in Egypt and was the very
+              first student organization founded at Helwan University.
             </p>
           </div>
           <div className="flex">
-            <IeeeLogo size={20} fillColor="#00629B" className="w-[50px] mr-2 ms-0"/>
+            <IeeeLogo
+              size={20}
+              fillColor="#00629B"
+              className="w-[50px] mr-2 ms-0"
+            />
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex flex-row gap-4 items-center mb-3">
-             IEEE Helwan SB was
-            awarded in many worldwide competitions; it has four chapters called
-            RAS, PES, ComSoc, CS, and one affinity group known as WIE.
+              IEEE Helwan SB was awarded in many worldwide competitions; it has
+              four chapters called RAS, PES, ComSoc, CS, and one affinity group
+              known as WIE.
             </p>
           </div>
         </motion.div>
@@ -151,41 +128,43 @@ export default function About() {
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {chapters.map((ch) => (
-              <motion.div
-                key={ch.name}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                style={{ borderColor: ch.color }}
-                className="p-6 bg-white dark:bg-[#202125] shadow-md rounded-2xl flex items-center gap-4 hover:shadow-lg border-2 transition-colors duration-500"
-              >
-                <div
-                  className="flex justify-center items-center rounded-full p-3"
-                  style={{
-                    backgroundColor: ch.color,
-                    border: `2px solid ${ch.color}`,
-                  }}
+            {chaptersData.map((ch) => {
+              const mainColor = ch.color.split("-").slice(0, 2).join("-");
+              return (
+                <motion.div
+                  key={ch.chapterName}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="p-6 bg-white dark:bg-[#202125] shadow-md rounded-2xl flex items-center gap-4 border-2"
+                  style={{ borderColor: `var(--${mainColor}-100)` }}
                 >
-                  <Image
-                    src={ch.src}
-                    alt={ch.name}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-12 h-auto object-contain"
-                  />
-                </div>
+                  <div
+                    className="flex justify-center items-center rounded-full p-3"
+                    style={{ backgroundColor: `var(--${mainColor}-100)` }}
+                  >
+                    <Image
+                      src={ch.logo}
+                      alt={ch.chapterName}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </div>
 
-                <div>
-                  <h3 className="text-lg font-bold" style={{ color: ch.color }}>
-                    {ch.name}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    {ch.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                  <div>
+                    <h3
+                      className="text-lg font-bold"
+                      style={{ color: `var(--${mainColor}-100)` }}
+                    >
+                      {ch.chapterName}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {ch.title}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>

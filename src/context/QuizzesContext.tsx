@@ -41,7 +41,7 @@ interface QuizzesContextType {
 
 const QuizzesContext = createContext<QuizzesContextType | undefined>(undefined);
 
-const API_BASE = "http://localhost:4000";
+const API_BASE = "http://api.ieeehsb.com/api";
 //const API_BASE = "{url}/api";
 
 export const QuizzesProvider = ({ children }: { children: ReactNode }) => {
@@ -70,7 +70,7 @@ export const QuizzesProvider = ({ children }: { children: ReactNode }) => {
     let filtered = data ?? [];
 
     if (options?.chapter)
-      filtered = filtered.filter((q) => q.chapter.toLowerCase() === options.chapter!.toLowerCase());
+      filtered = filtered.filter((q) => q.chapter?.toLowerCase() === options.chapter!.toLowerCase());
 
     if (options?.committee)
       filtered = filtered.filter(

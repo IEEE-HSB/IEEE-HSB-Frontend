@@ -14,9 +14,9 @@ interface QuizzesPageProps {
 export default function QuizzesPage({ params }: QuizzesPageProps) {
   const resolvedParams = use(params);
   const chapter = resolvedParams.chapter;
-  const mainColor =getChapterMainColor(chapter, chaptersData)
+  const mainColor = getChapterMainColor(chapter, chaptersData)
   const { isDark } = useThemeContext();
-  const chapterKey = chapter.toUpperCase() as Chapter;
+  const chapterKey = chapter.toUpperCase() as Chapter; 
   const committeesForChapter: Committee[] = chapterCommittees[chapterKey] || [];
 
   return (

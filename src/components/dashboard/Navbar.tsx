@@ -1,13 +1,12 @@
 'use client'
 import { UserContext } from '@/context/UserContext';
-import { Search, Bell, Moon, Sun, ChevronDown, User, LogOut, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { useContext, useState } from 'react';
 export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const {user} = useContext(UserContext)
-
+console.log("USER =", user)
   return (
     <>
       <nav className="fixed top-20 z-50 w-full bg-linear-to-b from-ieee-blue-80 to-ieee-blue-60  border-default">
@@ -68,12 +67,12 @@ export default function Navbar() {
         <div className="h-full px-3 py-4 overflow-y-auto ">
           
           <ul className="space-y-2 font-medium">
-            {/* <li>
+            <li>
               <Link href="/dashboard" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
                 <svg className="w-5 h-5 transition duration-75 group-hover:text-fg-brand" xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z" /><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z" /></svg>
                 <span className="ms-3">Dashboard</span>
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link href="/dashboard/announcements" className="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
                 <svg className="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v14M9 5v14M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" /></svg>

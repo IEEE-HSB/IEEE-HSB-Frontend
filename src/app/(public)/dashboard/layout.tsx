@@ -11,27 +11,27 @@ export default function DashboardLayout({
 
 
     return (<>
- {/*  Google tag (gtag.js) */}
-      <Script strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-HQYJ619QV9"></Script>
-      <Script id="gtag-init" strategy="afterInteractive">
-        {`
+        {/*  Google tag (gtag.js) */}
+        <Script strategy="afterInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-HQYJ619QV9"></Script>
+        <Script id="gtag-init" strategy="afterInteractive">
+            {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-HQYJ619QV9');
           `}
-      </Script>
+        </Script>
 
 
         <div className=''>
-          <Navbar/>
+            <Navbar />
 
             <div className="p-4 sm:ml-64 mt-14 relative top-20">
                 {children}
             </div>
         </div>
-</>
+    </>
 
 
     )

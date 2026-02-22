@@ -8,25 +8,33 @@ import { useEvents } from '@/APIsFetches/Events';
 import { useUsers } from '@/APIsFetches/Users';
 import axios from 'axios';
 import { getAuthToken } from '@/lib/getAuthToken';
+import toast from 'react-hot-toast';
+import { useQueryClient } from "@tanstack/react-query";
 export default function Dashboard() {
   const [showMoreRows, setShowMoreRows] = useState(false);
   const { events } = useEvents()
   const { users } = useUsers()
   const token = getAuthToken();
-
+  const queryClient = useQueryClient();
   async function handleUpdateStatus(id: string, status: string) {
     try {
-      await axios.patch(`https://api.ieeehsb.com/api/user/${id}/states`, 
-        {status}
-      , {headers:
-        {Authorization: `Bearer ${token}`},}
+      await axios.patch(`https://api.ieeehsb.com/api/user/${id}/states`,
+        { status }
+        , {
+          headers:
+            { Authorization: `Bearer ${token}` },
+        }
       );
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+
+      toast.success("User verified successfully")
     } catch (error) {
       console.error("Failed to update user status", error);
+      toast.error("Failed to update user status");
     }
   }
 
- 
+
 
 
   function toggleShowMore() {
@@ -70,7 +78,7 @@ export default function Dashboard() {
       <div>
         <h2 className="text-xl text-gray-900 dark:text-white mb-4">Recent Submissions</h2>
         <RegisterationTable
-  users={showMoreRows ? (users || []) : (users || []).slice(0, 3)}
+          users={showMoreRows ? (users || []) : (users || []).slice(0, 3)}
           showActions={true}
           onApprove={handleUpdateStatus}
           onReject={handleUpdateStatus}

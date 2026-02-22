@@ -19,12 +19,12 @@ export default function Home() {
       chaptersSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-    
+
   const [show, setShow] = useState(true);
-  useEffect(()=>{
-    const timer =setTimeout(()=>{setShow(false)},3000)
-    return()=>clearTimeout(timer)
-  },[])
+  useEffect(() => {
+    const timer = setTimeout(() => { setShow(false) }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <div>
@@ -40,12 +40,12 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-linear-to-b from-ieee-blue-100/20 to-background"></div>
           </div>
-          <div className="flex fixed top-20 left-0 w-full pointer-events-none z-999">
-            <Image className='z-999  top-0' alt='' src='/assets/ramadan.png' width={1000} height={300} />
-            <Image className='z-999  top-0' alt='' src='/assets/ramadan.png' width={1000} height={200} />
+          <div className="flex absolute top-0 left-0 w-full pointer-events-none ">
+            <Image alt='ramadan decore' src='/assets/ramadan.png' width={1000} height={300} />
+            <Image alt='ramadan decore' src='/assets/ramadan.png' width={1000} height={200} />
 
           </div>
-                    <Popout/>
+          <Popout />
 
           {/* Content */}
           <div className="relative z-10 text-center px-4 mx-auto">

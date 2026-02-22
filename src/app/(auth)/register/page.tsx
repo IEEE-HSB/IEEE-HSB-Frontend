@@ -19,14 +19,16 @@ export default function Register() {
   const [openModal, setOpenModal] = useState(false);
 
   // Chapters & Committees
+
   const chapters = {
     cs: ["Web Development", "Cyber Security", "Mobile Application"],
     ras: ["Robotics"],
-    pes: ["Distribution-CAD", "Distribution-REVIT", 'Basic Industrial Automation', 'Advanced Industrial Automation'],
-    comsoc: ["Embedded Systems", "Machine learning", "Analog IC Design", "Digital IC Design"],
-    wie: ["Graphics Design", "JavaScript"],
-    general: ["HR", "Marketing", "FR", "Multimedia", "L&D", "R&D", "PR"],
+    pes: ["CAD", "REVIT", "Basic Industrial Automation", "Advanced Industrial Automation"],
+    comsoc: ["Embedded Systems", "Machine Learning", "Analog IC", "Digital IC"],
+    wie: ["Graphic Design", "Java Script"],
+    general: ["HR", "Marketing", "FR", "Media-Media", "L&D", "R&D", "PR", "Logistics", "Other"],
   };
+  ;
 
   // Roles
   const roles = ["Participant", "Volunteer", "Director"];
@@ -75,6 +77,7 @@ export default function Register() {
 
   const handleRegister = async (values: typeof initialValues) => {
     try {
+      console.log(values)
       await axios.post(
         "https://api.ieeehsb.com/api/auth/register",
         values

@@ -33,7 +33,7 @@ export default function Dashboard() {
       toast.error("Failed to update user status");
     }
   }
-
+  console.log(users)
 
   function toggleShowMore() {
     setShowMoreRows(prev => !prev);

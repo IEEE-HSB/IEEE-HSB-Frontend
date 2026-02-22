@@ -29,12 +29,10 @@ export default function Dashboard() {
 
       toast.success("User verified successfully")
     } catch (error) {
-      console.error("Failed to update user status", error);
+      console.log("Failed to update user status", error);
       toast.error("Failed to update user status");
     }
   }
-
-
 
 
   function toggleShowMore() {

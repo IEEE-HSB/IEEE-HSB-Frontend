@@ -10,6 +10,7 @@ export type Committee =
   | "JavaScript"
   | "Robotics"
   | "Embedded Systems"
+  | "Renewable Energy"
   | "Basic Industrial Automation"
   | "Advanced Industrial Automation"
   | "Distribution-CAD"
@@ -56,23 +57,20 @@ export const chapterCommittees: Record<Chapter, Committee[]> = {
     "Web Development",
     "Cyber Security",
     "Mobile Application",
-    "Machine learning",
-    "JavaScript",
   ],
   RAS: [
     "Robotics",
-    "Embedded Systems",
-    "Basic Industrial Automation",
-    "Advanced Industrial Automation",
   ],
   PES: [
+    "Renewable Energy",
     "Distribution-CAD",
     "Distribution-REVIT",
-    "Analog IC Design",
-    "Digital IC Design",
+    "Advanced Industrial Automation",
+    "Basic Industrial Automation",
+
   ],
-  COMSOC: ["Graphics Design", "Marketing", "FR", "Multimedia", "PR"],
-  WIE: ["HR", "L&D", "R&D"],
+  WIE: ["Graphics Design", "JavaScript"],
+  COMSOC: ["Analog IC Design", "Digital IC Design", "Embedded Systems", "Machine learning"],
 };
 
 

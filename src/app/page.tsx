@@ -9,6 +9,8 @@ import SponsorsMarquee from '@/components/sections/Sponsors';
 import Link from 'next/link';
 import Popout from '@/components/Popout';
 import Image from 'next/image';
+import AwardsSection from '@/components/sections/Awards';
+import { ArrowRight } from 'lucide-react';
 
 
 export default function Home() {
@@ -40,12 +42,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-linear-to-b from-ieee-blue-100/20 to-background"></div>
           </div>
-          <div className="flex absolute top-0 left-0 w-full pointer-events-none ">
-            <Image alt='ramadan decore' src='/assets/ramadan.png' width={1000} height={300} />
-            <Image alt='ramadan decore' src='/assets/ramadan.png' width={1000} height={200} />
 
-          </div>
-          <Popout />
 
           {/* Content */}
           <div className="relative z-10 text-center px-4 mx-auto">
@@ -96,8 +93,12 @@ export default function Home() {
 
           </div>
         </section>
+
+        <section className="pb-10 bg-linear-to-b from-background to-ieee-blue-100/10">
+          <AwardsSection />
+        </section>
         {/*Chapters Section */}
-        <section id="chapters-section" className="pb-10 bg-linear-to-b from-background to-ieee-blue-100/10">
+        <section id="chapters-section" className="pb-10 bg-ieee-blue-100/10">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4 uppercase">Our Chapters</h2>
             <p className="text-lg text-[#706d6d]  mx-auto max-w-2xl pb-5 pt-2">
@@ -108,7 +109,7 @@ export default function Home() {
         </section>
 
 
-        {/* <section className='py-10'>
+        <section className='py-10'>
           <div className="text-center">
             <p className="text-2xl md:text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4">
               MEET OUR CHAIRPERSONS
@@ -116,17 +117,23 @@ export default function Home() {
           </div>
           <ChairPersons />
 
-        </section> */}
+        </section>
 
         {/*Sponsors Section */}
-        <section className="py-10 bg-eee-blue-100/10 relative text-center">
+        <section className="py-10 bg-ieee-blue-100/10 relative text-center">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-ieee-blue-100 dark:text-white mb-4 uppercase">Our Sponsors</h2>
             <p className="text-lg text-[#706d6d]  mx-auto max-w-2xl pb-5 pt-2">
             </p>
             <SponsorsMarquee />
           </div>
-          <Link href="/sponsors" className="bg-ieee-blue-100  p-3 my-5 mx-auto rounded text-white">View All Sponsors</Link>
+          <Link
+            href="/sponsors"
+            className="group w-fit m-auto flex items-center gap-2 bg-ieee-blue-100 hover:bg-ieee-blue-80 text-white px-6 py-3 rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-ieee-blue-100/20"
+          >
+            View All Sponsors
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
 
         </section>
 

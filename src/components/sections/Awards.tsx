@@ -80,12 +80,7 @@ const AwardsSection: React.FC = () => {
                 </div>
             </div>
             
-            {/* <Link 
-                href="/competition-registeration" 
-                className="relative z-10 bg-white text-ieee-blue-100 px-8 py-3 rounded-full font-bold hover:bg-ieee-gold-20 hover:text-ieee-gold-100 transition-colors shadow-xl"
-            >
-                Join the Team
-            </Link> */}
+
         </div>
       </div>
     </section>

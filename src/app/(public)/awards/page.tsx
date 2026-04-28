@@ -70,7 +70,7 @@ const Awards: React.FC = () => {
         <div className="inline-block p-[1px] rounded-full bg-gradient-to-r from-transparent via-ieee-gold-100 to-transparent w-full max-w-4xl mb-12" />
         <div className="flex flex-col items-center">
             <Medal size={40} className="text-ieee-black-40 mb-4" />
-            <h3 className="text-xl font-bold text-foreground italic">"History is still being written."</h3>
+            <h3 className="text-xl font-bold text-foreground italic">&quot;History is still being written.&quot;</h3>
         </div>
       </section>
     </main>

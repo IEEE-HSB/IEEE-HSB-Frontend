@@ -2,7 +2,7 @@ export const awardsData = [
   {
     year: "2025",
     name: "Gold Darrel Chong Student Activity Award",
-    description: "Awarded for the outstanding organization and impact of the event 'Auxilio 7.0'."
+    description: "Awarded for the outstanding organization and impact of the event &quotAuxilio 7.0&quot."
   },
   {
     year: "2025",

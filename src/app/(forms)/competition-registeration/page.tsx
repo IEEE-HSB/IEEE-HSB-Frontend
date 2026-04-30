@@ -226,8 +226,9 @@ export default function RegisterCompetition() {
                                         as="select"
                                         name="bundle"
                                         className="w-full border border-border rounded-md p-2 bg-ieee-blue-100 text-white"
-                                        onChange={(e: any) => setFieldValue("bundle", e.target.value === "true")}
-
+                                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                                            setFieldValue("bundle", e.target.value === "true")
+                                        }
                                     >
                                         <option value={"true"}>Yes, I want to register for the bundle offer</option>
                                         <option value={"false"}>No, I want to register individually</option>
@@ -349,7 +350,7 @@ export default function RegisterCompetition() {
                                 {/* Submit */}
                                 <Button
                                     type="submit"
-                                    className={`w-full col-span-2 bg-ieee-blue-100 hover:bg-ieee-blue-100/80 relative overflow-hidden group ${isSubmitting? 'cursor-progress': 'cursor-pointer'}`}
+                                    className={`w-full col-span-2 bg-ieee-blue-100 hover:bg-ieee-blue-100/80 relative overflow-hidden group ${isSubmitting ? 'cursor-progress' : 'cursor-pointer'}`}
                                     disabled={isSubmitting || !isValid || !dirty}
                                 >
                                     <span className="relative z-10 text-white">Pay</span>

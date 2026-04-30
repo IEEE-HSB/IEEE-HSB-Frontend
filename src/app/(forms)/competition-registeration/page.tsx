@@ -20,7 +20,7 @@ export default function RegisterCompetition() {
         email: "",
         phone: "",
         competitionId: "",
-        paymentMethod: "",
+        paymentMethod: "card",
         promoCode: "",
         bundle: false,
         groupData: {
@@ -90,7 +90,7 @@ export default function RegisterCompetition() {
         try {
             console.log(values)
             const res = await axios.post(
-                "https://competition.ieeehsb.com/api/users/register",
+                "https://competitions.ieeehsb.com/api/users/register",
                 values
             );
             toast.success("Registration successful! Redirecting to payment...");
@@ -220,7 +220,7 @@ export default function RegisterCompetition() {
                                     />
                                 </div>
                                 {/* Bundle Select */}
-                                {/* <div>
+                                <div>
                                     <label className="block mb-2 text-sm font-medium">Bundle Registration</label>
                                     <Field
                                         as="select"
@@ -229,29 +229,29 @@ export default function RegisterCompetition() {
                                         onChange={(e: any) => setFieldValue("bundle", e.target.value === "true")}
 
                                     >
-                                        <option value={"true"}>Yes, I want to register for the bundle</option>
+                                        <option value={"true"}>Yes, I want to register for the bundle offer</option>
                                         <option value={"false"}>No, I want to register individually</option>
                                     </Field>
-                                </div> */}
+                                </div>
 
 
                                 {/* prome code */}
-                                {/* {values.bundle === false &&  */}
-                                {<div>
-                                    <label className="block mb-2 text-sm font-medium">Promo Code (Optional)</label>
-                                    <Field
-                                        type="text"
-                                        name="promoCode"
-                                        placeholder="Enter promo code"
-                                        value={values.promoCode}
-                                        as={Input}
-                                        className="pl-10 bg-ieee-blue-100! text-white
+                                {values.bundle === false &&
+                                    <div>
+                                        <label className="block mb-2 text-sm font-medium">Promo Code (Optional)</label>
+                                        <Field
+                                            type="text"
+                                            name="promoCode"
+                                            placeholder="Enter promo code"
+                                            value={values.promoCode}
+                                            as={Input}
+                                            className="pl-10 bg-ieee-blue-100! text-white
                     placeholder-white!"
-                                    />
-                                </div>}
+                                        />
+                                    </div>}
 
                                 {/* Group Data */}
-                                {/* {values.bundle === true && (
+                                {values.bundle === true && (
                                     <>
                                         <div className="col-span-2">
                                             <h3 className="text-lg font-semibold mb-4">Group Members Information</h3>
@@ -310,9 +310,17 @@ export default function RegisterCompetition() {
                                                         required
                                                         name={`groupData.${member}.competitionId`}
                                                         placeholder={`Select ${member} Competition`}
-                                                        className="pl-10 bg-ieee-blue-100! text-white
-                    placeholder-white!"
-                                                    />
+                                                        className="pl-10 bg-ieee-blue-100! w-full text-white placeholder-white!"
+
+
+                                                    >
+                                                        <option value="">Select a competition</option>
+                                                        <option value="comp1">Texight 9.0 - Power</option>
+                                                        <option value="comp2">Auxillio 9.0 - Robotics</option>
+                                                        <option value="comp3">Modifier 10.0 - Communication</option>
+                                                        <option value="comp4">Elevera 1.0 - Graphic Design</option>
+
+                                                    </Field>
                                                     <ErrorMessage
                                                         name={`groupData.${member}.competitionId`}
                                                         component="div"
@@ -324,14 +332,14 @@ export default function RegisterCompetition() {
 
                                         </div>
                                     </>
-                                )} */}
+                                )}
                                 <div>
                                     <label>Payment Method</label>
                                     <Field as="select"
                                         className="w-full border border-border rounded-md p-2 bg-ieee-blue-100 text-white"
                                         name="paymentMethod">
-                                        <option value="">Select</option>
                                         <option value="card">Card</option>
+                                        {/* <option value="card">Card</option> */}
                                         {/* <option value="wallet">Wallet</option> */}
 
                                     </Field>
@@ -341,7 +349,7 @@ export default function RegisterCompetition() {
                                 {/* Submit */}
                                 <Button
                                     type="submit"
-                                    className="w-full col-span-2 bg-ieee-blue-100 hover:bg-ieee-blue-100/80 relative overflow-hidden group"
+                                    className={`w-full col-span-2 bg-ieee-blue-100 hover:bg-ieee-blue-100/80 relative overflow-hidden group ${isSubmitting? 'cursor-progress': 'cursor-pointer'}`}
                                     disabled={isSubmitting || !isValid || !dirty}
                                 >
                                     <span className="relative z-10 text-white">Pay</span>
